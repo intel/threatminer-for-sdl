@@ -1,0 +1,35 @@
+{
+  "name": "threat",
+  "version": "2.7.3",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "jquery": "2.x",
+    "angular": "1.5.x",
+    "angular-animate": "1.5.x",
+    "angular-cookies": "1.5.x",
+    "angular-resource": "1.5.x",
+    "angular-route": "1.5.x",
+    "angular-sanitize": "1.5.x",
+    "angular-touch": "1.5.x",
+    "intcAppFrame": "./bower_components/intcAppFrame",
+    "it-mlaf-sass": "./bower_components/it-mlaf-sass", 
+    "lodash": "4.x",
+    "tmix-caching": "1.x",
+    "ng-tags-input": "3.2.0",
+    "angular-modal-service": "^0.12.1",
+    "ngMeta": "^1.0.0",
+    "angular-xeditable": "^0.8.1",
+    "angular-smart-table": "^2.1.11",
+    "angular-base64": "^2.0.5"
+  },
+  "devDependencies": {
+    "angular-mocks": "1.5.x",
+    "angular-scenario": "1.5.x",
+    "sinon-as-promised": "3.x"
+  },
+  "resolutions": {
+    "angular": "1.5.x",
+    "it-mlaf-sass": "4.x",
+    "lodash": "4.x"
+  }
+}

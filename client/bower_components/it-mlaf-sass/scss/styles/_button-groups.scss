@@ -1,0 +1,61 @@
+//
+// Button groups overrides
+// --------------------------------------------------
+
+@mixin caret-margin($size) {
+	> .caret {
+		margin-left: $size;
+	}
+}
+
+// add borders to buttons in button groups (all MLAF buttons with colored backgrounds have no border, so we have to add one when they are in these groups)
+.btn-group {
+	// inner buttons between the first and last buttons in a group of 3 or more buttons
+	.btn:not(:first-of-type):not(:last-of-type) {
+		&.btn-primary, &.btn-danger {	
+		  border-left-color: #fff;
+		  border-right-color: #fff;
+		}
+	}
+	// first button in a group of 2 or more buttons
+	.btn:first-of-type:not(:last-of-type) {
+		&.btn-primary, &.btn-danger {
+		  border-right-color: #fff;
+		}
+	}
+	// last button in a group of 2 or more buttons
+	.btn:last-of-type:not(:first-of-type) {
+		&.btn-primary, &.btn-danger {
+		  border-left-color: #fff;
+		}
+	}
+	
+	// Set appropriate padding for MLAF replacement carets in split button dropdowns
+	> .btn + .btn {
+		@include dropdown-toggle-padding(ms(2));
+	}
+	> .btn + .btn-lg {
+		@include dropdown-toggle-padding(ms(4));
+		@include caret-margin(-2px);
+	}
+	> .btn + .btn-sm {
+		@include dropdown-toggle-padding(ms(0));
+		@include caret-margin(-4px);
+	}
+	> .btn + .btn-xs {
+		@include dropdown-toggle-padding(ms(-2));
+		@include caret-margin(-8px);
+	}
+}
+
+// Caret overrides (required to remove all traces of Bootstrap caret)
+// MLAF replacement caret is defined in _dropdowns.scss
+.btn .caret {
+  margin-left: 0;
+}
+.btn-lg .caret {
+  border-width: 0;
+}
+.dropup .btn-lg .caret {
+  border-width: 0;
+}

@@ -1,0 +1,32 @@
+.sidebar {
+  height: 100%;
+  padding-right: 0;
+  padding-top: 20px;
+
+  .dropdown-menu {
+    top: 0;
+    left: 100%;
+
+    li {
+    	border: 0px;
+    }
+  }
+}
+.sidebar .nav {
+  width: 95%;
+}
+.sidebar li {
+  border:0 #f2f2f2 solid;
+  border-bottom-width:1px;
+
+  &.active {
+    background-color: $light-blue;
+
+    a {
+      color: $white;
+      &:hover {
+        background-color: $light-blue;
+      }       
+    }
+  }
+}

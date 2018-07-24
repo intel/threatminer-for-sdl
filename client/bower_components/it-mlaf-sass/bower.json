@@ -1,0 +1,44 @@
+{
+  "name": "it-mlaf-sass",
+  "homepage": "",
+  "authors": [],
+  "version": "3.2.1",
+  "main": [
+    "./it-mlaf.scss",
+    "fonts/IntelClear-Bold-webfont.eot",
+    "fonts/IntelClear-Bold-webfont.ttf",
+    "fonts/IntelClear-Bold-webfont.woff",
+    "fonts/IntelClear-Light-webfont.eot",
+    "fonts/IntelClear-Light-webfont.ttf",
+    "fonts/IntelClear-Light-webfont.woff",
+    "fonts/IntelClear-Regular-webfont.eot",
+    "fonts/IntelClear-Regular-webfont.ttf",
+    "fonts/IntelClear-Regular-webfont.woff",
+    "fonts/Intelicon.eot",
+    "fonts/Intelicon.svg",
+    "fonts/Intelicon.ttf",
+    "fonts/Intelicon.woff"
+  ],
+  "dependencies": {
+    "bootstrap-sass": "~3.3.3",
+    "modular-scale": "~2.0.7"
+  },
+  "devDependencies": {
+    "modularscale-js": "~0.0.1"
+  },
+  "ignore": [
+    "/.*",
+    "_config.yml",
+    "CNAME",
+    "composer.json",
+    "/*.md",
+    "docs",
+    "js/tests",
+    "test-infra",
+    "gulp",
+    "gulpfile.js",
+    "_gh_pages",
+    "it-mlaf-docs.scss",
+    "it-mlaf-docs-OLD.scss"
+  ]
+}

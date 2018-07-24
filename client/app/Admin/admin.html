@@ -1,0 +1,233 @@
+<!--Template for the admin page-->
+<div class=topofAdmin>
+<h3 style="color:#0071c5"><strong>Administrator Management</strong></h3>
+<button class="watchlistButton" ng-click="vm.logOut()">
+  <a><strong style="color:black">Log out</strong> <i class="icon glyphicon glyphicon-log-out fa-fw"></i></a>
+</button>
+<br>
+<button class="watchlistButton">
+  <a ng-href="/watchlist"><strong style="color:black">Watchlist</strong> <i class="icon glyphicon glyphicon-eye-open fa-fw"></i></a>
+</button>
+
+</div>
+<div class="usersTable">
+  <div class="usersTableHead">
+    <h5 class="usersTableTitle"><strong>Users</strong></h5>
+    </td>
+
+    <button class="AddUserButton" ng-click="vm.addUserModal()">
+      <strong>Add User</strong> <i class="icon glyphicon glyphicon-plus fa-fw"></i>
+    </button>
+  </div>
+<table st-table="vm.displayedCollection" st-safe-src="vm.users" class=" usersTable table table-striped">
+      <thead>
+        <tr>
+          <th colspan="9"><input st-search="" class="form-control" placeholder="search ..." type="text"/></th>
+        </tr>
+			<tr>
+				<th st-sort="Title">Username </th>
+				<th st-sort="Link">Name <i class="icon glyphicon glyphicon-sort fa-fw"></i></th>
+				<th st-sort="Description">Role</th>
+        <th st-sort="Type">Email</th>
+        <th></th>
+        <th></th>
+			</tr>
+			</thead>
+
+			<tbody>
+			<tr ng-repeat="row in vm.displayedCollection">
+				<td>{{row.Username}}</td>
+				<td>{{row.Name}}</td>
+        <td>
+        <a href="#" class="threatOptionSelect" editable-select="vm.newRole"
+        e-ng-options="opt for opt in vm.roles" onaftersave="vm.updateRole(row.ID)" buttons="no">{{row.Role}}
+        </a>
+      </td>
+
+        <td>{{row.Email || "No Email"}}</td>
+				<td>
+          <button  ng-click="vm.deleteUser(row.ID)" class="deleteThreatButton">
+             <i class="icon glyphicon glyphicon-trash fa-fw"></i>
+          </button>
+        </td>
+        <td></td>
+			</tr>
+			</tbody>
+      <tfoot>
+        <tr>
+  				<td colspan="9" class="text-center">
+  				      <div class="pages" st-pagination="" st-items-by-page="itemsByPage" st-displayed-pages="4"></div>
+  				</td>
+  			</tr>
+		</tfoot>
+		</table>
+</div>
+
+<div class="usersTable">
+  <div class="usersTableHead">
+    <h5 class="usersTableTitle"><strong>Feed Types</strong></h5>
+    <button class="AddUserButton" ng-click="vm.addFeedTypeModal()">
+      <strong>Add Feed Type</strong> <i class="icon glyphicon glyphicon-plus fa-fw"></i>
+    </button>
+  </div>
+<table st-table="vm.displayedfeedTypesCollection" st-safe-src="vm.feedTypes" class="usersTable table table-striped">
+      <thead>
+        <tr>
+          <th colspan="9"><input st-search="" class="form-control" placeholder="search ..." type="text"/></th>
+        </tr>
+			<tr>
+				<th st-sort="Title">Title <i class="icon glyphicon glyphicon-sort fa-fw"></i></th>
+				<th st-sort="Link">Description</th>
+        <th></th>
+        <th></th>
+			</tr>
+			</thead>
+
+			<tbody>
+			<tr ng-repeat="row in vm.displayedfeedTypesCollection">
+				<td>{{row.Title}}</td>
+				<td>{{row.Desc|| "No Description"}}</td>
+
+				<td>
+          <button  ng-click="vm.deleteThreatFeed(row.ID)" class="deleteThreatButton">
+             <i class="icon glyphicon glyphicon-trash fa-fw"></i>
+          </button>
+        </td>
+        <td></td>
+			</tr>
+			</tbody>
+      <tfoot>
+        <tr>
+  				<td colspan="9" class="text-center">
+  			       <div class="pages" st-pagination="" st-items-by-page="5" st-displayed-pages="7"></div>
+  				</td>
+  			</tr>
+		</tfoot>
+		</table>
+</div>
+
+<div class="usersTable">
+  <div class="ThreatCategoriesTableHead">
+    <h5 class="usersTableTitle"><strong>Threat Categories</strong></h5>
+    <button class="AddUserButton" ng-click="vm.addThreatCatModal()">
+      <strong>Add Threat Category</strong> <i class="icon glyphicon glyphicon-plus fa-fw"></i>
+    </button>
+  </div>
+<table st-table="vm.displayedThreatCategoryCollection" st-safe-src="vm.threatCategories" class=" usersTable table table-striped">
+      <thead>
+        <tr>
+          <th colspan="9"><input st-search="" class="form-control" placeholder="search ..." type="text"/></th>
+        </tr>
+			<tr>
+				<th st-sort="Title">Name <i class="icon glyphicon glyphicon-sort fa-fw"></i></th>
+				<th st-sort="Link">Description</th>
+        <th></th>
+        <th></th>
+			</tr>
+			</thead>
+
+			<tbody>
+			<tr ng-repeat="row in vm.displayedThreatCategoryCollection">
+				<td>{{row.Name}}</td>
+				<td>{{row.Desc || "No Description"}}</td>
+				<td>
+          <button  ng-click="vm.deleteThreatCategory(row.ID)" class="deleteThreatButton">
+             <i class="icon glyphicon glyphicon-trash fa-fw"></i>
+          </button>
+        </td>
+
+        <td></td>
+			</tr>
+			</tbody>
+      <tfoot>
+        <tr>
+  				<td colspan="9" class="text-center">
+  				<div class="pages" st-pagination="" st-items-by-page="5" st-displayed-pages="7"></div>
+  				</td>
+  			</tr>
+		</tfoot>
+		</table>
+</div>
+
+<div class="usersTable">
+  <div class="ThreatCategoriesTableHead">
+    <h5 class="usersTableTitle"><strong>Adversary Types</strong></h5>
+    <button class="AddUserButton" ng-click="vm.addAdversaryModal()">
+      <strong>Add Adversary Type</strong> <i class="icon glyphicon glyphicon-plus fa-fw"></i>
+    </button>
+  </div>
+<table st-table="vm.displayedThreatAdversaryCollection" st-safe-src="vm.threatAdversaries" class=" usersTable table table-striped">
+      <thead>
+        <tr>
+          <th colspan="9"><input st-search="" class="form-control" placeholder="search ..." type="text"/></th>
+        </tr>
+			<tr>
+				<th st-sort="Title">Name <i class="icon glyphicon glyphicon-sort fa-fw"></i></th>
+				<th st-sort="Link">Description</th>
+        <th></th>
+        <th></th>
+			</tr>
+			</thead>
+
+			<tbody>
+			<tr ng-repeat="row in vm.displayedThreatAdversaryCollection">
+				<td>{{row.Name}}</td>
+				<td>{{row.Desc|| "No Description"}}</td>
+				<td>
+          <button  ng-click="vm.deleteThreatAdversary(row.ID)" class="deleteThreatButton">
+             <i class="icon glyphicon glyphicon-trash fa-fw"></i>
+          </button></td>
+        <td></td>
+			</tr>
+			</tbody>
+      <tfoot>
+        <tr>
+  				<td colspan="9" class="text-center">
+            <!-- itemsByPage -->
+  			<div class="pages" st-pagination="" st-items-by-page="5" st-displayed-pages="7"></div>
+  				</td>
+  			</tr>
+		</tfoot>
+		</table>
+</div>
+
+<div class="usersTable">
+  <div class="ThreatCategoriesTableHead">
+    <h5 class="usersTableTitle"><strong>Ontology Categories</strong></h5>
+    <button class="AddUserButton" ng-click="vm.addProductCategoryModal()">
+      <strong>Add Ontology Category</strong> <i class="icon glyphicon glyphicon-plus fa-fw"></i>
+    </button>
+  </div>
+<table st-table="vm.displayedProductCategoryCollection" st-safe-src="vm.productCategories" class=" usersTable table table-striped">
+      <thead>
+        <tr>
+          <th colspan="9"><input st-search="" class="form-control" placeholder="search ..." type="text"/></th>
+        </tr>
+			<tr>
+				<th st-sort="Title">Ontology<i class="icon glyphicon glyphicon-sort fa-fw"></i></th>
+				<th st-sort="Link">Description</th>
+        <th></th>
+        <th></th>
+			</tr>
+			</thead>
+
+			<tbody>
+			<tr ng-repeat="row in vm.displayedProductCategoryCollection">
+				<td>{{row.Name}}</td>
+				<td>{{row.Desc || "No Description"}}</td>
+				<td>
+          <button ng-click="vm.deleteProductCategory(row.ID)" class="deleteThreatButton">
+             <i class="icon glyphicon glyphicon-trash fa-fw"></i>
+          </button></td>
+        <td></td>
+			</tr>
+			</tbody>
+      <tfoot>
+        <tr>
+  				<td colspan="9" class="text-center">
+  	         <div class="pages" st-pagination="" st-items-by-page="5" st-displayed-pages="7"></div>
+  				</td>
+  			</tr>
+		</tfoot>
+		</table>
+</div>

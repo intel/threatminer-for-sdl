@@ -1,0 +1,3 @@
+from datamine import *
+
+run()

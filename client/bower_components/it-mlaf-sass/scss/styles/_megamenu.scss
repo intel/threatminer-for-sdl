@@ -1,0 +1,42 @@
+.modal-dialog-megamenu {
+	position: absolute;
+	z-index: 10000;
+	width: 100%;
+	margin-top: 0px;
+	top: 100%;
+	left: 0;
+
+	h3 {
+		font-size: 1.0em;
+		font-weight: bold;
+		margin: 0px 0 5px 0;
+	}
+
+	ul {
+		list-style: none;
+		margin: 0 0 20px 0;
+		padding: 0;
+	}
+
+	.modal-body {
+	  position: relative;
+	  padding: 25px 40px;
+	}
+
+	.modal-content {
+		border-top: 0px;
+	}
+}
+// Scale up the modal
+@media (min-width: $screen-sm-min) {
+  // Automatically set modal's width for larger viewports
+  .modal-dialog-megamenu {
+    margin: 0px auto;
+  }
+  .modal-content {
+	@include box-shadow(0 6px 12px rgba(0,0,0,.175));
+  }
+
+  // Modal sizes
+  .modal-sm { width: $modal-sm; }
+}

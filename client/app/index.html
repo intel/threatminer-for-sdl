@@ -1,0 +1,102 @@
+<!--[if lt IE 7]>
+<html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>
+<html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>
+<html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html ng-app="threat" class="no-js" lang="en">
+<!--<![endif]-->
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title ng-bind="ngMeta.title"></title>
+  <base href="/">
+  <meta name="fragment" content="!">
+
+  <meta name="description" content="{{ngMeta.description}}" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- The css files generated from SCSS and from bower components are inserted in the below inject block don't put anything in there manually or it will be destroyed. You can put your css links anywhere else- just not in here.-->
+  <!-- inject:css -->
+  <link rel="stylesheet" href=".tmp/main.css">
+  <link rel="stylesheet" href=".tmp/ng-tags-input.css">
+  <link rel="stylesheet" href=".tmp/xeditable.css">
+  <!-- endinject -->
+   <!-- webcomp:html -->
+   <!-- endinject -->
+
+</head>
+  <body ng-controller="BodyController as vm">
+    <intc-app-frame frame-data="vm.frameData" html5mode="true" >
+             <div class="container" ng-view=""></div>
+    </intc-app-frame>
+
+
+      <!-- Anything in the bower/inject block is automatically added. Put something in this block and it will probably be overwritten.
+Add your user scripts anywhere else... just not in here. -->
+      <!-- bower:js -->
+      <script src="../bower_components/jquery/dist/jquery.js"></script>
+      <script src="../bower_components/angular/angular.js"></script>
+      <script src="../bower_components/angular-animate/angular-animate.js"></script>
+      <script src="../bower_components/angular-cookies/angular-cookies.js"></script>
+      <script src="../bower_components/angular-resource/angular-resource.js"></script>
+      <script src="../bower_components/angular-route/angular-route.js"></script>
+      <script src="../bower_components/angular-sanitize/angular-sanitize.js"></script>
+      <script src="../bower_components/angular-touch/angular-touch.js"></script>
+      <script src="../bower_components/intc-enter/src/intcEnter.directive.js"></script>
+      <script src="../bower_components/bootstrap-sass/assets/javascripts/bootstrap.js"></script>
+      <script src="../bower_components/lodash/lodash.js"></script>
+      <script src="../bower_components/tmix-caching/tmixCaching.js"></script>
+      <script src="../bower_components/ng-tags-input/ng-tags-input.js"></script>
+      <script src="../bower_components/angular-modal-service/dst/angular-modal-service.js"></script>
+      <script src="../bower_components/ngMeta/dist/ngMeta.js"></script>
+      <script src="../bower_components/angular-xeditable/dist/js/xeditable.js"></script>
+      <script src="../bower_components/angular-smart-table/dist/smart-table.js"></script>
+      <script src="../bower_components/angular-base64/angular-base64.js"></script>
+      <script src="../bower_components/intcAppFrame/js/intcAppFrame.js"></script>
+      <script src="../bower_components/intcAppFrame/js/dataDrivenLinks.directive.js"></script>
+      <script src="../bower_components/intcAppFrame/js/intcAppFrame.templates.js"></script>
+      <!-- endinject -->
+
+      <!-- You could add any bower dependencies manually here... -->
+      <script src="bower_components/ng-tags-input/ng-tags-input.js"></script>
+      <script src="bower_components/angular-smart-table/dist/smart-table.js"></script>
+      <script src="bower_components/angular-modal-service/dst/angular-modal-service.min.js"></script>
+      <script src="bower_components/angular-base64/angular-base64.js"></script>
+      <script src="bower_components/angular-xeditable/dist/js/xeditable.min.js"></script>
+
+
+    <!-- inject:js -->
+    <script src="app.js"></script>
+    <script src="Watchlist/watchlist.controller.js"></script>
+    <script src="Watchlist/unfollow.controller.js"></script>
+    <script src="ThreatDetail/threatDetail.controller.js"></script>
+    <script src="ThreatDetail/deleteThreat.controller.js"></script>
+    <script src="Search/search.controller.js"></script>
+    <script src="ProductOntology/products.controller.js"></script>
+    <script src="ProductOntology/deleteSelectedProducts.controller.js"></script>
+    <script src="ProductOntology/deleteProduct.controller.js"></script>
+    <script src="ProductOntology/addProduct.controller.js"></script>
+    <script src="ProductDetails/productDetail.controller.js"></script>
+    <script src="ProductDetails/deleteSelectedThreats.controller.js"></script>
+    <script src="ProductDetails/deleteProductModal.controller.js"></script>
+    <script src="ProductDetails/addThreatModal.controller.js"></script>
+    <script src="Pentest/pentest.controller.js"></script>
+    <script src="Pentest/deletePentest.controller.js"></script>
+    <script src="Logon/login.controller.js"></script>
+    <script src="Feeds/feeds.controller.js"></script>
+    <script src="Feeds/deleteSelectedFeeds.controller.js"></script>
+    <script src="Feeds/addFeedModal.controller.js"></script>
+    <script src="app-frame/body.controller.js"></script>
+    <script src="Admin/adminDelete.controller.js"></script>
+    <script src="Admin/adminAdd.controller.js"></script>
+    <script src="Admin/admin.controller.js"></script>
+    <!-- endinject -->
+
+
+            <!-- You could add any other app dependencies manually here... -->
+    <link rel="stylesheet" href="bower_components/angular-xeditable/dist/css/xeditable.min.css"/>
+
+  </body>
+</html>

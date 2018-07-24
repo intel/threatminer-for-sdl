@@ -1,0 +1,18 @@
+//style sheet for the watchlist page
+.WatchlistTableTitle{
+  display: inline-block;
+  margin-top: 10px;
+  margin-left: 10px;
+  margin-bottom: -5px;
+}
+
+.watchlistButton{
+  background-color: Transparent;
+  background-repeat:no-repeat;
+  border: none;
+  cursor:pointer;
+  display: inline-block !important;
+  margin-top: -40px !important;
+  float:right;
+  overflow: hidden;
+}

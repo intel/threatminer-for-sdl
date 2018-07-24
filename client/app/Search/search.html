@@ -1,0 +1,66 @@
+<!--Template for the products page-->
+<div class="productsHead">
+  <div class="productsHeadLeft">
+    <h2 class="tableTitle">Search</h2>
+  </div>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+
+<div class="input-group">
+	<div class="input-group-btn">
+		<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{vm.currentSearchParam}}<span class="caret"></span></button>
+		<ul class="dropdown-menu">
+			<li><a href="#" ng-click="vm.setDropdown('Threat Description')">Threat Description</a></li>
+			<li><a href="#" ng-click="vm.setDropdown('Threat Title')">Threat Title</a></li>
+		</ul>
+	</div>
+	<form name="form" ng-submit="vm.search()" role="form">
+
+		<input type="text" class="form-control" keyup.enter="vm.search()" ng-model="vm.searchQuery" required />
+	</form>
+	<span class="input-group-btn">
+		<button class="btn btn-default" ng-click="vm.search()" type="button">Search</button>
+	</span>
+</div>
+
+</div>
+
+<div ng-hide="!vm.hasPerformedASearch">
+	<table st-table="vm.displayedCollection" st-safe-src="vm.rowCollection" class="table table-striped main">
+		<thead>
+			<tr>
+				<th></th>
+				<th>Date</th>
+				<th>Title </th>
+				<th>Description</th>
+			</tr>
+		</thead>
+
+		<tbody>
+
+		</tbody>
+		<tfoot>
+			<tr st-select-row="row" st-select-mode="multiple" ng-repeat="row in vm.displayedCollection">
+				<td></td>
+				<td>{{row.Date}}</td>
+				<td><a href="/threats/{{row.ID}}">{{row.Title}}</a></td>
+				<td>{{row.Description || "No Description"}}</td>
+			</tr>
+			<br>
+			<br>
+			<nav aria-label="...">
+			  <ul class="pager">
+			    <li><a href="#" ng-click="vm.previousPage()">Previous</a></li>
+			    <li><a href="#" ng-click="vm.nextPage()">Next</a></li>
+			  </ul>
+			</nav>
+		</tfoot>
+	</table>
+	<div ng-hide="!vm.displayedCollection.length == 0">
+		<strong style="display: block; text-align:center;">Your search query returned no results.</strong>
+	</div>
+</div>

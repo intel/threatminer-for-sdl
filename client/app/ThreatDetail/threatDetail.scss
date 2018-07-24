@@ -1,0 +1,97 @@
+//style sheet for the threat detail page
+.ThreatDetailCategory {
+  display: inline-block;
+  margin-right: 10px;
+  border-bottom: none !important;
+  //color: blue !important;
+
+}
+
+.threatOptionSelect{
+border-bottom: none !important;
+color:#0071c5 !important;
+font-style: normal !important;
+
+}
+
+.threatNotes {
+  border-bottom: none !important;
+  color:#0071c5 !important;
+  font-style: normal !important;
+}
+.ThreatEditor {
+
+
+  margin-top: 10px;
+  color: #428bca;
+}
+
+.ThreatEditorBase {
+
+
+  margin-top: 10px;
+}
+.deleteDetailDelete{
+  background-color: Transparent;
+  background-repeat:no-repeat;
+  border: none;
+  cursor:pointer;
+  overflow: hidden;
+  outline:none;
+  display: inline-block;
+  float: right;
+  margin-right: -835px;
+  margin-top: 25px;
+  //margin-top: 0px !important;
+}
+.tableTitle {
+
+  float:bottom;
+}
+
+.affectedProductsTitle{
+
+  display: inline-block;
+  float:left;
+}
+.ThreatDetailOptions {
+
+    border-bottom: none !important;
+}
+
+.confirmDeleteMessage {
+text-align: center !important;
+
+}
+
+.ThreatDetailHead {
+  margin-left: 10px;
+}
+.tableTitle {
+  margin-left: 10px;
+}
+.ThreatWatchlistButton {
+  background-color: Transparent;
+  //background-repeat:no-repeat;
+  border: none;
+  cursor:pointer;
+  display: inline-block;
+  margin-top: 30px;
+  margin-left: -5px;
+  //overflow: hidden;
+  float: right;
+
+  //text-align: left;
+}
+.ThreatWatchlistButtonAdmin{
+  background-color: Transparent;
+  //background-repeat:no-repeat;
+  border: none;
+  cursor:pointer;
+  display: inline-block;
+  margin-top: -20px;
+  margin-left: 0px;
+  //overflow: hidden;
+  float: right;
+
+}

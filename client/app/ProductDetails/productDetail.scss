@@ -1,0 +1,237 @@
+//style sheet for the product detail page
+.productKeywords {
+  margin-left: -40px;
+  display: inline-block;
+
+}
+.productDesc {
+  display: inline-block;
+  border-bottom: none !important;
+  color: #0071c5!important;
+}
+.productName {
+  border-bottom: none !important;
+  color: #0071c5!important;
+}
+.saveCancelButtons {
+
+  margin-left: 40px;
+}
+
+.productCategory {
+  border-bottom: none !important;
+  color: #0071c5!important;
+  margin-bottom: 20px !important;
+}
+
+.editKeywordsButton {
+  background-color: Transparent;
+  background-repeat:no-repeat;
+  border: none;
+  cursor:pointer;
+  overflow: hidden;
+  outline:none;
+  display: inline-block;
+  margin-right: -10px;
+  z-index: 99 !important;
+  //float:right;
+}
+.keywordsdiv {
+
+  width:450px;
+}
+.keywords {
+    display: inline-block;
+    color: #0071c5  !important;
+}
+
+.productdetails{
+
+  width: 400px;
+}
+.addThreatButton1 {
+
+   background-color: Transparent;
+   background-repeat:no-repeat;
+   border: none;
+   cursor:pointer;
+   display: inline-block;
+   margin-top: 20px;
+   width: auto;
+}
+
+.keywordsLabel{
+
+  color:black;
+
+}
+
+.optGroup1{
+
+  display: inline-block;
+}
+.optGroup2{
+  display: inline-block;
+  margin-left: 40px;
+
+
+}
+.productDetailHeadBottom {
+  float: bottom;
+
+  //margin-bottom: 20px;
+   //border-style: solid;
+}
+.CategoryFilter {
+  display: inline-block;
+//  margin-top:190px;
+
+}
+.LevelFilter {
+  display: inline-block;
+  margin-top:0px;
+  //float:right;
+}
+.StatusFilter {
+  display: inline-block;
+  //float:right;
+}
+
+.threatTableTitle {
+  display: block;
+
+}
+
+.filters{
+// padding-top: 110px;
+  float:right;
+  margin-right:-720px !important;
+  margin-top: -110px;
+  display: inline-block !important;
+  //border-style: dashed;
+
+
+}
+.lastEdited {
+  color:#0071c5;
+
+
+}
+.filtersBase{
+  margin-top: 105px;
+  float:right;
+  //margin-top:
+  margin-right:0px !important;
+  //border-style: solid;
+  //height: px;
+  //display: block;
+
+}
+.deleteProductButton1 {
+  background-color: Transparent;
+  //background-repeat:no-repeat;
+  border: none;
+  cursor:pointer;
+  display: block;
+  margin-top: 10px;
+  display: inline-block;
+
+  //overflow: hidden;
+
+  text-align: left;
+}
+.deleteSelectedThreatsButton {
+
+  background-color: Transparent;
+  //background-repeat:no-repeat;
+  border: none;
+  cursor:pointer;
+  display: block;
+  margin-top: 20px;
+  //display: inline-block;
+
+  //overflow: hidden;
+  float: right;
+
+  text-align: right;
+
+}
+
+.watchlistButton1 {
+  background-color: Transparent;
+  //background-repeat:no-repeat;
+  border: none;
+  cursor:pointer;
+  display: inline-block;
+  margin-top: 10px;
+//  margin-right: 10px;
+  //overflow: hidden;
+
+  //text-align: left;
+}
+
+.deleteThreatButton {
+  background-color: Transparent;
+  background-repeat:no-repeat;
+  border: none;
+  cursor:pointer;
+  //display: block;
+  margin-top: 0px !important;
+  overflow: hidden;
+  outline:none;
+  //text-align: left;
+
+}
+.createdBy{
+
+float:right;
+//margin-bottom: 10px !important;
+}
+
+.ProductDetailHead {
+float: top;
+//border-style: solid;
+}
+
+.ProductDetailHeadLeft {
+
+  float: left;
+  margin-left: 10px;
+  margin-bottom: -30px;
+  //bottom: -40px !important;
+  //border-style: solid;
+  //width:500px;
+
+}
+.ProductDetailHeadRight{
+
+  float: right;
+  margin-right: 0px;
+  //border-style: solid;
+
+}
+
+.ProductDetailHeadRightBase {
+
+  margin-right: 30px;
+//  height: inherit;
+}
+
+
+table{
+margin-top:20px;
+}
+
+
+.tit {
+  float:left;
+  margin-bottom: 0px;
+  //display: inline-block;
+  //border-style: solid;
+}
+
+
+.categoryLabel{
+float:right;
+
+}

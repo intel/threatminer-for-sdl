@@ -1,0 +1,28 @@
+# Client
+client/.tmp/
+client/dist/
+client/**/*.tmp
+client/.sass-cache/
+client/*.log
+client/.idea
+client/.DS_Store
+client/coverage
+client/node_modules/*
+client/bower_components/*
+!client/bower_components/intc-enter/*
+!client/bower_components/intcAppFrame/*
+!client/bower_components/it-mlaf-sass/*
+
+# All python binary files
+*.pyc
+
+# Configuration built by setup.py
+config.json
+
+# Database migrations
+server/database/migrations/*
+
+# Classifier
+scripts/classifier/ner-model.ser.gz
+scripts/classifier/tempTrainingData.tsv
+scripts/classifier/testfile.tsv

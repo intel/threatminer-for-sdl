@@ -1,0 +1,79 @@
+//stylesheet for the products page
+
+.productstableTitle {
+  margin-top: 100px !important;
+}
+.productsHeadLeft {
+float: left;
+margin-top: 25px;
+}
+
+.tableTitle {
+  float:left;
+  display: block;
+  margin-top: 40px;
+}
+
+.productsHeadDescription{
+display: block !important;
+
+}
+
+.productsHeadRight {
+  float: right;
+  position: auto;
+  margin: 0 auto;
+  margin-right: 10px;
+
+}
+
+.feedTable {
+    width: 1125px !important;
+}
+
+.addProductButton {
+  width: 150px;
+  //padding-right: -400px !important;
+  margin-top: 20px;
+  //display: inline-block;
+  text-align: right;
+  float:right;
+  background-color: Transparent;
+  background-repeat:no-repeat;
+  border: none;
+  cursor:pointer;
+  overflow: hidden;
+}
+
+.deleteSelectedProductsButton {
+  margin-top: 10px;
+  float:right;
+  text-align: right;
+  background-color: Transparent;
+  background-repeat:no-repeat;
+  border: none;
+  cursor:pointer;
+  overflow: hidden;
+}
+
+.productFilter {
+  margin-top: 10px;
+  text-align: right;
+  float:right;
+  display:block;
+}
+
+.productFilterBase{
+  float:right;
+  display:block;
+  margin-top: 15px;
+}
+.st-selected{
+  background: #0071c5 !important;
+  color: white !important;
+}
+
+.st-selected  a {
+  
+  color: white !important;
+}

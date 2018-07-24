@@ -1,0 +1,16 @@
+/* IT Master Look and Feel (it-mlaf-sass) */
+
+//override font it-mlaf-sass and bootstrap-sass font-paths so that serving from .tmp or dist both work correctly :)
+$intel-font-path: "fonts/" !default;
+$icon-font-path: "fonts/" !default;
+
+//Put any vendor stuff you would like to add (for scss inclusion) below this line. Order matters.
+@import "it-mlaf-sass/it-mlaf";
+@import "intcAppFrame/scss/intcAppFrame";
+@import "angular-xeditable/dist/css/xeditable";
+
+
+//All of your *.scss files will automatically be compiled and injected into the block below. Don't add anything manually
+// in the below block or it will be deleted.
+/*** scss-inject ***/
+/*** end scss-inject ***/

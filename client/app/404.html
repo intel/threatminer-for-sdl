@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Page Not Found :(</title>
+	<style>
+		::-moz-selection {
+			background: rgb(0, 174, 239);
+			text-shadow: none;
+		}
+
+		::selection {
+			background: rgb(0, 174, 239);
+			text-shadow: none;
+		}
+
+		html {
+			padding: 30px 10px;
+			font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+			font-size: 20px;
+			line-height: 1.4;
+			color: #ffffff;
+			background: rgb(3, 93, 169);
+			-webkit-text-size-adjust: 100%;
+			-ms-text-size-adjust: 100%;
+		}
+
+		body {
+			max-width: 500px;
+			padding: 30px 20px 50px;
+			margin: 0 auto;
+			background: rgb(0, 111, 200);
+		}
+
+		h1 {
+			margin: 0 0;
+			font-size: 50px;
+			text-align: center;
+		}
+
+		p {
+			margin: 1em 0;
+		}
+
+		a {
+			color: #ffffff;
+		}
+
+		ul {
+			padding: 0 0 0 40px;
+			margin: 1em 0;
+		}
+
+		.container {
+			max-width: 380px;
+			margin: 0 auto;
+		}
+	</style>
+</head>
+<body>
+<div class="container">
+	<h1>Not found</h1>
+
+	<p>Sorry, but the page you were trying to view does not exist.</p>
+
+	<p>It looks like this was the result of either:</p>
+	<ul>
+		<li>a mistyped address</li>
+		<li>an out-of-date link</li>
+	</ul>
+	<p><a href="/">Home</a></p>
+</div>
+<script>
+	//prevents a click-jacking attack
+	if ((top != self) || (top.location != location) || (top.frames.length != 0)) {
+		top.location = self.location;
+	}
+</script>
+</body>
+</html>

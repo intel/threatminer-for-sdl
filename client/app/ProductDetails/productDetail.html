@@ -1,0 +1,186 @@
+<!--Template for the product detail page -->
+<div class="ProductDetailHead">
+
+<div class="ProductDetailHeadLeft">
+  <div class="productdetails">
+<h4><a href="#"  class="productName" editable-text="vm.productName" onaftersave="vm.updateName()" buttons="no">{{ vm.productName || "empty" }}</a></h4>
+  <h6><strong>Description: </strong></h6><a class="productDesc" href="#" onaftersave="vm.updateDesc()" e-style=" margin-bottom:50px;width:400px; height:100px;" editable-textarea="vm.productDesc" >{{ vm.productDesc|| "No Description" }}</a>
+<p></p>
+<p></p>
+<div class="keywordsdiv">
+<form data-editable-form name="ngTagsForm" class="productKeywords">
+
+  <div ng-show="!ngTagsForm.$visible" e-min-length="3" e-replace-spaces-with-dashes="false"  e-style="font-style:normal !important; text-decoration:none;marign-top:10px; margin-left:40px; width:700px; height:100px;" editable-tags-input="vm.keywords" data-e-form="ngTagsForm" data-e-ng-model="vm.keywords">
+
+  <ul class="keywords" ng-click="ngTagsForm.$show()" style="font-style:normal !important;"><strong class="keywordsLabel">Keywords: </strong>
+    &nbsp;<p class="keywords"  ng-repeat="word in vm.keywords" >{{word.text || word}}{{$last ? '' : ', &nbsp'}}</p>
+  </ul>
+
+    <editable-tags-input-auto-complete source="loadTags($query)"></editable-tags-input-auto-complete>
+  </div>
+
+  <div class="buttons saveCancelButtons">
+
+ <!-- buttons to submit / cancel form -->
+<span ng-show="ngTagsForm.$visible">
+   <br/>
+   <button ng-click="vm.updateKeywords()" type="submit" class="btn btn-primary" ng-disabled="ngTagsForm.$waiting">
+     Save
+   </button>
+   <button type="button" class="btn btn-default" ng-disabled="ngTagsForm.$waiting" ng-click="ngTagsForm.$cancel()">
+     Cancel
+   </button>
+ </span>
+</div>
+</form>
+</div>
+<p class="productCategory"><strong style="color:black">Category: </strong><a href="#" class="productCategory" editable-select="vm.category"
+  e-style="" e-ng-options="opt.Name for opt in vm.productCategories track by opt.ID" onaftersave="vm.updateCategory()" buttons="no">{{vm.category.Name ||vm.category || "None"}}</a></p>
+  <br/>
+</div>
+  <!-- For Base View-->
+    <div class="filters" ng-hide="vm.canDelete">
+      <div class="createdBy">
+        <p class="lastEdited"><strong style="color:black">Last Edited By: </strong>{{vm.editor || "None"}}</p>
+      </div>
+      <br/>
+      <br/>
+      <p class="StatusFilter"><strong>Severity:</strong>&nbsp;<select name="adversary"
+           ng-options="opt for opt in vm.severities track by opt" ng-model="severity">
+         </select>&nbsp;</p>
+         <p class="LevelFilter"><strong>Status:</strong>&nbsp;<select name="adversary"
+           ng-options="opt for opt in vm.statuses track by opt" ng-model="status">
+         </select>&nbsp;</p>
+         <p class="CategoryFilter"><strong>Category:</strong>&nbsp;<select  name="category"
+           ng-options="opt.Name for opt in vm.categories track by opt.Name" ng-model="c">
+         </select></p>
+      </div>
+
+
+  <!-- For Admin View-->
+      <div class="filters" ng-hide="!vm.canDelete">
+        <div class="createdBy">
+          <p class="lastEdited"><strong style="color:black">Last Edited By: </strong>{{vm.editor}}</p>
+        </div>
+        <br/>
+        <br/>
+
+        <p class="StatusFilter"><strong>Severity:</strong>&nbsp;<select name="adversary"
+             ng-options="opt for opt in vm.severities track by opt" ng-model="selectedSeverity">
+           </select>&nbsp;</p>
+           <p class="LevelFilter"><strong>Status:</strong>&nbsp;<select  name="adversary"
+             ng-options="opt for opt in vm.filterstatuses track by opt" ng-model="selectedStatus">
+           </select>&nbsp;</p>
+           <p class="CategoryFilter"><strong>Category:</strong>&nbsp;<select  name="category"
+             ng-options="opt.Name for opt in vm.categories track by opt.Name" ng-model="c">
+           </select></p>
+        </div>
+</div>
+<!-- For Admin View-->
+<div ng-hide="!vm.canDelete" class="ProductDetailHeadRight">
+  <button class="addThreatButton1" ng-click=vm.addThreatModal()>
+    <strong>Add Threat</strong> <i class="icon glyphicon glyphicon-plus fa-fw"></i></button>
+  <button class="watchlistButton1" ng-click="vm.saveProduct()">
+      <strong>Add to Watchlist</strong> <i class="icon glyphicon glyphicon-eye-open fa-fw"></i>
+</button>
+  <button class="deleteProductButton1" ng-click="vm.deleteProductModal()">
+    <strong>Delete Ontology</strong> <i class="icon glyphicon glyphicon-trash fa-fw"></i>
+  </button>
+  <br/>
+  <button class="deleteSelectedThreatsButton" ng-click="vm.deleteSelected()">
+    <strong>Delete Selected Threats</strong> <i class="icon glyphicon glyphicon-trash fa-fw"></i>
+  </button>
+</div>
+<!-- For Base View-->
+<div ng-hide="vm.canDelete" class="ProductDetailHeadRight">
+  <button class="addThreatButton1 deleteThreatButton1" ng-click=vm.addThreatModal()>
+    <strong>Add Threat</strong> <i class="icon glyphicon glyphicon-plus fa-fw"></i></button>
+    <button class="watchlistButton1" ng-click="vm.saveProduct()">
+        <strong>Add to Watchlist</strong> <i class="icon glyphicon glyphicon-eye-open fa-fw"></i>
+  </button>
+</div>
+</div>
+
+<!--
+  <button class="addThreat" ng-click=vm.addThreatModal()><strong>Add Threat</strong>
+    <i class="icon glyphicon glyphicon-plus fa-fw"></i>
+  </button>-->
+
+<table st-table="vm.displayedCollection" st-safe-src="vm.rowCollection" class="table table-striped main">
+
+      <thead>
+        <tr>
+          <th colspan="16"><input st-search="" class="form-control" placeholder="search ..." type="text"/></th>
+        </tr>
+			<tr>
+        <th></th>
+        <th st-sort="date" st-sort-default="reverse">Date <i class="icon glyphicon glyphicon-sort fa-fw"></i></th>
+				<th st-sort="Title">Title </th>
+				<th>Description</th>
+        <th>Severity</th>
+        <th>Status</th>
+        <th>Category</th>
+        <th></th>
+
+			</tr>
+			</thead>
+
+			<tbody>
+			<tr ng-show="vm.canDelete" st-select-row="row" st-select-mode="multiple" ng-repeat="row in vm.displayedCollection | filter: c.Name | filter: selectedSeverity | filter: selectedStatus">
+        <td></td>
+        <td>{{row.date}}</td>
+				<td><a href="/threats/{{row.ID}}">{{row.Title}}</a></td>
+				<td>{{row.Description || "No Description"}}</td>
+        <td ng-hide="!vm.canDelete">
+          <a href="#" class="threatOptionSelect" editable-select="vm.newSeverity"
+            e-ng-options="opt for opt in vm.severities" onaftersave="vm.updateThreatSeverity(row.ID)" buttons="no">{{row.Severity || "None"}}
+          </a>
+        </td>
+        <td ng-hide="vm.canDelete">{{row.Severity}}</td>
+        <td ng-hide="!vm.canDelete">
+          <a href="#" class="threatOptionSelect" editable-select="vm.newStatus"
+            e-ng-options="opt for opt in vm.statuses" onaftersave="vm.updateThreatStatus(row.ID)" buttons="no">{{row.Status || "None"}}
+          </a>
+        </td>
+        <td ng-hide="vm.canDelete">{{row.Status}}</td>
+        <td ng-hide="!vm.canDelete">
+          <a href="#" class="threatOptionSelect" editable-select="vm.newCategory"
+            e-ng-options="opt.Name for opt in vm.categories" onaftersave="vm.updateThreatCategory(row.ID)" buttons="no">{{vm.newCategory.Name || row.Category || "None"}}
+          </a>
+        </td>
+        <td ng-hide="vm.canDelete">{{row.Category}}</td>
+
+			<td>
+				<button  ng-hide="!vm.canDelete" ng-click="vm.deleteThreatModal(row.ID)" class="deleteThreatButton">
+					 <i class="icon glyphicon glyphicon-trash fa-fw"></i>
+				</button></td>
+
+			</tr>
+
+
+
+      <tr ng-hide="vm.canDelete" st-select-row="row" st-select-mode="multiple" ng-repeat="row in vm.displayedCollection |filter: '!'+ '-New N/A-'| filter: '!'+ '-N/A-'| filter: c.Name | filter: selectedSeverity | filter: selectedStatus">
+        <td></td>
+        <td>{{row.date}}</td>
+				<td><a href="/threats/{{row.ID}}">{{row.Title}}</a></td>
+				<td>{{row.Description || "No Description"}}</td>
+        <td ng-hide="vm.canDelete">{{row.Severity}}</td>
+        <td ng-hide="vm.canDelete">{{row.Status}}</td>
+        <td ng-hide="vm.canDelete">{{row.Category}}</td>
+			<td>
+				<button  ng-hide="!vm.canDelete" ng-click="vm.deleteThreatModal(row.ID)" class="deleteThreatButton">
+					 <i class="icon glyphicon glyphicon-trash fa-fw"></i>
+				</button></td>
+
+			</tr>
+			</tbody>
+
+      <tfoot>
+			<tr>
+			<!--		<td colspan="9" class="text-center">
+				<div class="pages" st-pagination="" st-items-by-page="itemsByPage" st-displayed-pages="7"></div>
+				</td> -->
+			</tr>
+		</tfoot>
+		</table>
+</div>

@@ -1,0 +1,88 @@
+<!-- The template for the watchlist page-->
+<br>
+<h5 class="WatchlistTableTitle"><strong>Followed Ontologies</strong></h5>
+<br>
+<button class="watchlistButton" ng-click="vm.logOut()">
+  <a><strong style="color:black">Log out</strong> <i class="icon glyphicon glyphicon-log-out fa-fw"></i></a>
+</button>
+<br>
+<table st-table="vm.displayedCollection" st-safe-src="vm.ProductRowCollection" class="table table-striped productTable">
+      <thead>
+        <tr>
+          <th colspan="5"><input st-search="" st-select-mode="multiple" class="form-control" placeholder="search ..." type="text"/></th>
+          <div>
+
+
+          </div>
+        </tr>
+			<tr>
+				<th st-sort="Name">Ontology <i class="icon glyphicon glyphicon-sort fa-fw"></i></th>
+				<th st-sort="Description">Description</th>
+        <th st-sort="Category">Category <i class="icon glyphicon glyphicon-sort fa-fw"></i></th>
+        <th></th>
+			</tr>
+			</thead>
+			<tbody>
+			<tr ng-repeat="row in vm.displayedCollection">
+				<td><a href="/products/{{row.ID}}">{{row.Name}}</a></td>
+				<td>{{row.Description || "No Description"}}</td>
+        <td>{{row.Category}}</td>
+        <td>
+          <button  ng-click="vm.unfollowProductModal(row.ID)" class="deleteThreatButton">
+             <i class="icon glyphicon glyphicon-eye-close fa-fw"></i>
+          </button></td>
+			</tr>
+			</tbody>
+      <tfoot>
+        <tr>
+  				<td colspan="9" class="text-center">
+  				      <div class="pages" st-pagination="" st-items-by-page="itemsByPage" st-displayed-pages="7"></div>
+  				</td>
+  			</tr>
+		</tfoot>
+</table>
+
+
+<h5 class="WatchlistTableTitle"><strong>Followed Threats</strong></h5>
+<table st-table="vm.displayedThreatCollection" st-safe-src="vm.ThreatRowCollection" class="table table-striped main">
+
+      <thead>
+        <tr>
+          <th colspan="9"><input st-search="" class="form-control" placeholder="search ..." type="text"/></th>
+        </tr>
+			<tr>
+        <th st-sort=""> </th>
+				<th st-sort="Title">Title <i class="icon glyphicon glyphicon-sort fa-fw"></i></th>
+				<th st-sort="Description">Description</th>
+        <th st-sort="Severity">Severity <i class="icon glyphicon glyphicon-sort fa-fw"></i></th>
+        <th st-sort="Status">Status <i class="icon glyphicon glyphicon-sort fa-fw"></i></th>
+
+        <th st-sort=""> </th>
+
+			</tr>
+			</thead>
+
+			<tbody>
+			<tr ng-repeat="row in vm.displayedThreatCollection | filter: c.Name | filter: severity | filter: status">
+        <td cs-select="row"></td>
+				<td><a href="/threats/{{row.ID}}">{{row.Title}}</a></td>
+				<td>{{row.Description || "No Description"}}</td>
+        <td>{{row.Severity}}</td>
+        <td>{{row.Status}}</td>
+			<td>
+				<button  ng-click="vm.unfollowThreatModal(row.ID)" class="deleteThreatButton">
+					 <i class="icon glyphicon glyphicon-eye-close fa-fw"></i>
+				</button></td>
+
+			</tr>
+			</tbody>
+
+      <tfoot>
+			<tr>
+				<td colspan="9" class="text-center">
+					<div class="pages" st-pagination="" st-items-by-page="itemsByPage" st-displayed-pages="7"></div>
+				</td>
+			</tr>
+		</tfoot>
+		</table>
+</div>
