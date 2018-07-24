@@ -1,6 +1,6 @@
 # Threat Miner for SDL
 
-A security tool that uses web scraping and machine learning to identify threats.
+Threat intelligence is very important in order to execute a well-informed Security Development Lifecycle (SDL). Although there are many readily available solutions supporting tactical threat intelligence focusing on enterprise Information Technology (IT) infrastructure, the lack of threat intelligence solutions focusing on SDL is a known gap which is acknowledged by the security community. To address this shortcoming, we present “Threat Miner for SDL” to automate the process of mining open source threat information sources to deliver product specific threat indicators designed to strategically inform the SDL while continuously monitoring for disclosures of relevant potential vulnerabilities during product design, development, and beyond deployment.
 
 ## Prerequisites
 1. A [Python 2 >= 2.7.9 and Pip](https://github.com/BurntSushi/nfldb/wiki/Python-&-pip-Windows-installation) installation
