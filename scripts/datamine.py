@@ -18,7 +18,7 @@ from nltk.stem.porter import PorterStemmer
 from stop_words import get_stop_words
 from nltk.tokenize import RegexpTokenizer
 import json
-from classifier.classify import classifyThreat, classifyThreatAsIrrelevant
+from classifier.classify import classifyThreatNER, classifyThreatNERAsIrrelevant
 
 __location__ = os.path.realpath(os.path.join(os.getcwd(), os.path.dirname(__file__)))
 
