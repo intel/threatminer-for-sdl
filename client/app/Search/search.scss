@@ -1,0 +1,45 @@
+// Move the caret over
+.caret {
+  border-right: 4px solid transparent;
+}
+
+.align-center {
+  display: block;
+  text-align:center;
+}
+
+
+.ellipsis {
+  display: -webkit-flex;
+  display: flex;
+  margin: 1px 0 1px 4px;
+}
+.ellipsis .ellipsis-item {
+  -webkit-flex: 1;
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.deselect-panel {
+  width:200px;
+  height:150px;
+  max-height:150px;
+  overflow-y:auto;
+}
+
+.remove-item {
+  color: red;
+  cursor: pointer;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.classificication-drop-downs tr td
+{
+    padding:0 15px 0 15px;
+    padding-bottom: 8px;
+}

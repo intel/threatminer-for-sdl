@@ -1,10 +1,10 @@
 //controller for adding a user
-angular.module('threat').controller('AdduserController', function($http, $window, $q) {
+angular.module('threat').controller('AdduserController', function($http, $window, $q, values) {
   var vm = this;
   vm.roles = ["Base", "Admin"];
   vm.email = null;
 
-  vm.addUser = function(){
+	vm.addUser = function(){
     //data to send to the API
     var userData = ({
       user_username : vm.username,
@@ -18,36 +18,19 @@ angular.module('threat').controller('AdduserController', function($http, $window
         return alert("Your passwords do not match!")
     }
     //posting the data to the api
-    $http.post('http://127.0.0.1:5000/users', userData).then(function(response){
-      //reloads the page
-      $window.location.reload();
-    }, function errorCallback(response){
-        alert("Looks like you're missing some important field(s)!")
-    });
+		if (vm.username) {
+			$http.post(values.get('api') + '/users', userData).then(function(response){
+				//reloads the page
+				$window.location.reload();
+			}, function errorCallback(response){
+					alert("Looks like you're missing some important field(s)!")
+			});
+		}
   }
 });
 
-//controller for adding a user
-angular.module('threat').controller('AddthreatcatController', function($http, $window, $q) {
-  var vm = this;
-  vm.desc = null;
-
-  vm.addThreatCategory = function(){
-    var threatData = ({
-      category_name : vm.name,
-      category_desc: vm.desc
-    });
-    //posts data to API
-    $http.post('http://127.0.0.1:5000/threatCategories', threatData).then(function(response){
-      $window.location.reload();
-    }, function errorCallback(response){
-        alert("Looks like you're missing some important field(s)!")
-    });
-  }
-});
-
-//controler for adding an adversary
-angular.module('threat').controller('AddadvController', function($http, $window, $q) {
+//controller for adding an adversary
+angular.module('threat').controller('AddadvController', function($http, $window, $q, values) {
   var vm = this;
   vm.desc = null;
 
@@ -57,7 +40,83 @@ angular.module('threat').controller('AddadvController', function($http, $window,
         adv_desc: vm.desc
       });
       //posts data to API
-      $http.post('http://127.0.0.1:5000/adversaries', advData).then(function(response){
+      $http.post(values.get('api') + '/adversaries', advData).then(function(response){
+        $window.location.reload();
+      }, function errorCallback(response){
+          alert("Looks like you're missing some important field(s)!")
+      });
+    }
+});
+
+//controller for adding an asset
+angular.module('threat').controller('AddAssetController', function($http, $window, $q, values) {
+  var vm = this;
+  vm.desc = null;
+
+  vm.addAsset = function(){
+      var data = ({
+        asset_name : vm.name,
+        asset_desc: vm.desc
+      });
+      //posts data to API
+      $http.post(values.get('api') + '/assets', data).then(function(response){
+        $window.location.reload();
+      }, function errorCallback(response){
+          alert("Looks like you're missing some important field(s)!")
+      });
+    }
+});
+
+//controller for adding an attack type
+angular.module('threat').controller('AddAttackTypeController', function($http, $window, $q, values) {
+  var vm = this;
+  vm.desc = null;
+
+  vm.addAttackType = function(){
+      var data = ({
+        atktyp_name : vm.name,
+        atktyp_desc: vm.desc
+      });
+      //posts data to API
+      $http.post(values.get('api') + '/attack_types', data).then(function(response){
+        $window.location.reload();
+      }, function errorCallback(response){
+          alert("Looks like you're missing some important field(s)!")
+      });
+    }
+});
+
+//controller for adding an attack vector
+angular.module('threat').controller('AddAttackVectorController', function($http, $window, $q, values) {
+  var vm = this;
+  vm.desc = null;
+
+  vm.addAttackVector = function(){
+      var data = ({
+        atkvtr_name : vm.name,
+        atkvtr_desc: vm.desc
+      });
+      //posts data to API
+      $http.post(values.get('api') + '/attack_vectors', data).then(function(response){
+        $window.location.reload();
+      }, function errorCallback(response){
+          alert("Looks like you're missing some important field(s)!")
+      });
+    }
+});
+
+//controller for adding a vulnerability
+angular.module('threat').controller('AddVulnerabilityController', function($http, $window, $q, values) {
+  var vm = this;
+  vm.desc = null;
+
+  vm.addVulnerability = function(){
+      var data = ({
+        vuln_name : vm.name,
+        vuln_desc: vm.desc
+      });
+      //posts data to API
+      $http.post(values.get('api') + '/vulnerabilities', data).then(function(response){
         $window.location.reload();
       }, function errorCallback(response){
           alert("Looks like you're missing some important field(s)!")
@@ -66,7 +125,7 @@ angular.module('threat').controller('AddadvController', function($http, $window,
 });
 
 //controller for adding a new product category
-angular.module('threat').controller('AddprodcatController', function($http, $window, $q) {
+angular.module('threat').controller('AddprodcatController', function($http, $window, $q, values) {
   var vm = this;
   vm.desc = null;
 
@@ -76,7 +135,7 @@ angular.module('threat').controller('AddprodcatController', function($http, $win
       category_desc: vm.desc
     });
     //posts data to api
-    $http.post('http://127.0.0.1:5000/productCategories', productData).then(function(response){
+    $http.post(values.get('api') + '/productCategories', productData).then(function(response){
       $window.location.reload();
     }, function errorCallback(response){
         alert("Looks like you're missing some important field(s)!")
@@ -86,7 +145,7 @@ angular.module('threat').controller('AddprodcatController', function($http, $win
 });
 
 //controller for adding a new feed type
-angular.module('threat').controller('AddfeedtypeController', function($http, $window, $q) {
+angular.module('threat').controller('AddfeedtypeController', function($http, $window, $q, values) {
   var vm = this;
   vm.desc = null;
 
@@ -96,11 +155,18 @@ angular.module('threat').controller('AddfeedtypeController', function($http, $wi
       type_desc: vm.desc
     });
     //posting the data to the api
-    $http.post('http://127.0.0.1:5000/feedTypes', feedData).then(function(response){
+    $http.post(values.get('api') + '/feedTypes', feedData).then(function(response){
       $window.location.reload();
     }, function errorCallback(response){
         alert("Looks like you're missing some important field(s)!")
     });
   }
+
+});
+
+//controller for adding a new feed type
+angular.module('threat').controller('addTraininginfoController', function($http, $window, $q) {
+  var vm = this;
+
 
 });

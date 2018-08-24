@@ -9,6 +9,60 @@ $icon-font-path: "fonts/" !default;
 @import "intcAppFrame/scss/intcAppFrame";
 @import "angular-xeditable/dist/css/xeditable";
 
+// set up font awesome for all <i> elements within a th with st-sort defined
+th[st-sort] i::after {
+  font-family: FontAwesome;
+    font-style: normal;
+    font-weight: normal;
+    text-decoration: inherit;
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 5px;
+}
+
+// make cursor pointer when mouse is over a <th> with sorting enabled
+th[aria-sort] {
+  cursor:pointer;
+}
+
+// fa-sort icon when no sorting applied
+th[aria-sort=none] i::after {
+  content: "\f0dc";
+}
+
+// fa-sort-up icon when sorting ascending
+th[aria-sort].st-sort-ascent i::after {
+  content: "\f0de";
+}
+
+// fa-sort-down icon when sorting descending
+th[aria-sort].st-sort-descent i::after {
+  content: "\f0dd";
+}
+
+// th[st-sort].st-sort-ascent i::after {
+//   content: "\f0de";
+//   font-family: FontAwesome;
+//     font-style: normal;
+//     font-weight: normal;
+//     text-decoration: inherit;
+//     display: inline-block;
+//     vertical-align: middle;
+//     margin-left: 5px;
+// }
+
+.restrict-width {
+  -ms-word-break: break-all;
+  word-break: break-all;
+  word-break: break-word;
+ -webkit-hyphens: auto;
+    -moz-hyphens: auto;
+         hyphens: auto;
+}
+
+th i::before {
+  display:none;
+}
 
 //All of your *.scss files will automatically be compiled and injected into the block below. Don't add anything manually
 // in the below block or it will be deleted.

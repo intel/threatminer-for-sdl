@@ -40,20 +40,22 @@ module.exports = function (config) {
 		// list of files / patterns to load in the browser
 		// ** automatically managed by gulp **
 		files: [
-			"app/bower_components/angular/angular.js",
-			"app/bower_components/angular-resource/angular-resource.js",
-			"app/bower_components/angular-cookies/angular-cookies.js",
-			"app/bower_components/angular-sanitize/angular-sanitize.js",
-			"app/bower_components/angular-animate/angular-animate.js",
-			"app/bower_components/angular-touch/angular-touch.js",
-			"app/bower_components/angular-route/angular-route.js",
-			"app/bower_components/lodash/lodash.js",
-			"app/bower_components/jquery/dist/jquery.js",
-			"app/bower_components/configurator/dist/configurator.js",
-			"app/bower_components/bootstrap-sass/assets/javascripts/bootstrap.js",
-			"app/bower_components/intcAppFrame/js/intcAppFrame.js",
-			"app/bower_components/intcAppFrame/js/linksDeterminedByObjLinks.directive.js",
-			"app/bower_components/intcAppFrame/js/intcAppFrame.templates.js",
+			"bower_components/angular/angular.js",
+			"bower_components/angular-resource/angular-resource.js",
+			"bower_components/angular-cookies/angular-cookies.js",
+			"bower_components/angular-sanitize/angular-sanitize.js",
+			"bower_components/angular-animate/angular-animate.js",
+			"bower_components/angular-touch/angular-touch.js",
+			"bower_components/angular-route/angular-route.js",
+			"bower_components/lodash/lodash.js",
+			"bower_components/intcWebRequest/intcWebRequest.js",
+			"bower_components/jquery/dist/jquery.js",
+			"bower_components/intcAnalytics/intcAnalytics.js",
+			"bower_components/configurator/dist/configurator.js",
+			"bower_components/bootstrap-sass/assets/javascripts/bootstrap.js",
+			"bower_components/intcAppFrame/js/intcAppFrame.js",
+			"bower_components/intcAppFrame/js/linksDeterminedByObjLinks.directive.js",
+			"bower_components/intcAppFrame/js/intcAppFrame.templates.js",
 			"app/app.js",
 			"app/home/home.controller.js",
 			"app/home/home.spec.js"
@@ -81,7 +83,7 @@ module.exports = function (config) {
 		port: 8080,
 
 		preprocessors: {
-			'app/!(bower_components)/**/!(*mock|*spec).js': ['coverage'],
+			'!(bower_components)/**/!(*mock|*spec).js': ['coverage'],
 			'app/**/*.html': ['ng-html2js']
 		},
 

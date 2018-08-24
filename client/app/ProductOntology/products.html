@@ -38,10 +38,10 @@
           <th colspan="9"><input st-search="" st-select-mode="multiple" class="form-control" placeholder="search ..." type="text"/></th>
         </tr>
 			<tr>
-				<th st-sort="product_id" st-sort-default="reverse">Ontology <i class="icon glyphicon glyphicon-sort fa-fw"></i></th>
+				<th st-sort="product_name" st-sort-default="reverse">Ontology <i class="icon fa-fw"></i></th>
 				<th>Description</th>
-        <th st-sort="category_name">Category <i class="icon glyphicon glyphicon-sort fa-fw"></i></th>
-        <th st-sort="product_updated" st-sort-default="reverse">Updated <i class="icon glyphicon glyphicon-sort fa-fw"></i></th>
+        <th st-sort="category_name">Category <i class="icon fa-fw"></i></th>
+        <th st-sort="product_updated" st-sort-default="reverse">Updated <i class="icon fa-fw"></i></th>
         <th></th>
         <th></th>
 			</tr>
@@ -51,7 +51,7 @@
 				<td><a href="/ontologies/{{row.product_id}}">{{row.product_name}}</a></td>
 				<td>{{row.product_desc}}</td>
         <td>{{row.category_name}}</td>
-        <td>{{row.product_updated}}</td>
+        <td>{{vm.formatDateString(row.product_updated)}}</td>
         <td>
   				<button ng-hide="!vm.canEdit" ng-click="vm.deleteProductModal(row.product_id)" class="deleteThreatButton">
   					 <i class="icon glyphicon glyphicon-trash fa-fw"></i>

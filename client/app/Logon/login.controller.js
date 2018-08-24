@@ -1,5 +1,5 @@
 //controller for the login page
-angular.module('threat').controller('LoginController', function ($http, $routeParams, $window, $location, ModalService, identity) {
+angular.module('threat').controller('LoginController', function ($http, $routeParams, $window, $location, ModalService, identity, values) {
         var vm = this;
         vm.hasUsers = false;
         vm.name = "";
@@ -8,12 +8,12 @@ angular.module('threat').controller('LoginController', function ($http, $routePa
             identity.removeToken();
             window.location.href = location.origin + '/login'
         }
-        
+
         if (identity.isIdentify() != false) {
             vm.isLoggedIn = true;
             user = identity.GetInfoFromJWT();
             id = user.identity;
-            $http.get('http://127.0.0.1:5000/users/'+id).then(function(response){
+            $http.get(values.get('api') + '/users/'+id).then(function(response){
                 vm.name = response.data[0]["user_firstName"] + " " + response.data[0]["user_lastName"];
             });
         }
@@ -31,7 +31,8 @@ angular.module('threat').controller('LoginController', function ($http, $routePa
              });
          };
 
-        $http.get('http://127.0.0.1:5000/users/hasUsers').then(function(response){
+        $http.get(values.get('api') + '/users/hasUsers').then(function(response){
+					console.log(response);
             if (response.data == "False") {
                 vm.addUserModal()
             }
@@ -42,7 +43,7 @@ angular.module('threat').controller('LoginController', function ($http, $routePa
               username: vm.username,
               password: vm.password
             });
-            $http.post('http://127.0.0.1:5000/auth', userData).then(function(response){
+            $http.post(values.get('api') + '/auth', userData).then(function(response){
                 identity.storeToken(response.data["access_token"])
                 $window.location.href = location.origin
             }, function errorCallback(response){
@@ -70,7 +71,7 @@ angular.module('threat').controller('AddFirstuserController', function($http, $w
         return alert("Your passwords do not match!")
     }
     //posting the data to the api
-    $http.post('http://127.0.0.1:5000/users/firstUser', userData).then(function(response){
+    $http.post(values.get('api') + '/users/firstUser', userData).then(function(response){
       //reloads the page
       $window.location.reload();
     }, function errorCallback(response){

@@ -11,16 +11,25 @@ import time
 import datetime
 import sys
 import warnings
+import os
 import cPickle as pickle
 from textblob.classifiers import NaiveBayesClassifier
 from nltk.stem.porter import PorterStemmer
 from stop_words import get_stop_words
 from nltk.tokenize import RegexpTokenizer
 import json
+from classifier.classify import classifyThreat, classifyThreatAsIrrelevant
 
-# Load config.json into "int(int(config["port"]))
-with open("../config.json") as f:
+__location__ = os.path.realpath(os.path.join(os.getcwd(), os.path.dirname(__file__)))
+
+# Load config.json into "config"
+with open(os.path.join(__location__, 'config.json')) as f:
     config = json.load(f)["databaseConnection"]
+
+sslFile=config["caCert"]
+ssl = None
+if (sslFile):
+	ssl = { 'ca': os.path.join(__location__, sslFile)}
 
 now = time.strftime("%x") #today's date
 
@@ -77,6 +86,7 @@ def DBconnect():
 								   password=config["password"],
 								   db=config["db"],
 								   port=int(config["port"]),
+								   ssl=ssl,
 								   cursorclass=pymysql.cursors.DictCursor)
 
 	global cursor
@@ -93,7 +103,7 @@ def initProductsandFeeds():
 	cursor.execute("select * from feeds")
 	global feeds
 	feeds = cursor.fetchall()
-	cursor.execute("select * from products p, productCategories c where p.category_id=c.category_id and (c.category_name not like 'Open Source - Whitelist') and (c.category_name not like '3rd Party COTS - Whitelist') and (c.category_name not like '3rd Party COTS - Conditional') and (c.category_name not like 'Open Source - Conditional')")
+	cursor.execute("select * from products p, productCategories c where p.category_id=c.category_id")
 	global products
 	products = cursor.fetchall()
 
@@ -127,6 +137,7 @@ def insert(product, title, summary, source, feed_id):
 			cursor.execute("insert ignore into threats (threat_title, threat_link, threat_desc, threat_date, threat_status, feed_id, product_id) values (%s, %s, %s, %s, %s, %s, %s)",
 			(title, source, summary, now, "-New-", feed_id, str(product['product_id'])))
 			conn.commit()
+			classifyThreatNER(cursor.lastrowid, summary)
 			try:
 				cursor.execute("update products set product_updated=%s where product_id=%s", (now, str(product['product_id'])))
 				conn.commit()
@@ -137,11 +148,13 @@ def insert(product, title, summary, source, feed_id):
 				conn.commit()
 			except:
 				pass
+
 		#if the threat is determined as irrelevant
 		if(relevance == 'not_relevant'):
 			cursor.execute("insert ignore into threats (threat_title, threat_link, threat_desc, threat_date, threat_status, feed_id, product_id) values (%s, %s, %s, %s, %s, %s, %s)",
 			(title, source, summary, now, "-New N/A-", feed_id, str(product['product_id'])))
 			conn.commit()
+			classifyThreatNERAsIrrelevant(cursor.lastrowid, summary)
 			try:
 				cursor.execute("update products set product_updated=%s where product_id=%s", (now, str(product['product_id'])))
 				conn.commit()
@@ -152,6 +165,7 @@ def insert(product, title, summary, source, feed_id):
 				conn.commit()
 			except:
 				pass
+
 
 #takes two parameters and tries to find a whole word within a string
 def findWholeWord(w):

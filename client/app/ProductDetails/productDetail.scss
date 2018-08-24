@@ -92,9 +92,9 @@
   margin-top:0px;
   //float:right;
 }
-.StatusFilter {
-  display: inline-block;
-  //float:right;
+
+.float-right {
+	float:right;
 }
 
 .threatTableTitle {
@@ -102,16 +102,11 @@
 
 }
 
-.filters{
-// padding-top: 110px;
-  float:right;
-  margin-right:-720px !important;
-  margin-top: -110px;
-  display: inline-block !important;
-  //border-style: dashed;
-
-
+.filters {
+	min-width:100%;
+	float:left;
 }
+
 .lastEdited {
   color:#0071c5;
 
@@ -222,7 +217,6 @@ table{
 margin-top:20px;
 }
 
-
 .tit {
   float:left;
   margin-bottom: 0px;
@@ -230,8 +224,18 @@ margin-top:20px;
   //border-style: solid;
 }
 
-
 .categoryLabel{
 float:right;
+}
 
+.padding-top {
+  padding-top: 15px;
+}
+
+.padding-right {
+  padding-right: 15px;
+}
+
+.padding-left {
+  padding-left: 15px;
 }

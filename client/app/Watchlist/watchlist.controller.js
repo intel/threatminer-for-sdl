@@ -1,5 +1,5 @@
 //controller for the watchlist page
-angular.module('threat').controller('WatchlistController', function($http, $window, $q, identity, todelete, ModalService) {
+angular.module('threat').controller('WatchlistController', function($http, $window, $q, identity, todelete, ModalService, values) {
   var vm = this;
   var user;
   var id = null;
@@ -12,21 +12,16 @@ angular.module('threat').controller('WatchlistController', function($http, $wind
  } catch(err) {
    user = null
  }
- 
- vm.logOut = function() {
-     identity.removeToken();
-     window.location.href = location.origin + '/login'
- }
 
 //gets all of the saved threats
- $http.get('http://127.0.0.1:5000/'+id+'/savedThreats').then(function(response){
+ $http.get(values.get('api') + '/'+id+'/savedThreats').then(function(response){
    for(i=0; i<response.data.length; i++){
      vm.ThreatRowCollection.push({ID:response.data[i]['threat_id'], Title:response.data[i]['threat_title'], Description:response.data[i]['threat_desc'], Severity:response.data[i]['threat_rating'], Status: response.data[i]['threat_status']});
    }
  });
 
 //gets all of the saved products
- $http.get('http://127.0.0.1:5000/'+id+'/savedProducts').then(function(response){
+ $http.get(values.get('api') + '/'+id+'/savedProducts').then(function(response){
    for(i=0; i<response.data.length; i++){
      getCatName(response.data[i]['product_id'], response.data[i]['product_name'], response.data[i]['product_desc'], response.data[i]['category_id']);
    }
@@ -35,7 +30,7 @@ angular.module('threat').controller('WatchlistController', function($http, $wind
 //gets the category name and pushes a row to the table
  var getCatName = function(id, name, desc, cat){
    if(cat != null) {
-     $http.get('http://127.0.0.1:5000/productCategories/'+cat).then(function(response){
+     $http.get(values.get('api') + '/productCategories/'+cat).then(function(response){
        category_name = response.data[0]['category_name'];
        vm.ProductRowCollection.push({Name: name,  Description:desc,
        ID:id, Category:category_name});

@@ -1,13 +1,21 @@
 import smtplib
 import datetime
+import os
 from datetime import timedelta
 import pymysql.cursors
 import pymysql
 from email.mime.text import MIMEText
 
-# Load config.json into "int(int(config["port"]))
-with open("../config.json") as f:
+__location__ = os.path.realpath(os.path.join(os.getcwd(), os.path.dirname(__file__)))
+
+# Load config.json into "config"
+with open(os.path.join(__location__, 'config.json')) as f:
     config = json.load(f)["databaseConnection"]
+
+sslFile=config["caCert"]
+ssl = None
+if (sslFile):
+	ssl = { 'ca': os.path.join(__location__, sslFile)}
 
 #establishes a connection to the database (Credentials can be changed here)
 def DBconnect():
@@ -17,6 +25,7 @@ def DBconnect():
 								   password=config["password"],
 								   db=config["db"],
 								   port=int(config["port"]),
+								   ssl=ssl,
 								   cursorclass=pymysql.cursors.DictCursor)
 
 	global cursor

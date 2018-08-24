@@ -1,8 +1,8 @@
 <!--Template for the admin page-->
 <div class=topofAdmin>
 <h3 style="color:#0071c5"><strong>Administrator Management</strong></h3>
-<button class="watchlistButton" ng-click="vm.logOut()">
-  <a><strong style="color:black">Log out</strong> <i class="icon glyphicon glyphicon-log-out fa-fw"></i></a>
+<button class="watchlistButton" ng-click="vm.trainModal()">
+  <a><strong style="color:black">Train</strong> <i class="icon glyphicon glyphicon-edit fa-fw"></i></a>
 </button>
 <br>
 <button class="watchlistButton">
@@ -13,8 +13,6 @@
 <div class="usersTable">
   <div class="usersTableHead">
     <h5 class="usersTableTitle"><strong>Users</strong></h5>
-    </td>
-
     <button class="AddUserButton" ng-click="vm.addUserModal()">
       <strong>Add User</strong> <i class="icon glyphicon glyphicon-plus fa-fw"></i>
     </button>
@@ -25,10 +23,10 @@
           <th colspan="9"><input st-search="" class="form-control" placeholder="search ..." type="text"/></th>
         </tr>
 			<tr>
-				<th st-sort="Title">Username </th>
-				<th st-sort="Link">Name <i class="icon glyphicon glyphicon-sort fa-fw"></i></th>
-				<th st-sort="Description">Role</th>
-        <th st-sort="Type">Email</th>
+				<th>ID <i class="icon fa-fw"></i></th>
+				<th st-sort="Name">Name <i class="icon fa-fw"></i></th>
+				<th st-sort="Role">Role <i class="icon fa-fw"></i></th>
+        <th st-sort="Email">Email <i class="icon fa-fw"></i></th>
         <th></th>
         <th></th>
 			</tr>
@@ -36,7 +34,7 @@
 
 			<tbody>
 			<tr ng-repeat="row in vm.displayedCollection">
-				<td>{{row.Username}}</td>
+				<td>{{row.WWID}}</td>
 				<td>{{row.Name}}</td>
         <td>
         <a href="#" class="threatOptionSelect" editable-select="vm.newRole"
@@ -76,8 +74,8 @@
           <th colspan="9"><input st-search="" class="form-control" placeholder="search ..." type="text"/></th>
         </tr>
 			<tr>
-				<th st-sort="Title">Title <i class="icon glyphicon glyphicon-sort fa-fw"></i></th>
-				<th st-sort="Link">Description</th>
+				<th st-sort="Title">Title <i class="icon fa-fw"></i></th>
+				<th>Description</th>
         <th></th>
         <th></th>
 			</tr>
@@ -89,7 +87,10 @@
 				<td>{{row.Desc|| "No Description"}}</td>
 
 				<td>
-          <button  ng-click="vm.deleteThreatFeed(row.ID)" class="deleteThreatButton">
+          <button ng-click="vm.editEntry('feedTypes', 'type_id', row.ID, [{'fieldName':'type_name', 'fieldValue':row.Title, 'fieldTitle':'Title', 'inputType':'text'}, {'fieldName':'type_desc', 'fieldValue':row.Desc,'fieldTitle':'Description', 'inputType':'textarea'}])" class="deleteThreatButton">
+             <i class="icon glyphicon glyphicon-pencil fa-fw"></i>
+          </button>
+          <button ng-click="vm.deleteThreatFeed(row.ID)" class="deleteThreatButton">
              <i class="icon glyphicon glyphicon-trash fa-fw"></i>
           </button>
         </td>
@@ -100,49 +101,6 @@
         <tr>
   				<td colspan="9" class="text-center">
   			       <div class="pages" st-pagination="" st-items-by-page="5" st-displayed-pages="7"></div>
-  				</td>
-  			</tr>
-		</tfoot>
-		</table>
-</div>
-
-<div class="usersTable">
-  <div class="ThreatCategoriesTableHead">
-    <h5 class="usersTableTitle"><strong>Threat Categories</strong></h5>
-    <button class="AddUserButton" ng-click="vm.addThreatCatModal()">
-      <strong>Add Threat Category</strong> <i class="icon glyphicon glyphicon-plus fa-fw"></i>
-    </button>
-  </div>
-<table st-table="vm.displayedThreatCategoryCollection" st-safe-src="vm.threatCategories" class=" usersTable table table-striped">
-      <thead>
-        <tr>
-          <th colspan="9"><input st-search="" class="form-control" placeholder="search ..." type="text"/></th>
-        </tr>
-			<tr>
-				<th st-sort="Title">Name <i class="icon glyphicon glyphicon-sort fa-fw"></i></th>
-				<th st-sort="Link">Description</th>
-        <th></th>
-        <th></th>
-			</tr>
-			</thead>
-
-			<tbody>
-			<tr ng-repeat="row in vm.displayedThreatCategoryCollection">
-				<td>{{row.Name}}</td>
-				<td>{{row.Desc || "No Description"}}</td>
-				<td>
-          <button  ng-click="vm.deleteThreatCategory(row.ID)" class="deleteThreatButton">
-             <i class="icon glyphicon glyphicon-trash fa-fw"></i>
-          </button>
-        </td>
-
-        <td></td>
-			</tr>
-			</tbody>
-      <tfoot>
-        <tr>
-  				<td colspan="9" class="text-center">
-  				<div class="pages" st-pagination="" st-items-by-page="5" st-displayed-pages="7"></div>
   				</td>
   			</tr>
 		</tfoot>
@@ -162,8 +120,8 @@
           <th colspan="9"><input st-search="" class="form-control" placeholder="search ..." type="text"/></th>
         </tr>
 			<tr>
-				<th st-sort="Title">Name <i class="icon glyphicon glyphicon-sort fa-fw"></i></th>
-				<th st-sort="Link">Description</th>
+				<th st-sort="Name">Name <i class="icon fa-fw"></i></th>
+				<th>Description</th>
         <th></th>
         <th></th>
 			</tr>
@@ -174,7 +132,190 @@
 				<td>{{row.Name}}</td>
 				<td>{{row.Desc|| "No Description"}}</td>
 				<td>
-          <button  ng-click="vm.deleteThreatAdversary(row.ID)" class="deleteThreatButton">
+          <button ng-click="vm.editEntry('adversaries', 'adv_id', row.ID, [{'fieldName':'adv_name', 'fieldValue':row.Name, 'fieldTitle':'Title', 'inputType':'text'}, {'fieldName':'adv_desc', 'fieldValue':row.Desc,'fieldTitle':'Description', 'inputType':'textarea'}])" class="deleteThreatButton">
+             <i class="icon glyphicon glyphicon-pencil fa-fw"></i>
+          </button>
+          <button ng-click="vm.deleteThreatAdversary(row.ID)" class="deleteThreatButton">
+             <i class="icon glyphicon glyphicon-trash fa-fw"></i>
+          </button></td>
+        <td></td>
+			</tr>
+			</tbody>
+      <tfoot>
+        <tr>
+  				<td colspan="9" class="text-center">
+            <!-- itemsByPage -->
+  			<div class="pages" st-pagination="" st-items-by-page="5" st-displayed-pages="7"></div>
+  				</td>
+  			</tr>
+		</tfoot>
+		</table>
+</div>
+
+<div class="usersTable">
+  <div class="ThreatCategoriesTableHead">
+    <h5 class="usersTableTitle"><strong>Asset Types</strong></h5>
+    <button class="AddUserButton" ng-click="vm.addAssetModal()">
+      <strong>Add Asset Type</strong> <i class="icon glyphicon glyphicon-plus fa-fw"></i>
+    </button>
+  </div>
+<table st-table="vm.displayedThreatAssetCollection" st-safe-src="vm.threatAssets" class=" usersTable table table-striped">
+      <thead>
+        <tr>
+          <th colspan="9"><input st-search="" class="form-control" placeholder="search ..." type="text"/></th>
+        </tr>
+			<tr>
+				<th st-sort="Name">Name <i class="icon fa-fw"></i></th>
+				<th>Description</th>
+        <th></th>
+        <th></th>
+			</tr>
+			</thead>
+
+			<tbody>
+			<tr ng-repeat="row in vm.displayedThreatAssetCollection">
+				<td>{{row.Name}}</td>
+				<td>{{row.Desc|| "No Description"}}</td>
+				<td>
+          <button ng-click="vm.editEntry('assets', 'asset_id', row.ID, [{'fieldName':'asset_name', 'fieldValue':row.Name, 'fieldTitle':'Title', 'inputType':'text'}, {'fieldName':'asset_desc', 'fieldValue':row.Desc,'fieldTitle':'Description', 'inputType':'textarea'}])" class="deleteThreatButton">
+             <i class="icon glyphicon glyphicon-pencil fa-fw"></i>
+          </button>
+          <button  ng-click="vm.deleteThreatAsset(row.ID)" class="deleteThreatButton">
+             <i class="icon glyphicon glyphicon-trash fa-fw"></i>
+          </button></td>
+        <td></td>
+			</tr>
+			</tbody>
+      <tfoot>
+        <tr>
+  				<td colspan="9" class="text-center">
+            <!-- itemsByPage -->
+  			<div class="pages" st-pagination="" st-items-by-page="5" st-displayed-pages="7"></div>
+  				</td>
+  			</tr>
+		</tfoot>
+		</table>
+</div>
+
+<div class="usersTable">
+  <div class="ThreatCategoriesTableHead">
+    <h5 class="usersTableTitle"><strong>Attack Types</strong></h5>
+    <button class="AddUserButton" ng-click="vm.addAttackTypeModal()">
+      <strong>Add Attack Type</strong> <i class="icon glyphicon glyphicon-plus fa-fw"></i>
+    </button>
+  </div>
+<table st-table="vm.displayedThreatAttackTypeCollection" st-safe-src="vm.threatAttackTypes" class=" usersTable table table-striped">
+      <thead>
+        <tr>
+          <th colspan="9"><input st-search="" class="form-control" placeholder="search ..." type="text"/></th>
+        </tr>
+			<tr>
+				<th st-sort="Name">Name <i class="icon fa-fw"></i></th>
+				<th>Description</th>
+        <th></th>
+        <th></th>
+			</tr>
+			</thead>
+
+			<tbody>
+			<tr ng-repeat="row in vm.displayedThreatAttackTypeCollection">
+				<td>{{row.Name}}</td>
+				<td>{{row.Desc|| "No Description"}}</td>
+				<td>
+          <button ng-click="vm.editEntry('attack_types', 'atktyp_id', row.ID, [{'fieldName':'atktyp_name', 'fieldValue':row.Name, 'fieldTitle':'Title', 'inputType':'text'}, {'fieldName':'atktyp_desc', 'fieldValue':row.Desc,'fieldTitle':'Description', 'inputType':'textarea'}])" class="deleteThreatButton">
+             <i class="icon glyphicon glyphicon-pencil fa-fw"></i>
+          </button>
+          <button ng-click="vm.deleteThreatAttackType(row.ID)" class="deleteThreatButton">
+             <i class="icon glyphicon glyphicon-trash fa-fw"></i>
+          </button></td>
+        <td></td>
+			</tr>
+			</tbody>
+      <tfoot>
+        <tr>
+  				<td colspan="9" class="text-center">
+            <!-- itemsByPage -->
+  			<div class="pages" st-pagination="" st-items-by-page="5" st-displayed-pages="7"></div>
+  				</td>
+  			</tr>
+		</tfoot>
+		</table>
+</div>
+
+<div class="usersTable">
+  <div class="ThreatCategoriesTableHead">
+    <h5 class="usersTableTitle"><strong>Attack Vectors</strong></h5>
+    <button class="AddUserButton" ng-click="vm.addAttackVectorModal()">
+      <strong>Add Attack Vector</strong> <i class="icon glyphicon glyphicon-plus fa-fw"></i>
+    </button>
+  </div>
+<table st-table="vm.displayedThreatAttackVectorCollection" st-safe-src="vm.threatAttackVectors" class=" usersTable table table-striped">
+      <thead>
+        <tr>
+          <th colspan="9"><input st-search="" class="form-control" placeholder="search ..." type="text"/></th>
+        </tr>
+			<tr>
+				<th st-sort="Name">Name <i class="icon fa-fw"></i></th>
+				<th>Description</th>
+        <th></th>
+        <th></th>
+			</tr>
+			</thead>
+
+			<tbody>
+			<tr ng-repeat="row in vm.displayedThreatAttackVectorCollection">
+				<td>{{row.Name}}</td>
+				<td>{{row.Desc|| "No Description"}}</td>
+				<td>
+          <button ng-click="vm.editEntry('attack_vectors', 'atkvtr_id', row.ID, [{'fieldName':'atkvtr_name', 'fieldValue':row.Name, 'fieldTitle':'Title', 'inputType':'text'}, {'fieldName':'atkvtr_desc', 'fieldValue':row.Desc,'fieldTitle':'Description', 'inputType':'textarea'}])" class="deleteThreatButton">
+             <i class="icon glyphicon glyphicon-pencil fa-fw"></i>
+          </button>
+          <button  ng-click="vm.deleteThreatAttackVector(row.ID)" class="deleteThreatButton">
+             <i class="icon glyphicon glyphicon-trash fa-fw"></i>
+          </button></td>
+        <td></td>
+			</tr>
+			</tbody>
+      <tfoot>
+        <tr>
+  				<td colspan="9" class="text-center">
+            <!-- itemsByPage -->
+  			<div class="pages" st-pagination="" st-items-by-page="5" st-displayed-pages="7"></div>
+  				</td>
+  			</tr>
+		</tfoot>
+		</table>
+</div>
+
+<div class="usersTable">
+  <div class="ThreatCategoriesTableHead">
+    <h5 class="usersTableTitle"><strong>Vulnerability Types</strong></h5>
+    <button class="AddUserButton" ng-click="vm.addVulnerabilityModal()">
+      <strong>Add Vulnerability Type</strong> <i class="icon glyphicon glyphicon-plus fa-fw"></i>
+    </button>
+  </div>
+<table st-table="vm.displayedThreatVulnerabilityCollection" st-safe-src="vm.threatVulnerabilities" class=" usersTable table table-striped">
+      <thead>
+        <tr>
+          <th colspan="9"><input st-search="" class="form-control" placeholder="search ..." type="text"/></th>
+        </tr>
+			<tr>
+				<th st-sort="Name">Name <i class="icon fa-fw"></i></th>
+				<th>Description</th>
+        <th></th>
+        <th></th>
+			</tr>
+			</thead>
+
+			<tbody>
+			<tr ng-repeat="row in vm.displayedThreatVulnerabilityCollection">
+				<td>{{row.Name}}</td>
+				<td>{{row.Desc|| "No Description"}}</td>
+				<td>
+          <button ng-click="vm.editEntry('vulnerabilities', 'vuln_id', row.ID, [{'fieldName':'vuln_name', 'fieldValue':row.Name, 'fieldTitle':'Title', 'inputType':'text'}, {'fieldName':'vuln_desc', 'fieldValue':row.Desc,'fieldTitle':'Description', 'inputType':'textarea'}])" class="deleteThreatButton">
+             <i class="icon glyphicon glyphicon-pencil fa-fw"></i>
+          </button>
+          <button  ng-click="vm.deleteThreatVulnerability(row.ID)" class="deleteThreatButton">
              <i class="icon glyphicon glyphicon-trash fa-fw"></i>
           </button></td>
         <td></td>
@@ -204,8 +345,8 @@
           <th colspan="9"><input st-search="" class="form-control" placeholder="search ..." type="text"/></th>
         </tr>
 			<tr>
-				<th st-sort="Title">Ontology<i class="icon glyphicon glyphicon-sort fa-fw"></i></th>
-				<th st-sort="Link">Description</th>
+				<th st-sort="Name">Ontology<i class="icon fa-fw"></i></th>
+				<th>Description</th>
         <th></th>
         <th></th>
 			</tr>
@@ -216,6 +357,9 @@
 				<td>{{row.Name}}</td>
 				<td>{{row.Desc || "No Description"}}</td>
 				<td>
+          <button ng-click="vm.editEntry('productCategories', 'category_id', row.ID, [{'fieldName':'category_name', 'fieldValue':row.Name, 'fieldTitle':'Title', 'inputType':'text'}, {'fieldName':'category_desc', 'fieldValue':row.Desc,'fieldTitle':'Description', 'inputType':'textarea'}])" class="deleteThreatButton">
+             <i class="icon glyphicon glyphicon-pencil fa-fw"></i>
+          </button>
           <button ng-click="vm.deleteProductCategory(row.ID)" class="deleteThreatButton">
              <i class="icon glyphicon glyphicon-trash fa-fw"></i>
           </button></td>

@@ -1,0 +1,106 @@
+<!--Template for the executive summary page-->
+<h2 class="tableTitle">Executive Summary</h2>
+<br>
+<br>
+<br>
+<br>
+
+<div class="row justify-content-center h100">
+  <div class="col-lg-6">
+    <h3 class="tableTitle">Threat Activity</h3><br>
+    <br>
+    <br>
+    <br>
+  <div id="linechartRange" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc; width: 80%">
+        <i class="fa fa-calendar"></i>&nbsp;
+        <span></span> <i class="fa fa-caret-down"></i>
+    </div>
+    <br>
+    <br>
+    <canvas id="lineChart" class="chart chart-line"
+        chart-data="vm.threatCount" chart-labels="vm.threatDates" chart-options="vm.lineOptions" chart-dataset-override="vm.lineOverride">
+          <script></script>
+    </canvas>
+  </div>
+  <div class="col-lg-6">
+    <h3 class="tableTitle">TTPs Discovered</h3>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <canvas id="barChart" class="chart chart-bar"
+        chart-data="vm.entryData" chart-labels="vm.entryLabels" chart-options="vm.barOptions" chart-dataset-override="vm.barOverride">
+    </canvas>
+
+
+  </div>
+</div>
+<div class="row justify-content-center h100">
+  <div class="col-lg-6">
+    <h3 class="tableTitle">Threat Feed Activity</h3>
+    <br>
+    <br>
+    <br>
+    <br>
+<table st-table="vm.displayedFeed" st-safe-src="vm.feedData" class="table table-striped main">
+  <div id="feedtableRange" style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc; width: 80%">
+      <i class="fa fa-calendar"></i>&nbsp;
+      <span></span> <i class="fa fa-caret-down"></i>
+  </div>
+
+  <thead>
+    <tr>
+      <th colspan="3"><input st-search="" st-select-mode="multiple" class="form-control" placeholder="search ..." type="text"/></th>
+    </tr>
+    <tr>
+      <th></th>  <!--  Extra "th" to indent table header-->
+      <th st-sort="Feed">Feed <i class="icon glyphicon glyphicon-sort fa-fw"></i></th>
+      <th st-sort="Count" st-sort-default="reverse">Threat Count <i class="icon glyphicon glyphicon-sort fa-fw"></i></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="row in vm.displayedFeed">
+      <td></td> <!--  Extra "td" to indent table cell-->
+      <td>{{row.Feed}}</td>
+      <td>{{row.Count}}</a></td>
+    </tr>
+  </tbody>
+  <tfoot>
+    <tr>
+      <td colspan="3" class="text-center">
+        <div class="pages" st-pagination="" st-items-by-page="5" st-displayed-pages=""></div>
+      </td>
+    </tr>
+  </tfoot>
+</table>
+</div>
+<div class="col-lg-6">
+<h3 class="tableTitle">Record Totals</h3>
+<hr style="height:12px; visibility:hidden;" />
+<br>
+<br>
+<br>
+<table st-table="vm.recordData" class="table table-striped main">
+  <thead>
+    <tr>
+      <th style="visibility:hidden;" colspan="3"><input st-search="" st-select-mode="multiple" class="form-control" placeholder="search ..." type="text"/></th>
+    </tr>
+    <tr>
+      <th></th>  <!--  Extra "th" to indent table header-->
+      <th>Name</th>
+      <th>Count</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="row in vm.recordData | orderBy:'-Count'">
+      <td></td> <!--  Extra "td" to indent table cell-->
+      <td>{{row.Name}}</td>
+      <td>{{row.Count}}</a></td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>

@@ -1,5 +1,5 @@
 //controller that deletes a selected number of products
-angular.module('threat').controller('DeleteselectedproductsController', function($http, $window, $q, $routeParams, todelete) {
+angular.module('threat').controller('DeleteselectedproductsController', function($http, $window, $q, $routeParams, todelete, values) {
     var vm = this;
     var productIds = todelete.getID();
     promiseArray = [];
@@ -7,7 +7,7 @@ angular.module('threat').controller('DeleteselectedproductsController', function
 
     vm.confirmDelete  = function() {
       for(t=0; t<productIds.length; t++){
-         promiseArray.push( $http.delete('http://127.0.0.1:5000/products/' + productIds[t]));
+         promiseArray.push( $http.delete(values.get('api') + '/products/' + productIds[t]));
       }
          $q.all(promiseArray).then(function(dataArray){
            todelete.storeID(null);

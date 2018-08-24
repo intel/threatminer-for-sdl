@@ -8,9 +8,8 @@
     /*
       The nav-bar will load differently depending on whether the user is an
       admin or base user.
-
     */
-    function BodyController($log, identity, $http) {
+    function BodyController($log, identity, $http, values) {
         var vm = this;
         var user;
         var name = "";
@@ -20,7 +19,7 @@
          user = identity.GetInfoFromJWT();
          id = user.identity;
          // If a logged in user doesn't have an account anymore, log them out.
-         $http.get('http://127.0.0.1:5000/users/'+id).then(function(response) {
+         $http.get(values.get('api') + '/users/'+id).then(function(response) {
              if (response.data.length == 0) {
                  identity.removeToken();
              }
@@ -33,7 +32,7 @@
 
        if(identity.isIdentify()){
          //retireves the user from the API by id
-         $http.get('http://127.0.0.1:5000/users/'+id).then(function(response){
+         $http.get(values.get('api') + '/users/'+id).then(function(response){
             var role = response.data[0]['user_role'];
             name = response.data[0]["user_firstName"] + " " + response.data[0]["user_lastName"]
             //loads a link to the admin page if the user has that role
@@ -53,12 +52,12 @@
                         href: '/search'
                     },
                     {
-                        title: 'PenTest Arsenal',
-                        href: '/pentest-arsenal'
-                    },
-                    {
                         title: 'Threat Feeds',
                         href: '/feeds'
+                    },
+                    {
+                        title: 'Executive Summary',
+                        href: '/executive'
                     },
                     {
                         title: name,
@@ -74,7 +73,6 @@
                 name: 'Threat Miner for SDL',
                 noLogo: true,
                 itemsRight: [
-
                     {
                         title: 'Ontologies',
                         href: '/ontologies'
@@ -84,12 +82,12 @@
                         href: '/search'
                     },
                     {
-                        title: 'PenTest Arsenal',
-                        href: '/pentest-arsenal'
-                    },
-                    {
                         title: 'Threat Feeds',
                         href: '/feeds'
+                    },
+                    {
+                        title: 'Executive Summary',
+                        href: '/executive'
                     },
                     {
                         title: name,
@@ -105,11 +103,27 @@
            name: 'Threat Miner for SDL',
            noLogo: true,
            itemsRight: [
-               {
-                   title: 'Log in',
-                   href: '/login'
+             {
+                 title: 'Ontologies',
+                 href: '/ontologies'
+             },
+             {
+                 title: 'Search',
+                 href: '/search'
+             },
+             {
+                 title: 'Threat Feeds',
+                 href: '/feeds'
+             },
+             {
+                 title: 'Executive Summary',
+                 href: '/executive'
+             },
+             {
+                 title: 'Log in',
+                 href: '/login'
 
-               }
+             }
            ]
          };
      }

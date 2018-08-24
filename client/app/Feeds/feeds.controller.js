@@ -1,6 +1,6 @@
 //This is controller for the feeds page
 angular.module('threat')
-  .controller('FeedsController', function($http, ModalService, $window, $q, identity, todelete) {
+  .controller('FeedsController', function($http, ModalService, $window, $q, identity, todelete, values) {
     var vm = this;
     vm.rowCollection = [];
     vm.feedTypes = [""]
@@ -12,14 +12,33 @@ angular.module('threat')
     catch(err){
     }
 
+    // edit a row on a table
+    vm.editEntry = function(tableName, idFieldName, id, objArray) {
+      values.set("tableName", tableName);
+      values.set("idFieldname", idFieldName);
+      values.set("id", id);
+      values.set("objArray", objArray);
+      ModalService.showModal({
+        templateUrl: 'Feeds/editElementModal.html',
+        controller: 'EditElementController'
+      }).then(function(modal) {
+        modal.element.modal();
+        modal.close.then(function(result) {
+         //vm.message = "You said " + result;
+        });
+      });
+     };
+
     //opens a modal to delete any selected feeds
     vm.deleteSelectedFeeds = function() {
       toPush = [];
+      console.log(vm.displayedCollection);
       for(t=0; t<vm.displayedCollection.length; t++){
         if(vm.displayedCollection[t].isSelected){
-         toPush.push(vm.displayedCollection[t]['product_id']);
+         toPush.push(vm.displayedCollection[t]['feed_id']);
         }
       }
+      console.log(toPush);
         todelete.storeID(toPush);
          ModalService.showModal({
              templateUrl: 'Feeds/deleteSelectedFeeds.html',
@@ -34,14 +53,14 @@ angular.module('threat')
 
     if (user != null) {
          //checks if the user is an admin to check whether they can add or not
-        $http.get('http://127.0.0.1:5000/users/' + user.identity).then(function(response){
+        $http.get(values.get('api') + '/users/' + user.identity).then(function(response){
           if(response.data[0]['user_role'] === 'Admin'){
             vm.canAdd = true;
           }
         });
     }
     //retrives all feed types for filter
-    $http.get('http://127.0.0.1:5000/feedTypes').then(function(response){
+    $http.get(values.get('api') + '/feedTypes').then(function(response){
       for(j=0; j<response.data.length; j++){
         vm.feedTypes.push(response.data[j]['type_name']);
       }
@@ -82,7 +101,7 @@ angular.module('threat')
      };
 
     //loads all feeds into table
-    $http.get('http://127.0.0.1:5000/feeds').
+    $http.get(values.get('api') + '/feeds').
     then(function(response) {
 
       vm.rowCollection = response.data;
@@ -90,7 +109,7 @@ angular.module('threat')
     //retrives what feed category a feed is within the row of the table
     var getTypeName = function(title, link, desc, id, type_id){
       if(type_id != null){
-      $http.get('http://127.0.0.1:5000/feedTypes/' + type_id).then(function(response){
+      $http.get(values.get('api') + '/feedTypes/' + type_id).then(function(response){
 
           vm.rowCollection.push({Title: title, Link: link, Description: desc, ID:id, Type: response.data[0]['type_name']});
         });
@@ -109,7 +128,7 @@ angular.module('threat')
      var vm = this;
      var id = todelete.getID();
      vm.confirmDelete = function(){
-       $http.delete('http://127.0.0.1:5000/feeds/' + id).then(function(response){
+       $http.delete(values.get('api') + '/feeds/' + id).then(function(response){
          todelete.storeID(null);
          $window.location.reload();
        });

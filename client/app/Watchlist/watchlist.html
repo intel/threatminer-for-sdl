@@ -2,10 +2,6 @@
 <br>
 <h5 class="WatchlistTableTitle"><strong>Followed Ontologies</strong></h5>
 <br>
-<button class="watchlistButton" ng-click="vm.logOut()">
-  <a><strong style="color:black">Log out</strong> <i class="icon glyphicon glyphicon-log-out fa-fw"></i></a>
-</button>
-<br>
 <table st-table="vm.displayedCollection" st-safe-src="vm.ProductRowCollection" class="table table-striped productTable">
       <thead>
         <tr>
@@ -16,15 +12,15 @@
           </div>
         </tr>
 			<tr>
-				<th st-sort="Name">Ontology <i class="icon glyphicon glyphicon-sort fa-fw"></i></th>
-				<th st-sort="Description">Description</th>
-        <th st-sort="Category">Category <i class="icon glyphicon glyphicon-sort fa-fw"></i></th>
+				<th st-sort="Name">Ontology <i class="icon fa-fw"></i></th>
+				<th>Description</th>
+        <th st-sort="Category">Category <i class="icon fa-fw"></i></th>
         <th></th>
 			</tr>
 			</thead>
 			<tbody>
 			<tr ng-repeat="row in vm.displayedCollection">
-				<td><a href="/products/{{row.ID}}">{{row.Name}}</a></td>
+				<td><a href="/ontologies/{{row.ID}}">{{row.Name}}</a></td>
 				<td>{{row.Description || "No Description"}}</td>
         <td>{{row.Category}}</td>
         <td>
@@ -52,10 +48,10 @@
         </tr>
 			<tr>
         <th st-sort=""> </th>
-				<th st-sort="Title">Title <i class="icon glyphicon glyphicon-sort fa-fw"></i></th>
-				<th st-sort="Description">Description</th>
-        <th st-sort="Severity">Severity <i class="icon glyphicon glyphicon-sort fa-fw"></i></th>
-        <th st-sort="Status">Status <i class="icon glyphicon glyphicon-sort fa-fw"></i></th>
+				<th st-sort="Title">Title <i class="icon fa-fw"></i></th>
+				<th>Description</th>
+        <th st-sort="Severity">Severity <i class="icon fa-fw"></i></th>
+        <th st-sort="Status">Status <i class="icon fa-fw"></i></th>
 
         <th st-sort=""> </th>
 

@@ -6,9 +6,6 @@
               <p class="labe"><strong>Title: </strong><input class="modalInput" type="text" name="product_name" ng-model="$ctrl.title" required /></p>
               <p class="labe"><strong>Link: </strong><input class="modalInput" type="text" name="product_name" ng-model="$ctrl.link" required /></p>
               <div class="optGroup1">
-              <p class="labe"><strong>Threat Category: </strong>&nbsp;<select  name="category" class="cat"
-                     ng-options="opt.Name for opt in $ctrl.categories track by opt.ID" ng-model="$ctrl.selectedCat">
-              </select></p>
               <p class="labe"><strong>Severity: </strong>&nbsp;<select  name="category" class="cat"
                      ng-options="opt for opt in $ctrl.ratings track by opt" ng-model="$ctrl.SelectedRating">
               </select></p>
@@ -17,9 +14,6 @@
               </select></p>
               <p class="labe"><strong>Owner: </strong>&nbsp; <select  name="category" class="cat"
                      ng-options="opt.Name for opt in $ctrl.owners track by opt.ID" ng-model="$ctrl.selectedOwner">
-              </select></p>
-              <p class="labe"><strong>Adversary Type: </strong>&nbsp;<select  name="category" class="cat"
-                     ng-options="opt.Name for opt in $ctrl.adversaries track by opt.ID" ng-model="$ctrl.selectedAdv">
               </select></p>
             </div>
               <p class="labe"><strong>Threat Description: </strong>

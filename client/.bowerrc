@@ -1,4 +1,8 @@
 {
-  "directory": "bower_components",
-  "registry": "https://registry.bower.io"
+  "directory": "app/bower_components",
+  "registry": {
+		"search": [
+			"https://registry.bower.io"
+		]
+	}
 }

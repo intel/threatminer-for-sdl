@@ -13,6 +13,8 @@ def configure(config):
         db = raw_input("DB [" + config["databaseConnection"]["db"] + "]: ")
         charset = raw_input("Charset [" + config["databaseConnection"]["charset"] + "]: ")
         port = raw_input("Port [" + config["databaseConnection"]["port"] + "]: ")
+        caCert = raw_input("CA File (For ssl connection to database. If not using ssl, press space and then enter.)  [" + config["databaseConnection"]["caCert"] + "]: ")
+        isDeveloping = raw_input("Is Developing? (If deploying to production, press space and then enter.) [" + config["databaseConnection"]["isDeveloping"] + "]: ")
         if host:
             if host.isspace():
                 config["databaseConnection"]["host"] = ""
@@ -43,6 +45,17 @@ def configure(config):
                 config["databaseConnection"]["port"] = ""
             else:
                 config["databaseConnection"]["port"] = port
+        if caCert:
+            if caCert.isspace():
+                config["databaseConnection"]["caCert"] = ""
+            else:
+                config["databaseConnection"]["caCert"] = caCert
+        if isDeveloping:
+            if isDeveloping.isspace():
+                config["databaseConnection"]["isDeveloping"] = ""
+            else:
+                config["databaseConnection"]["isDeveloping"] = isDeveloping
+
     else:
         print("Enter database configuration information:\n")
         config = {"databaseConnection": {"db": "", "host": "", "user": "", "password": "", "charset": "", "port": ""}}
@@ -51,7 +64,9 @@ def configure(config):
         config["databaseConnection"]["password"] = raw_input("Password: ")
         config["databaseConnection"]["db"] = raw_input("DB: ")
         config["databaseConnection"]["charset"] = raw_input("Charset: ")
-        config["databaseConnection"]["port"] = raw_input("port: ")
+        config["databaseConnection"]["port"] = raw_input("Port: ")
+        config["databaseConnection"]["caCert"] = raw_input("CA File (For ssl connection to database. If not using ssl, hit enter.): ")
+        config["databaseConnection"]["isDeveloping"] = raw_input("Is Developing (If deploying to production, hit enter.)?: ")
     return config
 
 # if config is valid, return configuration information currently in config.json
@@ -76,6 +91,12 @@ def getConfig():
 # Overwrites config.json with new config information
 def writeConfig(config):
     with open('config.json', 'w+') as outfile:
+        json.dump(config, outfile)
+    with open('scripts/config.json', 'w+') as outfile:
+        json.dump(config, outfile)
+    with open('server/config.json', 'w+') as outfile:
+        json.dump(config, outfile)
+    with open('database/config.json', 'w+') as outfile:
         json.dump(config, outfile)
 
 def init():

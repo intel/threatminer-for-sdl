@@ -1,6 +1,6 @@
 ---
   applications:
-  - name: TIAPI
+  - name: TIAPI2
     memory: 1G
     instances: 3
     disk_quota: 2G

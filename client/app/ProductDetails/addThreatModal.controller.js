@@ -1,11 +1,10 @@
 //controller for adding a new threat
-angular.module('threat').controller('AddthreatController', function($http, $window, $q, $routeParams, identity) {
+angular.module('threat').controller('AddthreatController', function($http, $window, $q, $routeParams, identity, values) {
     var vm = this;
     vm.title;
     vm.link = null;
     vm.desc = null;
     vm.id = $routeParams.productID;
-    vm.categories = [{Name: "", ID:null}];
     vm.adversaries = [{Name:"", ID:null}];
     vm.ratings = ["", "-Low-", "-Medium-", "-High-", "-Critical-"];
     vm.statuses = ["", "-New-", "-Under Investigation-", "-Fixed-", "-Not an Issue-", "-Advisory-", "-N/A-"];
@@ -13,7 +12,6 @@ angular.module('threat').controller('AddthreatController', function($http, $wind
     var name = "";
     try{
       user = identity.GetInfoFromJWT();
-      name = user.displayName;
     }
     catch(err){
       user = null
@@ -38,22 +36,12 @@ angular.module('threat').controller('AddthreatController', function($http, $wind
     }
     var today = mm+'/'+dd+'/'+yyyy;
 
-    console.log(today)
-    var promiseArray = [];
-
-
-
-    //retrieves all of the threat categories
-    $http.get('http://127.0.0.1:5000/threatCategories')
-    .then(function(response){
-      for(k=0; k<response.data.length; k++){
-        vm.categories.push({Name:response.data[k]['category_name'],
-        ID: response.data[k]['category_id'] })
-      }
+    $http.get(values.get('api') + '/users/' + user.identity).then(function(response){
+      name = response.data[0]['user_lastName'] + ", " + response.data[0]['user_firstName']
     });
 
     //retrieves a list of adversaries
-    $http.get('http://127.0.0.1:5000/adversaries')
+    $http.get(values.get('api') + '/adversaries')
     .then(function(response){
       for(j=0; j<response.data.length; j++){
         vm.adversaries.push({Name:response.data[j]['adv_name'],
@@ -62,7 +50,7 @@ angular.module('threat').controller('AddthreatController', function($http, $wind
     });
 
     //retrieves all users for assigning ownership
-    $http.get('http://127.0.0.1:5000/users')
+    $http.get(values.get('api') + '/users')
     .then(function(response){
       for(l=0; l<response.data.length; l++){
         vm.owners.push({Name:response.data[l]['user_firstName'] + " " + response.data[l]['user_lastName'],
@@ -76,8 +64,6 @@ angular.module('threat').controller('AddthreatController', function($http, $wind
         threat_title:vm.title,
         threat_link: vm.link,
         threat_desc:vm.desc,
-        category_id:vm.selectedCat['ID'],
-        adv_id:vm.selectedAdv['ID'],
         threat_rating:vm.SelectedRating,
         threat_status:vm.selectedStatus,
         threat_owner:vm.selectedOwner['ID'],
@@ -86,7 +72,7 @@ angular.module('threat').controller('AddthreatController', function($http, $wind
         threat_date: today
       });
 
-      $http.post('http://127.0.0.1:5000/products/'+vm.id+'/threats', threatData).then(function(response){
+      $http.post(values.get('api') + '/products/'+vm.id+'/threats', threatData).then(function(response){
         $window.location.reload();
       }, function errorCallback(response){
           alert("Looks like you're missing some important field(s)!")

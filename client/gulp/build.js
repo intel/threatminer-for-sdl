@@ -28,7 +28,7 @@ var clean = require('./clean').clean,
 	injectDev = inject.injectDev,
 	injectToDist = inject.injectToDist,
 	lint = require('./lint').lint,
-	
+
 	config = require('./config'),
 	paths = config.paths,
 	files = config.files,
@@ -46,9 +46,9 @@ var buildDev = gulp.series(
 
 //TODO: combine some more tasks and check if this improves performance.
 var buildDist = gulp.series(
-	
+
 	buildDev,
-	
+
 	//move all the things
 	gulp.parallel(
 		moveHtml,
@@ -68,8 +68,8 @@ var buildDist = gulp.series(
 	injectToDist
 );
 
-	
-	
+
+
 function moveAndFlattenFonts() {
 	//Suggestion: user gulp-expect-file to make sure a bower.json exists
 	return gulp.src(files.bowerComponents + '.{eot,svg,ttf,woff,woff2}', {base: files.bowerComponents})
@@ -191,6 +191,7 @@ function moveCssToDist() {
 		attribute: 'href'
 	})
 		.pipe(plugins.purifyCss(determinePurifyFiles('bootstrap.js'), {minify: true}))
+		.pipe(plugins.concat('main.css'))
 		.pipe(plugins.rev())
 		.pipe(gulp.dest(paths.distStyles))
 		.pipe(plugins.size({title: 'SIZE: ', showFiles: true}));

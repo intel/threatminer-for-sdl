@@ -8,13 +8,19 @@ client/.idea
 client/.DS_Store
 client/coverage
 client/node_modules/*
-client/bower_components/*
-!client/bower_components/intc-enter/*
-!client/bower_components/intcAppFrame/*
-!client/bower_components/it-mlaf-sass/*
+client/app/bower_components/*
+!client/app/bower_components/intc-enter/*
+!client/app/bower_components/intcAppFrame/*
+!client/app/bower_components/it-mlaf-sass/*
 
 # All python binary files
 *.pyc
+
+# All python pickle files
+*.pkl
+
+# CA file
+ca_cert.pem
 
 # Configuration built by setup.py
 config.json

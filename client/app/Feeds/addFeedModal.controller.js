@@ -1,5 +1,5 @@
 //controller to add a new feed to the system
-angular.module('threat').controller('AddfeedController', function($http, $window, $q) {
+angular.module('threat').controller('AddfeedController', function($http, $window, $q, values) {
 
     var vm = this;
     vm.feedTypes = [{Name:"", ID: null}];
@@ -8,7 +8,7 @@ angular.module('threat').controller('AddfeedController', function($http, $window
 
     var promiseArray = [];
     //fills the drop down for selecting a feed type
-    $http.get('http://127.0.0.1:5000/feedTypes').then(function(response){
+    $http.get(values.get('api') + '/feedTypes').then(function(response){
       for(l=0; l<response.data.length; l++){
         vm.feedTypes.push({Name:response.data[l]['type_name'],
         ID: response.data[l]['type_id'] })
@@ -34,7 +34,7 @@ angular.module('threat').controller('AddfeedController', function($http, $window
         });
       }
 
-      var addFeedPromise = $http.post('http://127.0.0.1:5000/feeds', feedData)
+      var addFeedPromise = $http.post(values.get('api') + '/feeds', feedData)
 
       addFeedPromise.then(function(response){
          $window.location.reload();

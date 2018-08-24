@@ -9,10 +9,18 @@ import sys
 import pymysql
 from nltk.stem.porter import PorterStemmer
 import json
+import os
 
-# Load config.json into "int(int(config["port"]))
-with open("../config.json") as f:
+__location__ = os.path.realpath(os.path.join(os.getcwd(), os.path.dirname(__file__)))
+
+# Load config.json into "config"
+with open(os.path.join(__location__, 'config.json')) as f:
     config = json.load(f)["databaseConnection"]
+
+sslFile=config["caCert"]
+ssl = None
+if (sslFile):
+	ssl = { 'ca': os.path.join(__location__, sslFile)}
 
 #connect to the DB
 def DBconnect():
@@ -22,12 +30,11 @@ def DBconnect():
 								   password=config["password"],
 								   db=config["db"],
 								   port=int(config["port"]),
+								   ssl=ssl,
 								   cursorclass=pymysql.cursors.DictCursor)
 
 	global cursor
 	cursor = conn.cursor()
-
-
 
 #closes the DB connection
 def DBclose():
@@ -79,8 +86,6 @@ def train():
 		#print trainingData
 		classifier = NaiveBayesClassifier(trainingData)
 		print(classifier.show_informative_features())
-		with open('threat_classifierDependencies.pkl', 'wb') as output:
-			pickle.dump(classifier, output, pickle.HIGHEST_PROTOCOL)
 		with open('threat_classifierOntology.pkl', 'wb') as output:
 			pickle.dump(classifier, output, pickle.HIGHEST_PROTOCOL)
 		print("Training has completed")

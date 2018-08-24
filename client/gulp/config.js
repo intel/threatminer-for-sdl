@@ -19,7 +19,7 @@ var paths = {
 	distImages: distRoot + '/images/',
 	tmp: appRoot + '/.tmp',
 	tmpFonts: appRoot + '/.tmp/fonts', //put fonts one directory up so that $intel-icon-path and $icon-font-path paths ("../fonts", used in it-mlaf-sass and bootstrap-sass) work correctly
-	bowerComponents: 'bower_components',
+	bowerComponents: appRoot + '/bower_components',
 	nodeModules: 'node_modules'
 };
 

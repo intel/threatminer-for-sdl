@@ -1,5 +1,5 @@
 //controller for the unfollowing of a threat
-angular.module('threat').controller('UnfollowthreatController', function($http, $window, $q, identity, todelete) {
+angular.module('threat').controller('UnfollowthreatController', function($http, $window, $q, identity, todelete, values) {
   var vm = this;
   var user;
   var id = null;
@@ -13,7 +13,7 @@ angular.module('threat').controller('UnfollowthreatController', function($http, 
 
 vm.confirmDelete = function(){
 
-  $http.delete('http://127.0.0.1:5000/'+id+'/savedThreats/'+ todelete.getID()).then(function(respnse){
+  $http.delete(values.get('api') + '/'+id+'/savedThreats/'+ todelete.getID()).then(function(respnse){
     todelete.storeID(null);
     $window.location.reload();
   });
@@ -39,10 +39,9 @@ angular.module('threat').controller('UnfollowproductController', function($http,
 
 vm.confirmDelete = function(){
 
-  $http.delete('http://127.0.0.1:5000/'+id+'/savedProducts/'+todelete.getID()).then(function(respnse){
+  $http.delete(values.get('api') + '/'+id+'/savedProducts/'+todelete.getID()).then(function(respnse){
     todelete.storeID(null);
     $window.location.reload();
-
   });
 
 }

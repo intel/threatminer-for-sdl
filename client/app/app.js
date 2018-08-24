@@ -15,11 +15,15 @@
 			'base64',
 			'xeditable',
 			'ngMeta',
+			'nya.bootstrap.select',
+			'ngCsv',
+			'chart.js',
 			//3rd Party dependencies
 			'intcAppFrame',
 			'intcEnter',
-			'tmixCaching'
+			'tmixCaching',
 			//Custom dependencies
+			'ui.bootstrap'
 		])
 		.config(config)
 
@@ -27,6 +31,11 @@
 .service('identity', IdentityService)
 //declares the delete service
 .service('todelete', DeleteService)
+//declares the values service
+.service('values', ValuesService)
+.run(function (values) {
+	values.set("api", "http://127.0.0.1:5000");
+})
 
 /* ngInject */
 function config($routeProvider, $httpProvider, $base64, $locationProvider) {
@@ -35,40 +44,55 @@ function config($routeProvider, $httpProvider, $base64, $locationProvider) {
 	//comment this if statement out when testing locally
 	//it redirects a client to https if they are not already using it
 	//only needed when publishing
+		// if (window.location.protocol == "http:") {
+		// 	 var restOfUrl = window.location.href.substr(5);
+		// 	 window.location = "https:" + restOfUrl;
+		// }
 
 //logs the user into the application
-	 $httpProvider.interceptors.push(['$q', '$location', 'identity', function ($q, $location, identity) {
-		 return {
-					'request': function (config) {
-							config.headers = config.headers || {};
-							var theUrl = config.url;
-							if (theUrl.indexOf("templates") != -1 || theUrl.indexOf("login") != -1) {
-									return config;
-							}
-
-							var token = identity.getToken()
-							if (token) {
-								config.headers["Authorization"] = "JWT " + token
-							}
-
-							return config || $q.when(config);
-					},
-
-					'response': function (response) {
-							return response || $q.when(response);
-					},
-					'responseError': function (response) {
-
-							if (response.status === 401 || response.status === 403) {
-								if (window.location.href != location.origin + '/login') {
-									window.location.href = location.origin + '/login'
-								}
-							}
-
-							return $q.reject(response);
+$httpProvider.interceptors.push(['$q', '$location', 'identity', function ($q, $location, identity) {
+	return {
+			'request': function (config) {
+					config.headers = config.headers || {};
+					var theUrl = config.url;
+					if (theUrl.indexOf("templates") != -1 || theUrl.indexOf("login") != -1) {
+							return config;
 					}
-			 };
-	 }]);
+
+					var token = identity.getToken()
+					if (token) {
+						config.headers["Authorization"] = "JWT " + token
+					}
+
+					return config || $q.when(config);
+			},
+
+			 'response': function (response) {
+					// console.log(" response r: ", response);
+					 if (response.config.url.indexOf("10.219.128.50") != -1)
+					 {
+							 console.log(" response r: ", response);
+
+							// TODO handle responses from RESTFul API
+							 // alert(response.config.url);
+							 var j = 0;
+
+					 }
+
+					 return response || $q.when(response);
+			 },
+			 'responseError': function (response) {
+
+					 if (response.status === 401 || response.status === 403) {
+						 if ((window.location.href == location.origin + '/admin') || (window.location.href == location.origin + '/watchlist')) {
+							 window.location.href = location.origin + '/login'
+						 }
+					 }
+
+					 return $q.reject(response);
+			 }
+		};
+}]);
 
 //sets the routes for the apps
 // sets the template as well as the controller for each
@@ -78,7 +102,7 @@ function config($routeProvider, $httpProvider, $base64, $locationProvider) {
 			templateUrl: 'ProductDetails/productDetail.html',
 			controller: 'ProductdetailController',
 			controllerAs: 'vm',
-			authenticated: false
+			authenticated: true
 
 		})
 
@@ -86,28 +110,37 @@ function config($routeProvider, $httpProvider, $base64, $locationProvider) {
 			templateUrl: 'ProductOntology/products.html',
 			controller: 'ProductsController',
 			controllerAs: 'vm',
-			authenticated: false
+			authenticated: true
+
+		})
+		.when('/search?classificationType&classificationId', {
+			templateUrl: 'Search/search.html',
+			controller: 'SearchController',
+			controllerAs: 'vm',
+			reloadOnSearch: false,
+			authenticated: true
 
 		})
 		.when('/search', {
 			templateUrl: 'Search/search.html',
 			controller: 'SearchController',
 			controllerAs: 'vm',
-			authenticated: false
+			reloadOnSearch: false,
+			authenticated: true
 
 		})
 		.when('/threats/:threatID', {
 			templateUrl: 'ThreatDetail/threatDetail.html',
 			controller: 'ThreatsController',
 			controllerAs: 'vm',
-			authenticated: false
+			authenticated: true
 		})
 
 		.when('/feeds', {
 			templateUrl: 'Feeds/feeds.html',
 			controller: 'FeedsController',
 			controllerAs: 'vm',
-			authenticated: false
+			authenticated: true
 		})
 
 		.when('/login', {
@@ -132,14 +165,14 @@ function config($routeProvider, $httpProvider, $base64, $locationProvider) {
 			templateUrl: 'Watchlist/watchlist.html',
 			controller: 'WatchlistController',
 			controllerAs: 'vm',
-			authenticated: false
+			authenticated: true
 		})
 
-		.when('/pentest-arsenal', {
-			templateUrl: 'Pentest/pentest.html',
-			controller: 'PentestController',
+		.when('/executive', {
+			templateUrl: 'executiveSummary/executiveSummary.html',
+			controller: 'ExecutiveSummaryController',
 			controllerAs: 'vm',
-			authenticated: false
+			authenticated: true
 		})
 
 		.otherwise({
@@ -155,7 +188,6 @@ function DeleteService($window) {
 	var productID;
 
 	this.storeID = function (ID) {
-		console.log(ID);
 		id = ID
 	};
 	this.getID = function () {
@@ -168,10 +200,24 @@ function DeleteService($window) {
 	this.getProductID = function () {
 		return productID;
 	}
-
 }
 
+// Used for cross-controller communication
+function ValuesService($window) {
+	var data = {};
+	this.set = function (key, value) {
+		data[key] = value;
+	};
 
+	this.get = function(key) {
+		var value = data[key];
+		return value;
+	}
+	this.delete = function(key) {
+		delete data[key];
+	}
+
+}
 
 //used to identify users (get their name, id, etc.)
 		function IdentityService($window) {
