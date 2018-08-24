@@ -137,7 +137,10 @@ def insert(product, title, summary, source, feed_id):
 			cursor.execute("insert ignore into threats (threat_title, threat_link, threat_desc, threat_date, threat_status, feed_id, product_id) values (%s, %s, %s, %s, %s, %s, %s)",
 			(title, source, summary, now, "-New-", feed_id, str(product['product_id'])))
 			conn.commit()
-			classifyThreatNER(cursor.lastrowid, summary)
+			try:
+				classifyThreatNER(cursor.lastrowid, summary)
+			except:
+				pass
 			try:
 				cursor.execute("update products set product_updated=%s where product_id=%s", (now, str(product['product_id'])))
 				conn.commit()
@@ -154,7 +157,10 @@ def insert(product, title, summary, source, feed_id):
 			cursor.execute("insert ignore into threats (threat_title, threat_link, threat_desc, threat_date, threat_status, feed_id, product_id) values (%s, %s, %s, %s, %s, %s, %s)",
 			(title, source, summary, now, "-New N/A-", feed_id, str(product['product_id'])))
 			conn.commit()
-			classifyThreatNERAsIrrelevant(cursor.lastrowid, summary)
+			try:
+				classifyThreatNERAsIrrelevant(cursor.lastrowid, summary)
+			except:
+				pass
 			try:
 				cursor.execute("update products set product_updated=%s where product_id=%s", (now, str(product['product_id'])))
 				conn.commit()
