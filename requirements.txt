@@ -24,7 +24,7 @@ itsdangerous==0.24
 Jinja2==2.10
 Mako==1.0.7
 MarkupSafe==1.0
-nltk==3.0.2
+nltk==3.1.0
 psutil==5.4.6
 pycparser==2.18
 PyJWT==1.4.2

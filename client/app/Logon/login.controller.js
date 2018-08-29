@@ -52,7 +52,7 @@ angular.module('threat').controller('LoginController', function ($http, $routePa
         }
 });
 
-angular.module('threat').controller('AddFirstuserController', function($http, $window, $q) {
+angular.module('threat').controller('AddFirstuserController', function($http, $window, $q, values) {
   var vm = this;
   vm.role = "Admin";
   vm.email = null;
