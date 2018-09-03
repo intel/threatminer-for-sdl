@@ -3,6 +3,7 @@ alembic==1.0.0
 asn1crypto==0.24.0
 bcrypt==3.0.0
 BeautifulSoup==3.2.1
+bcrypt
 beautifulsoup4==4.6.0
 bs4==0.0.1
 certifi==2018.4.16

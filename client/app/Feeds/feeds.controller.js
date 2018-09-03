@@ -124,7 +124,7 @@ angular.module('threat')
 
 
 //the controller for the delete feed modal
- angular.module('threat') .controller('DeletefeedController', function($http, $window,  todelete) {
+ angular.module('threat') .controller('DeletefeedController', function($http, $window,  todelete, values) {
      var vm = this;
      var id = todelete.getID();
      vm.confirmDelete = function(){
