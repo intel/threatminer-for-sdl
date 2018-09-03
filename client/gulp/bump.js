@@ -1,40 +1,40 @@
-'use strict';
 
-var gulp = require('gulp');
-var bump = require('gulp-bump');
-var semver = require('semver');
-var fs = require('fs');
 
-var getPackageJson = function () {
+const gulp = require('gulp');
+const bump = require('gulp-bump');
+const semver = require('semver');
+const fs = require('fs');
+
+const getPackageJson = function () {
   return JSON.parse(fs.readFileSync('./package.json', 'utf8'));
 };
 
 function bumpMajor() {
-  var pkg = getPackageJson();
-  var newVer = semver.inc(pkg.version, 'major');
-  return gulp.src(['./package.json','./bower.json'])
-    .pipe(bump({version:newVer}))
+  const pkg = getPackageJson();
+  const newVer = semver.inc(pkg.version, 'major');
+  return gulp.src(['./package.json', './bower.json'])
+    .pipe(bump({ version: newVer }))
     .pipe(gulp.dest('./'));
 }
 
 function bumpMinor() {
-  var pkg = getPackageJson();
-  var newVer = semver.inc(pkg.version, 'minor');
-  return gulp.src(['./package.json','./bower.json'])
-    .pipe(bump({version:newVer}))
+  const pkg = getPackageJson();
+  const newVer = semver.inc(pkg.version, 'minor');
+  return gulp.src(['./package.json', './bower.json'])
+    .pipe(bump({ version: newVer }))
     .pipe(gulp.dest('./'));
 }
 
 function bumpPatch() {
-  var pkg = getPackageJson();
-  var newVer = semver.inc(pkg.version, 'patch');
-  return gulp.src(['./package.json','./bower.json'])
-    .pipe(bump({version:newVer}))
+  const pkg = getPackageJson();
+  const newVer = semver.inc(pkg.version, 'patch');
+  return gulp.src(['./package.json', './bower.json'])
+    .pipe(bump({ version: newVer }))
     .pipe(gulp.dest('./'));
 }
 
 module.exports = {
-  bumpMajor: bumpMajor,
-  bumpMinor:bumpMinor,
-  bumpPatch: bumpPatch
+  bumpMajor,
+  bumpMinor,
+  bumpPatch,
 };

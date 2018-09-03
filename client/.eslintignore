@@ -1,3 +1,5 @@
 **/*.min.js
 app/.tmp/**/*
 app/bower_components/**/*
+gulp/*
+eslint/*
