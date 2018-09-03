@@ -1,5 +1,5 @@
 // controller for the product's page
-angular.module('threat').controller('ExecutiveSummaryController', function ($http, values) {
+angular.module('threat').controller('ExecutiveSummaryController', function ($http, values, moment) {
   const vm = this
   const url = `${values.get('api')}/`
 

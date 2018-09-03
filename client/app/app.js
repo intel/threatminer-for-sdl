@@ -18,6 +18,7 @@
 			'nya.bootstrap.select',
 			'ngCsv',
 			'chart.js',
+			'angularMoment',
 			//3rd Party dependencies
 			'intcAppFrame',
 			'intcEnter',
