@@ -22,7 +22,7 @@ angular.module('threat').controller('LoginController', function ($http, $routePa
   vm.addUserModal = function () {
     ModalService.showModal({
       templateUrl: 'Logon/addUser.html',
-      controller: 'AddFirstuserController'
+      controller: 'AddFirstUserController'
     }).then((modal) => {
       modal.element.modal()
       modal.close.then((result) => {

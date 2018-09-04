@@ -1,5 +1,5 @@
 // controller for adding a new product category
-angular.module('threat').controller('AddProductCatController', function ($http, $window, $q, values) {
+angular.module('threat').controller('AddProdCatController', function ($http, $window, $q, values) {
   const vm = this
   vm.desc = null
 

@@ -60,7 +60,7 @@ angular.module('threat').controller('WatchlistController', function ($http, $win
     todelete.storeID(id)
     ModalService.showModal({
       templateUrl: 'Watchlist/unfollowThreat.html',
-      controller: 'UnfollowthreatController'
+      controller: 'UnfollowThreatController'
     }).then((modal) => {
       modal.element.modal()
       modal.close.then(() => {
@@ -73,7 +73,7 @@ angular.module('threat').controller('WatchlistController', function ($http, $win
     todelete.storeID(id)
     ModalService.showModal({
       templateUrl: 'Watchlist/unfollowProduct.html',
-      controller: 'UnfollowproductController'
+      controller: 'UnfollowProductController'
     }).then((modal) => {
       modal.element.modal()
       modal.close.then(() => {
