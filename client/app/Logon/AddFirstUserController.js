@@ -14,14 +14,14 @@ angular.module('threat').controller('AddFirstUserController', function ($http, $
       user_password: vm.password1
     })
     if (vm.password1 !== vm.password2) {
-      return alert('Your passwords do not match!')
+      return $window.alert('Your passwords do not match!')
     }
     // posting the data to the api
     $http.post(`${values.get('api')}/users/firstUser`, userData).then((response) => {
       // reloads the page
       $window.location.reload()
     }, (response) => {
-      alert("Looks like you're missing some important field(s)!")
+      $window.alert("Looks like you're missing some important field(s)!")
     })
   }
 })

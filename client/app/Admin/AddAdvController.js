@@ -12,7 +12,7 @@ angular.module('threat').controller('AddAdvController', function ($http, $window
     $http.post(`${values.get('api')}/adversaries`, advData).then((response) => {
       $window.location.reload()
     }, (response) => {
-      alert("Looks like you're missing some important field(s)!")
+      $window.alert("Looks like you're missing some important field(s)!")
     })
   }
 })

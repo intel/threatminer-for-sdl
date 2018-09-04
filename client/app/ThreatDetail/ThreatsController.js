@@ -39,9 +39,9 @@ angular.module('threat').controller('ThreatsController', function ($http, $route
     })
 
     $http.post(`${values.get('api')}/${user.identity}/savedThreats`, threatData).then((response) => {
-      alert('Added to Watchlist!')
+      $window.alert('Added to Watchlist!')
     }, (response) => {
-      alert('This threat is already in your watchlist!')
+      $window.alert('This threat is already in your watchlist!')
     })
   }
 
@@ -69,7 +69,7 @@ angular.module('threat').controller('ThreatsController', function ($http, $route
   vm.deleteThreatModal = function () {
     ModalService.showModal({
       templateUrl: 'ThreatDetail/deleteThreat.html',
-      controller: 'DeletethreatController'
+      controller: 'DeleteThreatController'
     }).then((modal) => {
       modal.element.modal()
       modal.close.then(() => {

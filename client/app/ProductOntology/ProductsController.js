@@ -32,7 +32,7 @@ angular.module('threat')
       todelete.storeID(toPush)
       ModalService.showModal({
         templateUrl: 'ProductOntology/deleteSelectedProducts.html',
-        controller: 'DeleteselectedproductsController'
+        controller: 'DeleteSelectedProductsController'
       }).then((modal) => {
         modal.element.modal()
         modal.close.then(() => {
@@ -78,7 +78,7 @@ angular.module('threat')
     vm.addProductModal = function () {
       ModalService.showModal({
         templateUrl: 'ProductOntology/addProduct.html',
-        controller: 'AddproductController'
+        controller: 'AddProductController'
       }).then((modal) => {
         modal.element.modal()
         modal.close.then(() => {
@@ -91,7 +91,7 @@ angular.module('threat')
       todelete.storeID(id)
       ModalService.showModal({
         templateUrl: 'ProductOntology/deleteProduct.html',
-        controller: 'DeleteproductmodalController'
+        controller: 'DeleteProductController'
       }).then((modal) => {
         modal.element.modal()
         modal.close.then(() => {

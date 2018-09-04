@@ -6,7 +6,7 @@ angular.module('threat').controller('DeleteThreatController', function ($http, $
   vm.confirmDelete = function () {
     console.log(threatID)
     $http.delete(`${values.get('api')}/threats/${threatID}`).then((response) => {
-      $('.modal-backdrop').hide()
+      $window('.modal-backdrop').hide()
       $window.location.href = '/products'
     })
   }

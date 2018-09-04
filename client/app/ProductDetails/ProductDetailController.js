@@ -49,9 +49,9 @@ angular.module('threat').controller('ProductDetailController', function ($http, 
       product_id: vm.id
     })
     $http.post(`${values.get('api')}/${user.identity}/savedProducts`, productData).then((response) => {
-      alert('Added to Watchlist!')
+      $window.alert('Added to Watchlist!')
     }, (response) => {
-      alert('This product is already in your watchlist!')
+      $window.alert('This product is already in your watchlist!')
     })
   }
 
@@ -72,7 +72,7 @@ angular.module('threat').controller('ProductDetailController', function ($http, 
   vm.addThreatModal = function () {
     ModalService.showModal({
       templateUrl: 'ProductDetails/addThreatModal.html',
-      controller: 'AddthreatController'
+      controller: 'AddThreatController'
     }).then((modal) => {
       modal.element.modal()
       modal.close.then(() => {})
@@ -84,7 +84,7 @@ angular.module('threat').controller('ProductDetailController', function ($http, 
     todelete.storeProductID(vm.id)
     ModalService.showModal({
       templateUrl: 'ProductDetails/deleteThreat.html',
-      controller: 'DeletethreatmodalController'
+      controller: 'DeleteThreatController'
     }).then((modal) => {
       modal.element.modal()
       modal.close.then(() => {
@@ -97,7 +97,7 @@ angular.module('threat').controller('ProductDetailController', function ($http, 
   vm.deleteProductModal = function () {
     ModalService.showModal({
       templateUrl: 'ProductDetails/deleteProductModal.html',
-      controller: 'DeleteproductController'
+      controller: 'DeleteProductController'
     }).then((modal) => {
       modal.element.modal()
       modal.close.then(() => {
@@ -117,7 +117,7 @@ angular.module('threat').controller('ProductDetailController', function ($http, 
     todelete.storeProductID(vm.id)
     ModalService.showModal({
       templateUrl: 'ProductDetails/deleteSelectedThreats.html',
-      controller: 'DeleteselectedthreatsController'
+      controller: 'DeleteSelectedThreatsController'
     }).then((modal) => {
       modal.element.modal()
       modal.close.then(() => {

@@ -12,7 +12,7 @@ angular.module('threat').controller('AddFeedTypeController', function ($http, $w
     $http.post(`${values.get('api')}/feedTypes`, feedData).then((response) => {
       $window.location.reload()
     }, (response) => {
-      alert("Looks like you're missing some important field(s)!")
+      $window.alert("Looks like you're missing some important field(s)!")
     })
   }
 })

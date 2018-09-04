@@ -97,6 +97,7 @@
   "scripts": {
     "build": "gulp build",
     "test": "gulp test",
-    "lint": "eslint --fix ."
+    "lint": "eslint --fix .",
+    "start": "npm run lint && gulp serve"
   }
 }

@@ -15,7 +15,7 @@ angular.module('threat').controller('AddUserController', function ($http, $windo
       user_password: vm.password1
     })
     if (vm.password1 !== vm.password2) {
-      return alert('Your passwords do not match!')
+      return $window.alert('Your passwords do not match!')
     }
     // posting the data to the api
     if (vm.username) {
@@ -23,7 +23,7 @@ angular.module('threat').controller('AddUserController', function ($http, $windo
         // reloads the page
         $window.location.reload()
       }, (response) => {
-        alert("Looks like you're missing some important field(s)!")
+        $window.alert("Looks like you're missing some important field(s)!")
       })
     }
   }

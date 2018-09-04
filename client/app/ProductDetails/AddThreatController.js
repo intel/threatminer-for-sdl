@@ -77,7 +77,7 @@ angular.module('threat').controller('AddThreatController', function ($http, $win
     $http.post(`${values.get('api')}/products/${vm.id}/threats`, threatData).then((response) => {
       $window.location.reload()
     }, (response) => {
-      alert("Looks like you're missing some important field(s)!")
+      $window.alert("Looks like you're missing some important field(s)!")
     })
   }
 })

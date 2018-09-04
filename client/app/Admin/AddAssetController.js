@@ -12,7 +12,7 @@ angular.module('threat').controller('AddAssetController', function ($http, $wind
     $http.post(`${values.get('api')}/assets`, data).then((response) => {
       $window.location.reload()
     }, (response) => {
-      alert("Looks like you're missing some important field(s)!")
+      $window.alert("Looks like you're missing some important field(s)!")
     })
   }
 })

@@ -40,7 +40,7 @@ angular.module('threat')
       todelete.storeID(toPush)
       ModalService.showModal({
         templateUrl: 'Feeds/deleteSelectedFeeds.html',
-        controller: 'DeleteselectedfeedsController'
+        controller: 'DeleteSelectedFeedsController'
       }).then((modal) => {
         modal.element.modal()
         modal.close.then((result) => {
@@ -68,7 +68,7 @@ angular.module('threat')
     vm.addFeedModal = function () {
       ModalService.showModal({
         templateUrl: 'Feeds/addFeedModal.html',
-        controller: 'AddfeedController'
+        controller: 'AddFeedController'
       }).then((modal) => {
         modal.element.modal()
         modal.close.then((result) => {
@@ -83,7 +83,7 @@ angular.module('threat')
 
       ModalService.showModal({
         templateUrl: 'Feeds/deleteFeed.html',
-        controller: 'DeletefeedController',
+        controller: 'DeleteFeedController',
         inputs: {
           feed: id
         }

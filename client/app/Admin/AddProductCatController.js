@@ -12,7 +12,7 @@ angular.module('threat').controller('AddProductCatController', function ($http, 
     $http.post(`${values.get('api')}/productCategories`, productData).then((response) => {
       $window.location.reload()
     }, (response) => {
-      alert("Looks like you're missing some important field(s)!")
+      $window.alert("Looks like you're missing some important field(s)!")
     })
   }
 })

@@ -6,7 +6,7 @@ angular.module('threat').controller('LoginController', function ($http, $routePa
   vm.isLoggedIn = false
   vm.logOut = function () {
     identity.removeToken()
-    window.location.href = `${location.origin}/login`
+    $window.location.href = `${$location.origin}/login`
   }
 
   if (identity.isIdentify() !== false) {
@@ -45,9 +45,9 @@ angular.module('threat').controller('LoginController', function ($http, $routePa
     })
     $http.post(`${values.get('api')}/auth`, userData).then((response) => {
       identity.storeToken(response.data.access_token)
-      $window.location.href = location.origin
+      $window.location.href = $location.origin
     }, (response) => {
-      alert('Either your username or password is incorrect.')
+      $window.alert('Either your username or password is incorrect.')
     })
   }
 })

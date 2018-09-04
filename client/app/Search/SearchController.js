@@ -1,5 +1,5 @@
 // controller for the product's page
-angular.module('threat').controller('SearchController', function ($http, $routeParams, $location, values) {
+angular.module('threat').controller('SearchController', function ($http, $window, $routeParams, $location, values) {
   const vm = this
   // In basic search, holds the choice for whether to search "Threat Description" or "Threat Title"
   vm.currentSearchParam = 'Title & Description'
@@ -297,7 +297,7 @@ angular.module('threat').controller('SearchController', function ($http, $routeP
         const attackVectors = vm.escapeCommas(vm.objArrToIndexedArrByKey(advancedSearchResults[x].attack_vectors, 'atkvtr_name')).join(', ')
         const vulnerabilities = vm.escapeCommas(vm.objArrToIndexedArrByKey(advancedSearchResults[x].vulnerabilities, 'vuln_name')).join(', ')
         const threatTitle = advancedSearchResults[x].threat[0].threat_title
-        const threatLink = `http://${window.location.host}/threats/${advancedSearchResults[x].threat[0].threat_id}`
+        const threatLink = `http://${$window.location.host}/threats/${advancedSearchResults[x].threat[0].threat_id}`
         // if (adversaries) hasAdversaries = true
         // if (assets) hasAssets = true
         // if (attackTypes) hasAttackTypes = true
@@ -348,7 +348,7 @@ angular.module('threat').controller('SearchController', function ($http, $routeP
         threatDate = vm.formatDateString(element.threat_date)
         threatTitle = element.threat_title
         threatDesc = element.threat_desc
-        threatLink = `http://${window.location.host}/${element.threat_id}`
+        threatLink = `http://${$window.location.host}/${element.threat_id}`
         data[index] = {
           threatDate, threatTitle, threatDesc, threatLink
         }

@@ -79,7 +79,7 @@ angular.module('threat').controller('AddProductController', function ($http, $wi
       var productId = angular.copy(response.data[0]['max(product_id)'])
       insertKeywords(productId, vm.keywords)
     }, (response) => {
-      alert("Looks like you're missing some important field(s)!")
+      $window.alert("Looks like you're missing some important field(s)!")
     })
   }
 })

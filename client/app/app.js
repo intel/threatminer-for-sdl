@@ -101,7 +101,7 @@ $httpProvider.interceptors.push(['$q', '$location', 'identity', function ($q, $l
 
 		.when('/ontologies/:productID', {
 			templateUrl: 'ProductDetails/productDetail.html',
-			controller: 'ProductdetailController',
+			controller: 'ProductDetailController',
 			controllerAs: 'vm',
 			authenticated: true
 

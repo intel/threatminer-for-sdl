@@ -192,7 +192,7 @@ angular.module('threat').controller('ExecutiveSummaryController', function ($htt
   getBarCounts()
 
   // range selector function for line chart and feeds table
-  $(() => {
+  const $ = function () {
     let start; let end; let tableStart; let
       tableEnd
     start = tableStart = moment().subtract(365, 'days')
@@ -272,5 +272,5 @@ angular.module('threat').controller('ExecutiveSummaryController', function ($htt
 
     chartRange(start, end)
     tableRange(tableStart, tableEnd)
-  })
+  }
 })

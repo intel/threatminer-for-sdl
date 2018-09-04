@@ -63,7 +63,7 @@ angular.module('threat').controller('TrainingInfoController', function ($http, $
       vm.isLoading = false
       vm.isFirstPage = false
     }, (response) => {
-      alert("Looks like you're missing some important field(s)!")
+      $window.alert("Looks like you're missing some important field(s)!")
     })
   }
 })

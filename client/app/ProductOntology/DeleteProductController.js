@@ -6,7 +6,7 @@ angular.module('threat').controller('DeleteProductController', function ($http, 
   vm.confirmDelete = function () {
     console.log(productID)
     $http.delete(`${values.get('api')}/products/${productID}`).then((response) => {
-      $('.modal-backdrop').hide()
+      $window('.modal-backdrop').hide()
       $window.location.href = '/ontologies'
     })
   }
