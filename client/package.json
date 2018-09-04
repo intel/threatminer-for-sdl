@@ -21,6 +21,7 @@
     "browser-sync": "^2.7.13",
     "chai": "^3.5.0",
     "chalk": "^1.1.0",
+    "concurrently": "^4.0.1",
     "connect-modrewrite": "^0.10.1",
     "del": "^2.2.0",
     "eslint": "^5.5.0",
@@ -98,6 +99,7 @@
     "build": "gulp build",
     "test": "gulp test",
     "lint": "eslint --fix .",
-    "start": "npm run lint && gulp serve"
+    "start": "npm run lint && gulp serve",
+    "startBoth": "concurrently --kill-others-on-fail \"npm run start\" \"cd ../server && export FLASK_APP=run.py && export FLASK_ENV=development && flask run\""
   }
 }
