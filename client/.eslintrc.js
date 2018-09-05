@@ -3,5 +3,5 @@ module.exports = {
     "plugins": ["angular"],
     "globals": {
       "angular": true
-    },
+    }
 };
