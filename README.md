@@ -7,7 +7,7 @@ A security tool from threat intelligence that uses web scraping and machine lear
 2. A [Git installation](https://git-scm.com/downloads)
 3. Install [Node JS and NPM](https://www.npmjs.com/get-npm)
 4. install bower: `npm i -g bower`
-5. A running web server. To run a MySQL web server locally, install [WAMP](http://www.wampserver.com/en/) if running on Windows, or install [XAMPP](https://www.apachefriends.org/index.html) if running on MAC/Linux. Create a database called 'threat_intelligence_db'
+5. A running MySQL web server. To run a MySQL web server locally, install [WAMP](http://www.wampserver.com/en/) if running on Windows, or install [XAMPP](https://www.apachefriends.org/index.html) if running on MAC/Linux. Create a database called 'threat_intelligence_db'
 6. [StanfordCoreNLP](https://stanfordnlp.github.io/CoreNLP/) Downloaded with all jar files in the directory added to the "classpath" environment variable.
 
 ## Workflow:
