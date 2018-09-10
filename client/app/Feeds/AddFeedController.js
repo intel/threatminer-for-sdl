@@ -1,5 +1,5 @@
 // controller to add a new feed to the system
-angular.module('threat').controller('AddFeedController', function ($http, $window, $q, values, alert) {
+angular.module('threat').controller('AddFeedController', function ($http, $window, $q, values) {
   const vm = this
   vm.feedTypes = [{ Name: '', ID: null }]
   vm.feed_desc = null
@@ -37,7 +37,7 @@ angular.module('threat').controller('AddFeedController', function ($http, $windo
     addFeedPromise.then((response) => {
       $window.location.reload()
     }, (response) => {
-      alert("Looks like you're missing some important field(s)!")
+      $window.alert("Looks like you're missing some important field(s)!")
     })
   }
 })
