@@ -1,12 +1,10 @@
 // controller for deleting a product modal
-angular.module('threat').controller('DeleteProductController', function ($http, $window, $q, $routeParams, values) {
+angular.module('threat').controller('DeleteProductDetailsController', function ($http, $window, $q, $routeParams, values) {
   const vm = this
   const productID = $routeParams.productID
 
   vm.confirmDelete = function () {
-    console.log(productID)
     $http.delete(`${values.get('api')}/products/${productID}`).then((response) => {
-      $window('.modal-backdrop').hide()
       $window.location.href = '/ontologies'
     })
   }
