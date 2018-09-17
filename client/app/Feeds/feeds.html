@@ -6,14 +6,14 @@
   </div>
 
   <div ng-hide="!vm.canAdd" class=feedHeadRight>
-    <button class="addFeedButton" ng-click=vm.addFeedModal()><strong>Add Feed</strong>  <i class="icon glyphicon glyphicon-plus fa-fw"></i></button>
+    <button class="addFeedButton" ng-click=vm.addFeedModal()><strong>Add Feed</strong> <i class="icon glyphicon glyphicon-plus fa-fw"></i></button>
     <br>
-    <button class="deleteSelectedFeedsButton" ng-click=vm.deleteSelectedFeeds()><strong>Delete Selected Feeds</strong>  <i class="icon glyphicon glyphicon-trash fa-fw"></i></button>
+    <button class="deleteSelectedFeedsButton" ng-click=vm.deleteSelectedFeeds()><strong>Delete Selected Feeds</strong> <i class="icon glyphicon glyphicon-trash fa-fw"></i></button>
     <br>
     <div class="feedFilter">
       <p>
-        <strong> Filter by Type: </strong>&nbsp;<select
-          ng-options="opt for opt in vm.feedTypes" ng-model="feedType">
+        <strong> Filter by Type: </strong>&nbsp;
+        <select ng-options="opt for opt in vm.feedTypes" ng-model="feedType">
         </select>
       </p>
     </div>
@@ -22,8 +22,8 @@
   <div ng-hide="vm.canAdd" class=feedHeadRight>
     <div class="feedFilterBase">
       <p>
-        <strong> Filter by Type: </strong>&nbsp;<select
-          ng-options="opt for opt in vm.feedTypes track by opt" ng-model="feedType">
+        <strong> Filter by Type: </strong>&nbsp;
+        <select ng-options="opt for opt in vm.feedTypes track by opt" ng-model="feedType">
         </select>
       </p>
     </div>
@@ -32,47 +32,50 @@
 
 
 <table st-table="vm.displayedCollection" st-safe-src="vm.rowCollection" class="table table-striped feedTable">
-      <thead>
-        <tr>
-          <th colspan="7"><input st-search="" class="form-control" placeholder="search ..." type="text"/></th>
-        </tr>
-			<tr>
-				<th st-sort="feed_title" st-sort-default="default">Title <i class="icon fa-fw"></i></th>
-				<th>Link</th>
-				<th>Description</th>
-        <th st-sort="type_name">Type <i class="icon fa-fw"></i></th>
-        <th></th>
-        <th></th>
-        <th></th>
-			</tr>
-			</thead>
+  <thead>
+    <tr>
+      <th colspan="7">
+        <input st-search="" class="form-control" placeholder="search ..." type="text" />
+      </th>
+    </tr>
+    <tr>
+      <th st-sort="feed_title" st-sort-default="default">Title <i class="icon fa-fw"></i></th>
+      <th>Link</th>
+      <th>Description</th>
+      <th st-sort="type_name">Type <i class="icon fa-fw"></i></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
 
-			<tbody>
-			<tr  st-select-row="row" st-select-mode="multiple"  ng-repeat="row in vm.displayedCollection | filter:feedType">
-				<td>{{row.feed_title}}</td>
-				<td><a target="_blank" href={{row.feed_link}}>{{row.feed_link}}</a></td>
-				<td>{{row.feed_desc}}</td>
-        <td>{{row.type_name}}</td>
-          <td>
-            <button ng-hide="!vm.canAdd" ng-click="vm.editEntry('feeds', 'feed_id', row.feed_id, [{'fieldName':'feed_title', 'fieldValue':row.feed_title, 'fieldTitle':'Title', 'inputType':'text'}, {'fieldName':'feed_link', 'fieldValue':row.feed_link, 'fieldTitle':'Link', 'inputType':'text'}, {'fieldName':'feed_desc', 'fieldValue':row.feed_desc,'fieldTitle':'Description', 'inputType':'textarea'}])" class="deleteThreatButton">
-               <i class="icon glyphicon glyphicon-pencil fa-fw"></i>
-            </button>
-          </td>
-          <td>
-            <button ng-hide="!vm.canAdd" ng-click="vm.deleteFeedModal(row.feed_id)" class="deleteThreatButton">
-               <i class="icon glyphicon glyphicon-trash fa-fw"></i>
-            </button>
-          </td>
+  <tbody>
+    <tr st-select-row="row" st-select-mode="multiple" ng-repeat="row in vm.displayedCollection | filter:feedType">
+      <td>{{row.feed_title}}</td>
+      <td><a target="_blank" href={{row.feed_link}}>{{row.feed_link}}</a></td>
+      <td>{{row.feed_desc}}</td>
+      <td>{{row.type_name}}</td>
+      <td>
+        <button ng-hide="!vm.canAdd" ng-click="vm.editEntry('feeds', 'feed_id', row.feed_id, [{'fieldName':'feed_title', 'fieldValue':row.feed_title, 'fieldTitle':'Title', 'inputType':'text'}, {'fieldName':'feed_link', 'fieldValue':row.feed_link, 'fieldTitle':'Link', 'inputType':'text'}, {'fieldName':'feed_desc', 'fieldValue':row.feed_desc,'fieldTitle':'Description', 'inputType':'textarea'}])"
+        class="deleteThreatButton">
+          <i class="icon glyphicon glyphicon-pencil fa-fw"></i>
+        </button>
+      </td>
+      <td>
+        <button ng-hide="!vm.canAdd" ng-click="vm.deleteFeedModal(row.feed_id)" class="deleteThreatButton">
+          <i class="icon glyphicon glyphicon-trash fa-fw"></i>
+        </button>
+      </td>
 
-        <td></td>
-			</tr>
-			</tbody>
-      <tfoot>
-        <tr>
-  				<td colspan="9" class="text-center">
-  			<!--		<div class="pages" st-pagination="" st-items-by-page="itemsByPage" st-displayed-pages="7"></div>-->
-  				</td>
-  			</tr>
-		</tfoot>
-		</table>
-	</div>
+      <td></td>
+    </tr>
+  </tbody>
+  <tfoot>
+    <tr>
+      <td colspan="9" class="text-center">
+        <!--		<div class="pages" st-pagination="" st-items-by-page="itemsByPage" st-displayed-pages="7"></div>-->
+      </td>
+    </tr>
+  </tfoot>
+</table>
+</div>

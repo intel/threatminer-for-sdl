@@ -1,15 +1,18 @@
 <div class="modal fade" ng-controller="AddAssetController as $ctrl">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-               <button type="button" class="close" ng-click="close()" data-dismiss="modal" aria-hidden="true">&times;</button>
-              <p class="labe"><strong>Name: </strong><input class="modalInput" type="text" ng-model="$ctrl.name" required /></p>
-              <p class="labe"><strong>Description: </strong>
-                <textarea rows="2" cols="50"  class="desc" type="text"  ng-model="$ctrl.desc"></textarea></p>
-              </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-block submit" ng-click="$ctrl.addAsset()">Submit</button>
-            </div>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" ng-click="close()" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <p class="labe"><strong>Name: </strong>
+          <input class="modalInput" type="text" ng-model="$ctrl.name" required />
+        </p>
+        <p class="labe"><strong>Description: </strong>
+          <textarea rows="2" cols="50" class="desc" type="text" ng-model="$ctrl.desc"></textarea>
+        </p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-block submit" ng-click="$ctrl.addAsset()">Submit</button>
+      </div>
     </div>
   </div>
 </div>
