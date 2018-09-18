@@ -6,5 +6,8 @@ module.exports = {
     "plugins": ["angular"],
     "globals": {
       "angular": true
+    },
+    "rules": {
+      "indent": ["error", 4],
     }
 };
