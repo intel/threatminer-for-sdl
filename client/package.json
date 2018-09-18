@@ -90,7 +90,6 @@
     "sinon": "^1.17.2",
     "sinon-chai": "^2.8.0",
     "spock": "^0.3.3",
-    "standard": "^12.0.1",
     "stream-series": "^0.1.1",
     "webpack": "^4.0.0",
     "yargs": "^4.3.2"
