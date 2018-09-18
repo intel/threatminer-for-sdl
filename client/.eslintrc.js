@@ -1,11 +1,10 @@
 module.exports = {
+    "parserOptions": {
+      "ecmaVersion": 6
+    },
     "extends": ["standard", "plugin:angular/johnpapa"],
-    "plugins": ["angular", "html"],
+    "plugins": ["angular"],
     "globals": {
       "angular": true
-    },
-    "settings": {
-      "html/html-extensions": [".html"],
-      "html/report-bad-indent": "warn",
     }
 };
