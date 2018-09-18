@@ -63,7 +63,7 @@ const fileCollections = config.fileCollections;
 const buildDev = gulp.series(
   clean,
   gulp.parallel(
-    //lint,
+    lint,
     injectDev,
     moveAndFlattenFonts,
   ),

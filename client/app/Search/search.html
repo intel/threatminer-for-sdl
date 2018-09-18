@@ -22,12 +22,12 @@
     <tr>
       <td>
         <ol class="nya-bs-select" title="{{vm.adversarySelectorTitle}}" style="width:200px" data-live-search="true" size="15" multiple data-selected-text-format="count" ng-model="vm.selectedAdversaries">
-        	<li nya-bs-option="adversary in vm.adversaries">
-        		<a ng-click="vm.clearSelectorTitle('adversarySelectorTitle')">
+          <li nya-bs-option="adversary in vm.adversaries">
+            <a ng-click="vm.clearSelectorTitle('adversarySelectorTitle')">
               {{adversary["adv_name"]}}
               <span class="glyphicon glyphicon-ok check-mark"></span>
             </a>
-        	</li>
+          </li>
         </ol>
       </td>
       <td>
@@ -72,29 +72,44 @@
       </td>
     </tr>
     <tr>
-      <td><label><input type="checkbox" ng-model="vm.adversariesInclusive"> Is Inclusive</label></td>
-      <td><label><input type="checkbox" ng-model="vm.assetsInclusive"> Is Inclusive</label></td>
-      <td><label><input type="checkbox" ng-model="vm.attackTypesInclusive"> Is Inclusive</label></td>
-      <td><label><input type="checkbox" ng-model="vm.attackVectorsInclusive"> Is Inclusive</label></td>
-      <td><label><input type="checkbox" ng-model="vm.vulnerabilitiesInclusive"> Is Inclusive</label></td>
+      <td>
+        <label>
+          <input type="checkbox" ng-model="vm.adversariesInclusive"> Is Inclusive</label>
+      </td>
+      <td>
+        <label>
+          <input type="checkbox" ng-model="vm.assetsInclusive"> Is Inclusive</label>
+      </td>
+      <td>
+        <label>
+          <input type="checkbox" ng-model="vm.attackTypesInclusive"> Is Inclusive</label>
+      </td>
+      <td>
+        <label>
+          <input type="checkbox" ng-model="vm.attackVectorsInclusive"> Is Inclusive</label>
+      </td>
+      <td>
+        <label>
+          <input type="checkbox" ng-model="vm.vulnerabilitiesInclusive"> Is Inclusive</label>
+      </td>
     </tr>
     <tr>
       <td>
         <div class="panel panel-info deselect-panel">
-        	<ul class="list-group" ng-repeat="selection in vm.selectedAdversaries | orderBy : 'adv_name'">
-        		<li class="list-group-item ellipsis">
-            		<span class="ellipsis-item" title={{selection.adv_name}}><small>{{selection.adv_name}}</small></span>
-            	   <i class="fa fa-times remove-item" ng-click="vm.removeSelection('adv', selection.adv_name, 'adversary', 'adversaries', false)"></i>
-        		</li>
-	        </ul>
+          <ul class="list-group" ng-repeat="selection in vm.selectedAdversaries | orderBy : 'adv_name'">
+            <li class="list-group-item ellipsis">
+              <span class="ellipsis-item" title={{selection.adv_name}}><small>{{selection.adv_name}}</small></span>
+              <i class="fa fa-times remove-item" ng-click="vm.removeSelection('adv', selection.adv_name, 'adversary', 'adversaries', false)"></i>
+            </li>
+          </ul>
         </div>
       </td>
       <td>
         <div class="panel panel-info deselect-panel">
           <ul class="list-group" ng-repeat="selection in vm.selectedAssets | orderBy : 'asset_name'">
             <li class="list-group-item ellipsis">
-                <span class="ellipsis-item" title={{selection.asset_name}}><small>{{selection.asset_name}}</small></span>
-                 <i class="fa fa-times remove-item" ng-click="vm.removeSelection('asset', selection.asset_name, 'asset', 'assets', false)"></i>
+              <span class="ellipsis-item" title={{selection.asset_name}}><small>{{selection.asset_name}}</small></span>
+              <i class="fa fa-times remove-item" ng-click="vm.removeSelection('asset', selection.asset_name, 'asset', 'assets', false)"></i>
             </li>
           </ul>
         </div>
@@ -103,8 +118,8 @@
         <div class="panel panel-info deselect-panel">
           <ul class="list-group" ng-repeat="selection in vm.selectedAttackTypes | orderBy : 'atktyp_name'">
             <li class="list-group-item ellipsis">
-                <span class="ellipsis-item" title={{selection.atktyp_name}}><small>{{selection.atktyp_name}}</small></span>
-                 <i class="fa fa-times remove-item" ng-click="vm.removeSelection('atktyp', selection.atktyp_name, 'attackType', 'attackTypes', false)"></i>
+              <span class="ellipsis-item" title={{selection.atktyp_name}}><small>{{selection.atktyp_name}}</small></span>
+              <i class="fa fa-times remove-item" ng-click="vm.removeSelection('atktyp', selection.atktyp_name, 'attackType', 'attackTypes', false)"></i>
             </li>
           </ul>
         </div>
@@ -113,8 +128,8 @@
         <div class="panel panel-info deselect-panel">
           <ul class="list-group" ng-repeat="selection in vm.selectedAttackVectors | orderBy : 'atkvtr_name'">
             <li class="list-group-item ellipsis">
-                <span class="ellipsis-item" title={{selection.atkvtr_name}}><small>{{selection.atkvtr_name}}</small></span>
-                 <i class="fa fa-times remove-item" ng-click="vm.removeSelection('atkvtr', selection.atkvtr_name, 'attackVector', 'attackVectors', false)"></i>
+              <span class="ellipsis-item" title={{selection.atkvtr_name}}><small>{{selection.atkvtr_name}}</small></span>
+              <i class="fa fa-times remove-item" ng-click="vm.removeSelection('atkvtr', selection.atkvtr_name, 'attackVector', 'attackVectors', false)"></i>
             </li>
           </ul>
         </div>
@@ -123,8 +138,8 @@
         <div class="panel panel-info deselect-panel">
           <ul class="list-group" ng-repeat="selection in vm.selectedVulnerabilities | orderBy : 'vuln_name'">
             <li class="list-group-item ellipsis">
-                <span class="ellipsis-item" title={{selection.vuln_name}}><small>{{selection.vuln_name}}</small></span>
-                 <i class="fa fa-times remove-item" ng-click="vm.removeSelection('vuln', selection.vuln_name, 'vulnerability', 'vulnerabilities', false)"></i>
+              <span class="ellipsis-item" title={{selection.vuln_name}}><small>{{selection.vuln_name}}</small></span>
+              <i class="fa fa-times remove-item" ng-click="vm.removeSelection('vuln', selection.vuln_name, 'vulnerability', 'vulnerabilities', false)"></i>
             </li>
           </ul>
         </div>
@@ -140,50 +155,51 @@
       <td></td>
       <td></td>
       <td>
-				<intc-spinner style="float:right;" ng-show="vm.exportLoading" spin-position="relative" spin-height="12" spin-width="8" spin-length="12" spin-lines="10" spin-radius="5"></intc-spinner>
-        <button style="float:right" type="button" ng-show="!vm.exportLoading && vm.advancedDisplayCollection.length > 0" class="btn btn-default" ng-csv="vm.getAdvSearchDataAsArray()" csv-header="['Adversaries', 'Assets', 'Attack Types', 'Attack Vectors', 'Vulnerabilities', 'Threat Title', 'Threat Link']" filename="Advanced_Search_Results.csv">
-					Export
+        <intc-spinner style="float:right;" ng-show="vm.exportLoading" spin-position="relative" spin-height="12" spin-width="8" spin-length="12" spin-lines="10" spin-radius="5"></intc-spinner>
+        <button style="float:right" type="button" ng-show="!vm.exportLoading && vm.advancedDisplayCollection.length > 0" class="btn btn-default" ng-csv="vm.getAdvSearchDataAsArray()" csv-header="['Adversaries', 'Assets', 'Attack Types', 'Attack Vectors', 'Vulnerabilities', 'Threat Title', 'Threat Link']"
+        filename="Advanced_Search_Results.csv">
+          Export
         </button>
       </td>
     </tr>
   </table>
-	<intc-spinner ng-show="vm.isLoading"></intc-spinner>
+  <intc-spinner ng-show="vm.isLoading"></intc-spinner>
   <div ng-hide="vm.isLoading || !vm.hasPerformedAdvancedSearch">
     <table st-table="vm.advancedDisplayCollection" class="table table-striped main">
-    	<thead>
-    		<tr>
-    			<th></th>
+      <thead>
+        <tr>
+          <th></th>
           <th>Adversaries</th>
-    			<th>Assets</th>
-    			<th>Attack Types</th>
+          <th>Assets</th>
+          <th>Attack Types</th>
           <th>Attack Vectors</th>
           <th>Vulnerability</th>
           <th>Threat</th>
-    		</tr>
-    	</thead>
-    	<tbody>
+        </tr>
+      </thead>
+      <tbody>
         <tr ng-repeat="row in vm.advancedDisplayCollection">
           <td></td>
-    			<td><i>{{row.adversaries.length ? "" : "None"}}</i><span ng-repeat="adversary in row.adversaries"><a href="#" ng-click="vm.addClassificationToSelected(adversary, adversary.adv_name, 'adversary', 'adversaries', 'adv')">{{adversary["adv_name"]}}</a>{{$index == row.adversaries.length-1 ? "" : ", "}}</span></td>
+          <td><i>{{row.adversaries.length ? "" : "None"}}</i><span ng-repeat="adversary in row.adversaries"><a href="#" ng-click="vm.addClassificationToSelected(adversary, adversary.adv_name, 'adversary', 'adversaries', 'adv')">{{adversary["adv_name"]}}</a>{{$index == row.adversaries.length-1 ? "" : ", "}}</span></td>
           <td><i>{{row.assets.length ? "" : "None"}}</i><span ng-repeat="asset in row.assets"><a href="#" ng-click="vm.addClassificationToSelected(asset, asset.asset_name, 'asset', 'assets', 'asset')">{{asset["asset_name"]}}</a>{{$index == row.assets.length-1 ? "" : ", "}}</span></td>
-    			<td><i>{{row.attack_types.length ? "" : "None"}}</i><span ng-repeat="attackType in row.attack_types"><a href="#" ng-click="vm.addClassificationToSelected(attackType, attackType.atktyp_name, 'attackType', 'attackTypes', 'atktyp')">{{attackType["atktyp_name"]}}</a>{{$index == row.attack_types.length-1 ? "" : ", "}}</span></td>
+          <td><i>{{row.attack_types.length ? "" : "None"}}</i><span ng-repeat="attackType in row.attack_types"><a href="#" ng-click="vm.addClassificationToSelected(attackType, attackType.atktyp_name, 'attackType', 'attackTypes', 'atktyp')">{{attackType["atktyp_name"]}}</a>{{$index == row.attack_types.length-1 ? "" : ", "}}</span></td>
           <td><i>{{row.attack_vectors.length ? "" : "None"}}</i><span ng-repeat="attackVector in row.attack_vectors"><a href="#" ng-click="vm.addClassificationToSelected(attackVector, attackVector.atkvtr_name, 'attackVector', 'attackVectors', 'atkvtr')">{{attackVector["atkvtr_name"]}}</a>{{$index == row.attack_vectors.length-1 ? "" : ", "}}</span></td>
           <td><i>{{row.vulnerabilities.length ? "" : "None"}}</i><span ng-repeat="vulnerability in row.vulnerabilities"><a href="#" ng-click="vm.addClassificationToSelected(vulnerability, vulnerability.vuln_name, 'vulnerability', 'vulnerabilities', 'vuln')">{{vulnerability["vuln_name"]}}</a>{{$index == row.vulnerabilities.length-1 ? "" : ", "}}</span></td>
           <td><a ng-href="{{'threats/' + row.threat[0]['threat_id']}}">{{row.threat[0]["threat_title"]}}</a></td>
-    		</tr>
-    	</tbody>
-			<tfoot>
-				<tr>
-					<td colspan="7">
-						<div ng-hide="!vm.advancedDisplayCollection.length == 0">
-							<strong class="align-center">Your search query returned no results.</strong>
-						</div>
-						<nav aria-label="..." ng-show="vm.maxPageCountAdvanced > 1" class="align-center">
-							<ul uib-pagination num-pages="vm.maxPageCountAdvanced" total-items="vm.maxPageCountAdvanced*10" rotate="true" ng-model="vm.currentPageAdvanced" ng-change="vm.advancedSearch(vm.currentPageAdvanced)" max-size="vm.maxPageTabs"></ul>
-					 	</nav>
-					</td>
-				</tr>
-			</tfoot>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td colspan="7">
+            <div ng-hide="!vm.advancedDisplayCollection.length == 0">
+              <strong class="align-center">Your search query returned no results.</strong>
+            </div>
+            <nav aria-label="..." ng-show="vm.maxPageCountAdvanced > 1" class="align-center">
+              <ul uib-pagination num-pages="vm.maxPageCountAdvanced" total-items="vm.maxPageCountAdvanced*10" rotate="true" ng-model="vm.currentPageAdvanced" ng-change="vm.advancedSearch(vm.currentPageAdvanced)" max-size="vm.maxPageTabs"></ul>
+            </nav>
+          </td>
+        </tr>
+      </tfoot>
     </table>
   </div>
 </div>
@@ -193,56 +209,58 @@
   <div class="input-group">
 
     <div class="input-group-btn">
-    	<button type="button" class="btn btn-default dropdown-toggle" style="width:160px;" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{vm.currentSearchParam}}<span class="caret"></span></button>
+      <button type="button" class="btn btn-default dropdown-toggle" style="width:160px;" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{vm.currentSearchParam}}<span class="caret"></span></button>
       <ul class="dropdown-menu">
-				<li><a href="#" ng-click="vm.setDropdown('Title & Description')">Title & Description</a></li>
-    		<li><a href="#" ng-click="vm.setDropdown('Threat Description')">Threat Description</a></li>
-    		<li><a href="#" ng-click="vm.setDropdown('Threat Title')">Threat Title</a></li>
-    	</ul>
+        <li><a href="#" ng-click="vm.setDropdown('Title & Description')">Title & Description</a></li>
+        <li><a href="#" ng-click="vm.setDropdown('Threat Description')">Threat Description</a></li>
+        <li><a href="#" ng-click="vm.setDropdown('Threat Title')">Threat Title</a></li>
+      </ul>
     </div>
 
     <form name="form" ng-submit="vm.search()" role="form">
-    	<input type="text" class="form-control" keyup.enter="vm.search()" ng-model="vm.searchQuery" required autofocus/>
+      <input type="text" class="form-control" keyup.enter="vm.search()" ng-model="vm.searchQuery" required autofocus/>
     </form>
-      <span class="input-group-btn">
+    <span class="input-group-btn">
       	<button class="btn btn-default" ng-disabled="!vm.searchQuery" ng-click="vm.search()" type="button">Search</button>
       </span>
   </div>
 
-<div ng-hide="!vm.hasPerformedASearch">
-  <br>
-  <button type="button" ng-show="vm.displayedCollection.length > 0" class="btn btn-default" ng-csv="vm.getSearchDataAsArray()" csv-header="['Date', 'Title', 'Description', 'Threat Link']" filename="Search_Results.csv">
-    Export
-  </button>
-  <table st-table="vm.displayedCollection" st-safe-src="vm.rowCollection" class="table table-striped main">
-  	<thead>
-  		<tr>
-  			<th></th>
-  			<th class="pointer" ng-click="vm.toggleSort('threat_date', 'curBasicSortKey', 'curBasicSortDirection')">Date <span ng-class="vm.getSortClass('threat_date', 'curBasicSortKey', 'curBasicSortDirection')"></span></th>
-  			<th class="pointer" ng-click="vm.toggleSort('threat_title', 'curBasicSortKey', 'curBasicSortDirection')">Title <span ng-class="vm.getSortClass('threat_title', 'curBasicSortKey', 'curBasicSortDirection')"></span></th>
-  			<th class="pointer" ng-click="vm.toggleSort('threat_desc', 'curBasicSortKey', 'curBasicSortDirection')">Description <span ng-class="vm.getSortClass('threat_desc', 'curBasicSortKey', 'curBasicSortDirection')"></span></th>
-  		</tr>
-  	</thead>
+  <div ng-hide="!vm.hasPerformedASearch">
+    <br>
+    <button type="button" ng-show="vm.displayedCollection.length > 0" class="btn btn-default" ng-csv="vm.getSearchDataAsArray()" csv-header="['Date', 'Title', 'Description', 'Threat Link']" filename="Search_Results.csv">
+      Export
+    </button>
+    <table st-table="vm.displayedCollection" st-safe-src="vm.rowCollection" class="table table-striped main">
+      <thead>
+        <tr>
+          <th></th>
+          <th class="pointer" ng-click="vm.toggleSort('threat_date', 'curBasicSortKey', 'curBasicSortDirection')">Date <span ng-class="vm.getSortClass('threat_date', 'curBasicSortKey', 'curBasicSortDirection')"></span></th>
+          <th class="pointer" ng-click="vm.toggleSort('threat_title', 'curBasicSortKey', 'curBasicSortDirection')">Title <span ng-class="vm.getSortClass('threat_title', 'curBasicSortKey', 'curBasicSortDirection')"></span></th>
+          <th class="pointer" ng-click="vm.toggleSort('threat_desc', 'curBasicSortKey', 'curBasicSortDirection')">Description <span ng-class="vm.getSortClass('threat_desc', 'curBasicSortKey', 'curBasicSortDirection')"></span></th>
+        </tr>
+      </thead>
 
-  	<tbody>
-      <tr ng-repeat="row in vm.displayedCollection">
-  			<td></td>
-  			<td>{{row.Date}}</td>
-  			<td><a href="/threats/{{row.ID}}" ng-bind-html="vm.boldQueryInResults(row.Title, 'Threat Title')"></a></td>
-  			<td ng-bind-html="vm.boldQueryInResults(row.Description, 'Threat Description')"></td>
-  		</tr>
-  	</tbody>
-  	<tfoot>
-      <tr>
-        <td colspan="4">
-          <div ng-hide="!vm.displayedCollection.length == 0">
-            <strong class="align-center">Your search query returned no results.</strong>
-          </div>
-    			<nav aria-label="..." ng-show="vm.maxPageCount > 1" class="align-center">
-            <ul uib-pagination num-pages="vm.maxPageCount" total-items="vm.maxPageCount*10" rotate="true" ng-model="vm.currentPage" ng-change="vm.search(vm.currentPage)" max-size="vm.maxPageTabs"></ul>
-    			</nav>
-        </td>
-      </tr>
-  	</tfoot>
-  </table>
-</div>
+      <tbody>
+        <tr ng-repeat="row in vm.displayedCollection">
+          <td></td>
+          <td>{{row.Date}}</td>
+          <td>
+            <a href="/threats/{{row.ID}}" ng-bind-html="vm.boldQueryInResults(row.Title, 'Threat Title')"></a>
+          </td>
+          <td ng-bind-html="vm.boldQueryInResults(row.Description, 'Threat Description')"></td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td colspan="4">
+            <div ng-hide="!vm.displayedCollection.length == 0">
+              <strong class="align-center">Your search query returned no results.</strong>
+            </div>
+            <nav aria-label="..." ng-show="vm.maxPageCount > 1" class="align-center">
+              <ul uib-pagination num-pages="vm.maxPageCount" total-items="vm.maxPageCount*10" rotate="true" ng-model="vm.currentPage" ng-change="vm.search(vm.currentPage)" max-size="vm.maxPageTabs"></ul>
+            </nav>
+          </td>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
