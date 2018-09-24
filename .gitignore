@@ -8,10 +8,10 @@ client/.idea
 client/.DS_Store
 client/coverage
 client/node_modules/*
-client/app/bower_components/*
-!client/app/bower_components/intc-enter/*
-!client/app/bower_components/intcAppFrame/*
-!client/app/bower_components/it-mlaf-sass/*
+client/bower_components/*
+!client/bower_components/intc-enter/*
+!client/bower_components/intcAppFrame/*
+!client/bower_components/it-mlaf-sass/*
 
 # All python binary files
 *.pyc
