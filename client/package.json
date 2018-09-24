@@ -98,8 +98,7 @@
   "scripts": {
     "build": "gulp build",
     "test": "gulp test",
-    "lint": "eslint --fix .",
-    "start": "npm run lint && gulp serve",
+    "lint": "gulp lint",
     "startServer": "cd ../server && export FLASK_APP=run.py && export FLASK_ENV=development && flask run",
     "startBoth": "concurrently --kill-others-on-fail \"npm run start\" \"cd ../server && export FLASK_APP=run.py && export FLASK_ENV=development && flask run\""
   }
