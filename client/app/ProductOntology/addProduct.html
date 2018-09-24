@@ -1,27 +1,25 @@
 <div class="modal fade" ng-controller="AddProductController as $ctrl">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-               <button type="button" class="close" ng-click="close()" data-dismiss="modal" aria-hidden="true">&times;</button>
-              <p class="labe"><strong>Name: </strong><input class="modalInput" type="text" name="product_name" ng-model="$ctrl.product_name" required /></p>
-              <p class="labe"><strong>Category: </strong>&nbsp;
-                <select  name="category" class="cat" ng-options="opt.Name for opt in $ctrl.categories track by opt.Id" ng-model="$ctrl.selectedCat"></select>
-              </p>
-              <p class="labe"><strong>Keywords (Search Terms)</strong>:</p>
-              <tags-input class="tags"
-                placeholder="Enter keywords"
-                allow-leftover-text="false"
-                ng-model="$ctrl.keywords"
-                min-length="3"
-                replace-spaces-with-dashes="false">
-              </tags-input>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" ng-click="close()" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <p class="labe"><strong>Name: </strong>
+          <input class="modalInput" type="text" name="product_name" ng-model="$ctrl.product_name" required />
+        </p>
+        <p class="labe"><strong>Category: </strong>&nbsp;
+          <select name="category" class="cat" ng-options="opt.Name for opt in $ctrl.categories track by opt.Id" ng-model="$ctrl.selectedCat"></select>
+        </p>
+        <p class="labe"><strong>Keywords (Search Terms)</strong>:</p>
+        <tags-input class="tags" placeholder="Enter keywords" allow-leftover-text="false" ng-model="$ctrl.keywords" min-length="3" replace-spaces-with-dashes="false">
+        </tags-input>
 
-                <p class="labe"><strong>Description: </strong>
-                  <textarea rows="2" cols="50"  class="desc" type="text"  ng-model="$ctrl.product_desc"></textarea></p>
-              </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-block submit" ng-click="$ctrl.addProduct()">Submit</button>
-            </div>
-          </div>
-        </div>
+        <p class="labe"><strong>Description: </strong>
+          <textarea rows="2" cols="50" class="desc" type="text" ng-model="$ctrl.product_desc"></textarea>
+        </p>
       </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-block submit" ng-click="$ctrl.addProduct()">Submit</button>
+      </div>
+    </div>
+  </div>
+</div>

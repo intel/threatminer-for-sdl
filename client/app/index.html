@@ -25,119 +25,121 @@
   <link rel="stylesheet" href=".tmp/nya-bs-select.css">
   <link rel="stylesheet" href=".tmp/xeditable.css">
   <!-- endinject -->
-   <!-- webcomp:html -->
-   <!-- endinject -->
+  <!-- webcomp:html -->
+  <!-- endinject -->
   <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bluebird/3.3.5/bluebird.min.js"></script>
 
 
 </head>
-  <body ng-controller="BodyController as vm">
-    <intc-app-frame frame-data="vm.frameData" html5mode="true" >
-             <div class="container" ng-view=""></div>
-    </intc-app-frame>
+
+<body ng-controller="BodyController as vm">
+  <intc-app-frame frame-data="vm.frameData" html5mode="true">
+    <div class="container" ng-view=""></div>
+  </intc-app-frame>
 
 
-      <!-- Anything in the bower/inject block is automatically added. Put something in this block and it will probably be overwritten.
+  <!-- Anything in the bower/inject block is automatically added. Put something in this block and it will probably be overwritten.
 Add your user scripts anywhere else... just not in here. -->
-      <!-- bower:js -->
-      <script src="bower_components/jquery/dist/jquery.js"></script>
-      <script src="bower_components/angular/angular.js"></script>
-      <script src="bower_components/angular-animate/angular-animate.js"></script>
-      <script src="bower_components/angular-cookies/angular-cookies.js"></script>
-      <script src="bower_components/angular-resource/angular-resource.js"></script>
-      <script src="bower_components/angular-route/angular-route.js"></script>
-      <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
-      <script src="bower_components/angular-touch/angular-touch.js"></script>
-      <script src="bower_components/intc-enter/src/intcEnter.directive.js"></script>
-      <script src="bower_components/bootstrap-sass/assets/javascripts/bootstrap.js"></script>
-      <script src="bower_components/lodash/lodash.js"></script>
-      <script src="bower_components/tmix-caching/tmixCaching.js"></script>
-      <script src="bower_components/ng-tags-input/ng-tags-input.js"></script>
-      <script src="bower_components/angular-modal-service/dst/angular-modal-service.js"></script>
-      <script src="bower_components/ngMeta/dist/ngMeta.js"></script>
-      <script src="bower_components/angular-xeditable/dist/js/xeditable.js"></script>
-      <script src="bower_components/angular-smart-table/dist/smart-table.js"></script>
-      <script src="bower_components/angular-base64/angular-base64.js"></script>
-      <script src="bower_components/nya-bootstrap-select/dist/js/nya-bs-select.js"></script>
-      <script src="bower_components/ng-csv/build/ng-csv.min.js"></script>
-      <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
-      <script src="bower_components/chart.js/dist/Chart.js"></script>
-      <script src="bower_components/angular-chart.js/dist/angular-chart.js"></script>
-      <script src="bower_components/moment/moment.js"></script>
-      <script src="bower_components/bootstrap-select/dist/js/bootstrap-select.js"></script>
-      <script src="bower_components/angular-moment/angular-moment.js"></script>
-      <script src="bower_components/intcAppFrame/js/intcAppFrame.js"></script>
-      <script src="bower_components/intcAppFrame/js/dataDrivenLinks.directive.js"></script>
-      <script src="bower_components/intcAppFrame/js/intcAppFrame.templates.js"></script>
-      <!-- endinject -->
+  <!-- bower:js -->
+  <script src="../bower_components/jquery/dist/jquery.js"></script>
+  <script src="../bower_components/angular/angular.js"></script>
+  <script src="../bower_components/angular-animate/angular-animate.js"></script>
+  <script src="../bower_components/angular-cookies/angular-cookies.js"></script>
+  <script src="../bower_components/angular-resource/angular-resource.js"></script>
+  <script src="../bower_components/angular-route/angular-route.js"></script>
+  <script src="../bower_components/angular-sanitize/angular-sanitize.js"></script>
+  <script src="../bower_components/angular-touch/angular-touch.js"></script>
+  <script src="../bower_components/intc-enter/src/intcEnter.directive.js"></script>
+  <script src="../bower_components/bootstrap-sass/assets/javascripts/bootstrap.js"></script>
+  <script src="../bower_components/lodash/lodash.js"></script>
+  <script src="../bower_components/tmix-caching/tmixCaching.js"></script>
+  <script src="../bower_components/ng-tags-input/ng-tags-input.js"></script>
+  <script src="../bower_components/angular-modal-service/dst/angular-modal-service.js"></script>
+  <script src="../bower_components/ngMeta/dist/ngMeta.js"></script>
+  <script src="../bower_components/angular-xeditable/dist/js/xeditable.js"></script>
+  <script src="../bower_components/angular-smart-table/dist/smart-table.js"></script>
+  <script src="../bower_components/angular-base64/angular-base64.js"></script>
+  <script src="../bower_components/nya-bootstrap-select/dist/js/nya-bs-select.js"></script>
+  <script src="../bower_components/ng-csv/build/ng-csv.min.js"></script>
+  <script src="../bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+  <script src="../bower_components/chart.js/dist/Chart.js"></script>
+  <script src="../bower_components/angular-chart.js/dist/angular-chart.js"></script>
+  <script src="../bower_components/moment/moment.js"></script>
+  <script src="../bower_components/bootstrap-select/dist/js/bootstrap-select.js"></script>
+  <script src="../bower_components/angular-moment/angular-moment.js"></script>
+  <script src="../bower_components/intcAppFrame/js/intcAppFrame.js"></script>
+  <script src="../bower_components/intcAppFrame/js/dataDrivenLinks.directive.js"></script>
+  <script src="../bower_components/intcAppFrame/js/intcAppFrame.templates.js"></script>
+  <!-- endinject -->
 
-      <!-- You could add any bower dependencies manually here... -->
-      <script src="bower_components/ng-tags-input/ng-tags-input.js"></script>
-      <script src="bower_components/angular-smart-table/dist/smart-table.js"></script>
-      <script src="bower_components/angular-modal-service/dst/angular-modal-service.min.js"></script>
-      <script src="bower_components/angular-base64/angular-base64.js"></script>
-      <script src="bower_components/angular-xeditable/dist/js/xeditable.min.js"></script>
-      <script src="../bower_components/nya-bootstrap-select/dist/js/nya-bs-select.min.js"></script>
-
-
-
-    <!-- inject:js -->
-    <script src="app.js"></script>
-    <script src="Watchlist/WatchlistController.js"></script>
-    <script src="Watchlist/UnfollowThreatController.js"></script>
-    <script src="Watchlist/UnfollowProductController.js"></script>
-    <script src="ThreatDetail/TrainingThreatController.js"></script>
-    <script src="ThreatDetail/ThreatsController.js"></script>
-    <script src="ThreatDetail/DeleteThreatController.js"></script>
-    <script src="Search/SearchController.js"></script>
-    <script src="ProductOntology/ProductsController.js"></script>
-    <script src="ProductOntology/DeleteSelectedProductsController.js"></script>
-    <script src="ProductOntology/DeleteProductController.js"></script>
-    <script src="ProductOntology/AddProductController.js"></script>
-    <script src="ProductDetails/ProductDetailController.js"></script>
-    <script src="ProductDetails/EditSelectionController.js"></script>
-    <script src="ProductDetails/DeleteThreatController.js"></script>
-    <script src="ProductDetails/DeleteSelectedThreatsController.js"></script>
-    <script src="ProductDetails/DeleteProductController.js"></script>
-    <script src="ProductDetails/AddThreatController.js"></script>
-    <script src="Logon/LoginController.js"></script>
-    <script src="Logon/AddFirstUserController.js"></script>
-    <script src="Feeds/FeedsController.js"></script>
-    <script src="Feeds/EditElementController.js"></script>
-    <script src="Feeds/DeleteSelectedFeedsController.js"></script>
-    <script src="Feeds/DeleteFeedController.js"></script>
-    <script src="Feeds/AddFeedController.js"></script>
-    <script src="executiveSummary/ExecutiveSummaryController.js"></script>
-    <script src="app-frame/BodyController.js"></script>
-    <script src="Admin/TrainingInfoController.js"></script>
-    <script src="Admin/EditElementController.js"></script>
-    <script src="Admin/DeleteVulnerabilityTypeController.js"></script>
-    <script src="Admin/DeleteUserController.js"></script>
-    <script src="Admin/DeleteProdCatController.js"></script>
-    <script src="Admin/DeleteFeedTypeController.js"></script>
-    <script src="Admin/DeleteAttackVectorTypeController.js"></script>
-    <script src="Admin/DeleteAttackTypeController.js"></script>
-    <script src="Admin/DeleteAssetTypeController.js"></script>
-    <script src="Admin/DeleteAdvTypesController.js"></script>
-    <script src="Admin/AdminController.js"></script>
-    <script src="Admin/AddVulnerabilityController.js"></script>
-    <script src="Admin/AddUserController.js"></script>
-    <script src="Admin/AddTrainingInfoController.js"></script>
-    <script src="Admin/AddProdCatController.js"></script>
-    <script src="Admin/AddFeedTypeController.js"></script>
-    <script src="Admin/AddAttackVectorController.js"></script>
-    <script src="Admin/AddAttackTypeController.js"></script>
-    <script src="Admin/AddAssetController.js"></script>
-    <script src="Admin/AddAdvController.js"></script>
-    <!-- endinject -->
+  <!-- You could add any bower dependencies manually here... -->
+  <script src="../bower_components/ng-tags-input/ng-tags-input.js"></script>
+  <script src="../bower_components/angular-smart-table/dist/smart-table.js"></script>
+  <script src="../bower_components/angular-modal-service/dst/angular-modal-service.min.js"></script>
+  <script src="../bower_components/angular-base64/angular-base64.js"></script>
+  <script src="../bower_components/angular-xeditable/dist/js/xeditable.min.js"></script>
+  <script src="../bower_components/nya-bootstrap-select/dist/js/nya-bs-select.min.js"></script>
 
 
-            <!-- You could add any other app dependencies manually here... -->
-		<!-- Load environment variables -->
-    <link rel="stylesheet" href="bower_components/angular-xeditable/dist/css/xeditable.min.css"/>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
-  </body>
+
+  <!-- inject:js -->
+  <script src="app.js"></script>
+  <script src="Watchlist/WatchlistController.js"></script>
+  <script src="Watchlist/UnfollowThreatController.js"></script>
+  <script src="Watchlist/UnfollowProductController.js"></script>
+  <script src="ThreatDetail/TrainingThreatController.js"></script>
+  <script src="ThreatDetail/ThreatsController.js"></script>
+  <script src="ThreatDetail/DeleteThreatController.js"></script>
+  <script src="Search/SearchController.js"></script>
+  <script src="ProductOntology/ProductsController.js"></script>
+  <script src="ProductOntology/DeleteSelectedProductsController.js"></script>
+  <script src="ProductOntology/DeleteProductController.js"></script>
+  <script src="ProductOntology/AddProductController.js"></script>
+  <script src="ProductDetails/ProductDetailController.js"></script>
+  <script src="ProductDetails/EditSelectionController.js"></script>
+  <script src="ProductDetails/DeleteThreatController.js"></script>
+  <script src="ProductDetails/DeleteSelectedThreatsController.js"></script>
+  <script src="ProductDetails/DeleteProductDetailsController.js"></script>
+  <script src="ProductDetails/AddThreatController.js"></script>
+  <script src="Logon/LoginController.js"></script>
+  <script src="Logon/AddFirstUserController.js"></script>
+  <script src="Feeds/FeedsController.js"></script>
+  <script src="Feeds/EditElementController.js"></script>
+  <script src="Feeds/DeleteSelectedFeedsController.js"></script>
+  <script src="Feeds/DeleteFeedController.js"></script>
+  <script src="Feeds/AddFeedController.js"></script>
+  <script src="executiveSummary/ExecutiveSummaryController.js"></script>
+  <script src="app-frame/BodyController.js"></script>
+  <script src="Admin/TrainingInfoController.js"></script>
+  <script src="Admin/EditElementController.js"></script>
+  <script src="Admin/DeleteVulnerabilityTypeController.js"></script>
+  <script src="Admin/DeleteUserController.js"></script>
+  <script src="Admin/DeleteProdCatController.js"></script>
+  <script src="Admin/DeleteFeedTypeController.js"></script>
+  <script src="Admin/DeleteAttackVectorTypeController.js"></script>
+  <script src="Admin/DeleteAttackTypeController.js"></script>
+  <script src="Admin/DeleteAssetTypeController.js"></script>
+  <script src="Admin/DeleteAdvTypesController.js"></script>
+  <script src="Admin/AdminController.js"></script>
+  <script src="Admin/AddVulnerabilityController.js"></script>
+  <script src="Admin/AddUserController.js"></script>
+  <script src="Admin/AddTrainingInfoController.js"></script>
+  <script src="Admin/AddProdCatController.js"></script>
+  <script src="Admin/AddFeedTypeController.js"></script>
+  <script src="Admin/AddAttackVectorController.js"></script>
+  <script src="Admin/AddAttackTypeController.js"></script>
+  <script src="Admin/AddAssetController.js"></script>
+  <script src="Admin/AddAdvController.js"></script>
+  <!-- endinject -->
+
+
+  <!-- You could add any other app dependencies manually here... -->
+  <!-- Load environment variables -->
+  <link rel="stylesheet" href="../bower_components/angular-xeditable/dist/css/xeditable.min.css" />
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+</body>
+
 </html>

@@ -52,7 +52,7 @@
     </p>
     <p><strong>Notes: </strong></p>
 
-    <a href="#" class="threatNotes" e-style="width:400px; height:100px;"onaftersave="vm.updateNote()" editable-textarea="vm.notes" >{{vm.note || vm.notes || "No Notes"}}</a>
+    <a href="#" class="threatNotes" e-style="width:400px; height:100px;" onaftersave="vm.updateNote()" editable-textarea="vm.notes">{{vm.note || vm.notes || "No Notes"}}</a>
     <p class="ThreatEditor"><strong style="color:black">Last Edited By:</strong> {{vm.editor || "None"}}</p>
 
     <button ng-hide="!vm.canEdit" class="ThreatWatchlistButton" ng-click="vm.deleteThreatModal()">
@@ -125,7 +125,9 @@
 <table st-table="vm.displayedCollection" st-safe-src="vm.rowCollection" class="table table-striped main">
   <thead>
     <tr>
-      <th colspan="9"><input st-search="" st-select-mode="multiple" class="form-control" placeholder="search ..." type="text"/></th>
+      <th colspan="9">
+        <input st-search="" st-select-mode="multiple" class="form-control" placeholder="search ..." type="text" />
+      </th>
     </tr>
     <tr>
       <th st-sort="Name">Ontology <i class="icon fa-fw"></i></th>

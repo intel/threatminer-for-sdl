@@ -8,11 +8,15 @@
       <table>
         <tr>
           <td align="right" class="padding-top padding-right padding-left"><strong class="labe">Severity: </strong></td>
-          <td class="padding-top"><select class="cat" ng-options="opt for opt in $ctrl.ratings" ng-model="$ctrl.selectedRating"></select></td>
+          <td class="padding-top">
+            <select class="cat" ng-options="opt for opt in $ctrl.ratings" ng-model="$ctrl.selectedRating"></select>
+          </td>
         </tr>
         <tr>
           <td align="right" class="padding-top padding-right padding-left"><strong class="labe">Status: </strong></td>
-          <td class="padding-top"><select class="cat" ng-options="opt for opt in $ctrl.statuses" ng-model="$ctrl.selectedStatus"></select></td>
+          <td class="padding-top">
+            <select class="cat" ng-options="opt for opt in $ctrl.statuses" ng-model="$ctrl.selectedStatus"></select>
+          </td>
         </tr>
       </table>
       <div class="modal-footer">

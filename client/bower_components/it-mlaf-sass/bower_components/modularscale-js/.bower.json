@@ -1,0 +1,36 @@
+{
+  "name": "modularscale-js",
+  "version": "0.0.1",
+  "homepage": "http://modularscale.com/",
+  "authors": [
+    "scottkellum <scott@scottkellum.com>"
+  ],
+  "description": "A modular scale calculator written in JavaScript",
+  "main": "modularscale.js",
+  "keywords": [
+    "modularscale",
+    "modular",
+    "scale",
+    "calculator",
+    "typography",
+    "type",
+    "design"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "_release": "0.0.1",
+  "_resolution": {
+    "type": "version",
+    "tag": "0.0.1",
+    "commit": "ae11b30ff24b046fc1274b883d0c394b85272ad0"
+  },
+  "_source": "https://github.com/modularscale/modularscale-js.git",
+  "_target": "~0.0.1",
+  "_originalSource": "modularscale-js"
+}
