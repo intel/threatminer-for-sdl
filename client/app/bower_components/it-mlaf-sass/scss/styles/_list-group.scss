@@ -1,9 +1,0 @@
-/* --------------------------
- * LIST GROUP OVERRIDES
- * --------------------------
- */
-
- @include list-group-item-variant(success, $state-success-bg, pick_best_color($state-success-bg, (#fff, $text-color)));
- @include list-group-item-variant(info, $state-info-bg, pick_best_color($state-info-bg, (#fff, $text-color)));
- @include list-group-item-variant(warning, $state-warning-bg, pick_best_color($state-warning-bg, (#fff, $text-color)));
- @include list-group-item-variant(danger, $state-danger-bg, pick_best_color($state-danger-bg, (#fff, $text-color)));
