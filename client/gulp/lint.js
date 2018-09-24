@@ -16,10 +16,10 @@ function lint() {
   return gulp.src([files.moduleScripts, files.scripts, `!${files.tests}`, `!${files.bowerComponents}`, `!${files.tmp}`])
     .pipe(eslint({
       configFile: ".eslintrc.js",
-      //fix: true,
+      fix: true,
     }))
     .pipe(eslint.format())
-    //.pipe(gulpIf(isFixed, gulp.dest('../test/fixtures')))
+    .pipe(gulpIf(isFixed, gulp.dest('app')))
     .pipe(eslint.failAfterError())
 }
 lint.description = 'Ensures scripts (.js files in app directory) follow the style standards set in the .eslintrc file';

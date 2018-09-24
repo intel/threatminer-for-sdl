@@ -54,6 +54,7 @@
     "gulp-eslint": "^5.0.0",
     "gulp-flatten": "0.2.0",
     "gulp-git": "^1.2.4",
+    "gulp-html-beautify": "^1.0.1",
     "gulp-htmlmin": "^2.0.0",
     "gulp-if": "^2.0.2",
     "gulp-inject": "^4.0.0",
