@@ -6,9 +6,19 @@ const gulpIf = require('gulp-if');
 const eslint = require('gulp-eslint');
 
 const files = require('./config').files;
+const htmlbeautify = require('gulp-html-beautify');
 
 function isFixed(file) {
 	return file.eslint != null && file.eslint.fixed;
+}
+
+function lintHtml() {
+	var options = {
+		indentSize: 4
+	};
+	return gulp.src('app/*/*.html')
+		.pipe(htmlbeautify(options))
+		.pipe(gulp.dest('app'))
 }
 
 function lint() {
@@ -37,4 +47,5 @@ cilint.description = 'Ensures scripts (.js files in app directory) follow the st
 module.exports = {
   lint,
   cilint,
+	lintHtml,
 };

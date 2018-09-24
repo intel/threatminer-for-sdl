@@ -1,67 +1,67 @@
 <div class="modal fade" ng-controller="TrainingInfoController as $ctrl">
-	<div class="modal-dialog modal-lg overflow-scroll">
-		<div class="modal-content">
-			<div class="modal-header training-modal-header">
-				<button type="button" class="close" ng-click="close()" data-dismiss="modal" aria-hidden="true">&times;</button>
-				<div ng-hide="!$ctrl.isFirstPage" class="ng-hide">
-					<strong>Insert training data (Note: Each line is processed as its own training record):</strong>
-					<textarea class="training-text-entry" ng-model="$ctrl.trainingText"></textarea>
-				</div>
-				<div ng-hide="$ctrl.isFirstPage" class="ng-hide">
-					<span class="row">
-						<div class="col-md-3 training-left-panel">
-							<strong>Select Label:</strong><br>
-							<label>
-								<input type="radio" ng-model="$ctrl.type" value="O">
-								None <span class="color-box background-grey"></span>
-							</label><br/>
-							<label>
-								<input type="radio" ng-model="$ctrl.type" value="ASSET">
-								Asset <span class="color-box background-blue"></span>
-							</label><br/>
-							<label>
-								<input type="radio" ng-model="$ctrl.type" value="ATTACK_VECTOR">
-								Attack Vector <span class="color-box background-green"></span>
-							</label><br/>
-							<label>
-								<input type="radio" ng-model="$ctrl.type" value="ATTACK_TYPE">
-								Attack Type <span class="color-box background-yellow"></span>
-							</label><br/>
-							<label>
-								<input type="radio" ng-model="$ctrl.type" value="ADVERSARY">
-								Adversary <span class="color-box background-red"></span>
-							</label><br/>
-							<label>
-								<input type="radio" ng-model="$ctrl.type" value="VULNERABILITY">
-								Vulnerability <span class="color-box background-purple"></span>
-							</label><br/>
-						</div>
-						<strong>&nbsp;&nbsp;Classify Data:</strong>
-						<div class="col-md-9 training-right-panel">
-							<p ng-bind-html="$ctrl.displayHTML" class="no-select"></p>
-							<div ng-repeat="value in $ctrl.response track by $index">
-								<span ng-repeat="child in value track by $index">
-									<span class="label label-default bootstrap-label" ng-click="$ctrl.onElementClick($event)" id="element:{{$parent.$index}},{{$index}}"> {{child}}</span>&nbsp;
-								</span>
-								<br><br>
-							</div>
-						</div>
-						<div ng-hide="!$ctrl.isLoading" class="ng-hide">
-							<i class="icon glyphicon glyphicon-refresh glyphicon-spin glyphicon-center glyphicon-huge"></i>
-						</div>
-					</span>
-				</div>
-			</div>
-			<div ng-hide="!$ctrl.isFirstPage" class="ng-hide">
-				<div class="modal-footer">
-					<button type="button" class="btn btn-block submit" ng-click="$ctrl.getTokenizedText()">Launch Training Interface</button>
-				</div>
-			</div>
-			<div ng-hide="$ctrl.isFirstPage" class="ng-hide">
-				<div class="modal-footer">
-					<button type="button" class="btn btn-block submit" ng-click="$ctrl.submitTrainingData()">Submit Training Data</button>
-				</div>
-			</div>
-		</div>
-	</div>
+    <div class="modal-dialog modal-lg overflow-scroll">
+        <div class="modal-content">
+            <div class="modal-header training-modal-header">
+                <button type="button" class="close" ng-click="close()" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <div ng-hide="!$ctrl.isFirstPage" class="ng-hide">
+                    <strong>Insert training data (Note: Each line is processed as its own training record):</strong>
+                    <textarea class="training-text-entry" ng-model="$ctrl.trainingText"></textarea>
+                </div>
+                <div ng-hide="$ctrl.isFirstPage" class="ng-hide">
+                    <span class="row">
+                        <div class="col-md-3 training-left-panel">
+                            <strong>Select Label:</strong><br>
+                            <label>
+                                <input type="radio" ng-model="$ctrl.type" value="O">
+                                None <span class="color-box background-grey"></span>
+                            </label><br />
+                            <label>
+                                <input type="radio" ng-model="$ctrl.type" value="ASSET">
+                                Asset <span class="color-box background-blue"></span>
+                            </label><br />
+                            <label>
+                                <input type="radio" ng-model="$ctrl.type" value="ATTACK_VECTOR">
+                                Attack Vector <span class="color-box background-green"></span>
+                            </label><br />
+                            <label>
+                                <input type="radio" ng-model="$ctrl.type" value="ATTACK_TYPE">
+                                Attack Type <span class="color-box background-yellow"></span>
+                            </label><br />
+                            <label>
+                                <input type="radio" ng-model="$ctrl.type" value="ADVERSARY">
+                                Adversary <span class="color-box background-red"></span>
+                            </label><br />
+                            <label>
+                                <input type="radio" ng-model="$ctrl.type" value="VULNERABILITY">
+                                Vulnerability <span class="color-box background-purple"></span>
+                            </label><br />
+                        </div>
+                        <strong>&nbsp;&nbsp;Classify Data:</strong>
+                        <div class="col-md-9 training-right-panel">
+                            <p ng-bind-html="$ctrl.displayHTML" class="no-select"></p>
+                            <div ng-repeat="value in $ctrl.response track by $index">
+                                <span ng-repeat="child in value track by $index">
+                                    <span class="label label-default bootstrap-label" ng-click="$ctrl.onElementClick($event)" id="element:{{$parent.$index}},{{$index}}"> {{child}}</span>&nbsp;
+                                </span>
+                                <br><br>
+                            </div>
+                        </div>
+                        <div ng-hide="!$ctrl.isLoading" class="ng-hide">
+                            <i class="icon glyphicon glyphicon-refresh glyphicon-spin glyphicon-center glyphicon-huge"></i>
+                        </div>
+                    </span>
+                </div>
+            </div>
+            <div ng-hide="!$ctrl.isFirstPage" class="ng-hide">
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-block submit" ng-click="$ctrl.getTokenizedText()">Launch Training Interface</button>
+                </div>
+            </div>
+            <div ng-hide="$ctrl.isFirstPage" class="ng-hide">
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-block submit" ng-click="$ctrl.submitTrainingData()">Submit Training Data</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

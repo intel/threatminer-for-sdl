@@ -2,38 +2,38 @@
 <html lang="en">
 
 <head>
-  <meta charset="utf-8">
-  <title>Page Not Found :(</title>
-  <style>
-    a {
-      color: #ffffff;
-    }
+    <meta charset="utf-8">
+    <title>Page Not Found :(</title>
+    <style>
+        a {
+            color: #ffffff;
+        }
 
-    h1 {
-      color: red;
-    }
+        h1 {
+            color: red;
+        }
 
-    .container {
-      max-width: 380px;
-      margin: 0 auto;
-    }
-  </style>
+        .container {
+            max-width: 380px;
+            margin: 0 auto;
+        }
+    </style>
 </head>
 
 <body>
-  <div class="container">
-    <h1>Access Denied!</h1>
+    <div class="container">
+        <h1>Access Denied!</h1>
 
-    <p>Sorry, but you do not have access to this page.</p>
+        <p>Sorry, but you do not have access to this page.</p>
 
-    <p><a href="/">Home</a></p>
-  </div>
-  <script>
-    //prevents a click-jacking attack
-    if ((top != self) || (top.location != location) || (top.frames.length != 0)) {
-      top.location = self.location;
-    }
-  </script>
+        <p><a href="/">Home</a></p>
+    </div>
+    <script>
+        //prevents a click-jacking attack
+        if ((top != self) || (top.location != location) || (top.frames.length != 0)) {
+            top.location = self.location;
+        }
+    </script>
 </body>
 
 </html>

@@ -1,48 +1,48 @@
 <div class="modal fade" ng-controller="TrainingThreatController as $ctrl">
-  <div class="modal-dialog modal-lg overflow-scroll">
-    <div class="modal-content">
-      <div class="modal-header training-modal-header">
-        <button type="button" class="close" ng-click="close()" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <span class="row">
-					<div class="col-md-3 training-left-panel">
-						<strong>Select Label:</strong><br>
-						<label>
-							<input type="radio" ng-model="$ctrl.type" value="O">
-							None <span class="color-box background-grey"></span>
-        </label>
-        <br/>
-        <label>
-          <input type="radio" ng-model="$ctrl.type" value="ASSET"> Asset <span class="color-box background-blue"></span>
-        </label>
-        <br/>
-        <label>
-          <input type="radio" ng-model="$ctrl.type" value="ATTACK_VECTOR"> Attack Vector <span class="color-box background-green"></span>
-        </label>
-        <br/>
-        <label>
-          <input type="radio" ng-model="$ctrl.type" value="ATTACK_TYPE"> Attack Type <span class="color-box background-yellow"></span>
-        </label>
-        <br/>
-        <label>
-          <input type="radio" ng-model="$ctrl.type" value="ADVERSARY"> Adversary <span class="color-box background-red"></span>
-        </label>
-        <br/>
-        <label>
-          <input type="radio" ng-model="$ctrl.type" value="VULNERABILITY"> Vulnerability <span class="color-box background-purple"></span>
-        </label>
-        <br/>
-      </div>
-      <strong>&nbsp;&nbsp;Classify Data:</strong>
-      <div class="col-md-9" style="max-height: 580px; overflow-y: auto;">
-        <span ng-repeat="value in $ctrl.response track by $index">
-							<span class="label label-default bootstrap-label {{$ctrl.podClasses[$index]}}" ng-click="$ctrl.updateClassification($index)"> {{value}}</span>&nbsp;
-        </span>
-      </div>
-      </span>
+    <div class="modal-dialog modal-lg overflow-scroll">
+        <div class="modal-content">
+            <div class="modal-header training-modal-header">
+                <button type="button" class="close" ng-click="close()" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <span class="row">
+                    <div class="col-md-3 training-left-panel">
+                        <strong>Select Label:</strong><br>
+                        <label>
+                            <input type="radio" ng-model="$ctrl.type" value="O">
+                            None <span class="color-box background-grey"></span>
+                        </label>
+                        <br />
+                        <label>
+                            <input type="radio" ng-model="$ctrl.type" value="ASSET"> Asset <span class="color-box background-blue"></span>
+                        </label>
+                        <br />
+                        <label>
+                            <input type="radio" ng-model="$ctrl.type" value="ATTACK_VECTOR"> Attack Vector <span class="color-box background-green"></span>
+                        </label>
+                        <br />
+                        <label>
+                            <input type="radio" ng-model="$ctrl.type" value="ATTACK_TYPE"> Attack Type <span class="color-box background-yellow"></span>
+                        </label>
+                        <br />
+                        <label>
+                            <input type="radio" ng-model="$ctrl.type" value="ADVERSARY"> Adversary <span class="color-box background-red"></span>
+                        </label>
+                        <br />
+                        <label>
+                            <input type="radio" ng-model="$ctrl.type" value="VULNERABILITY"> Vulnerability <span class="color-box background-purple"></span>
+                        </label>
+                        <br />
+                    </div>
+                    <strong>&nbsp;&nbsp;Classify Data:</strong>
+                    <div class="col-md-9" style="max-height: 580px; overflow-y: auto;">
+                        <span ng-repeat="value in $ctrl.response track by $index">
+                            <span class="label label-default bootstrap-label {{$ctrl.podClasses[$index]}}" ng-click="$ctrl.updateClassification($index)"> {{value}}</span>&nbsp;
+                        </span>
+                    </div>
+                </span>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-block submit" ng-click="$ctrl.submitTrainingData()">Update Training Data</button>
+            </div>
+        </div>
     </div>
-    <div class="modal-footer">
-      <button type="button" class="btn btn-block submit" ng-click="$ctrl.submitTrainingData()">Update Training Data</button>
-    </div>
-  </div>
-</div>
 </div>

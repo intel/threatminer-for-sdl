@@ -1,33 +1,33 @@
 <!--Template for the products page-->
 <div class="productsHead">
-  <div class="productsHeadLeft">
-    <h2 class="tableTitle">Ontologies</h2>
-  </div>
-
-  <div class=productsHeadRight ng-hide="!vm.canEdit">
-    <button class="addProductButton" ng-click=vm.addProductModal()><strong>Add Ontology</strong> <i class="icon glyphicon glyphicon-plus fa-fw"></i></button>
-    <br>
-    <button class="deleteSelectedProductsButton" ng-click=vm.deleteSelectedProducts()><strong>Delete Selected Ontologies</strong> <i class="icon glyphicon glyphicon-trash fa-fw"></i></button>
-    <br>
-    <div class="productFilter" ng-hide="!vm.canEdit">
-      <p>
-        <strong> Filter by Category: </strong>&nbsp;
-        <select ng-options="opt.Name for opt in vm.categories track by opt.Name" ng-model="c">
-        </select>
-      </p>
+    <div class="productsHeadLeft">
+        <h2 class="tableTitle">Ontologies</h2>
     </div>
-  </div>
+
+    <div class=productsHeadRight ng-hide="!vm.canEdit">
+        <button class="addProductButton" ng-click=vm.addProductModal()><strong>Add Ontology</strong> <i class="icon glyphicon glyphicon-plus fa-fw"></i></button>
+        <br>
+        <button class="deleteSelectedProductsButton" ng-click=vm.deleteSelectedProducts()><strong>Delete Selected Ontologies</strong> <i class="icon glyphicon glyphicon-trash fa-fw"></i></button>
+        <br>
+        <div class="productFilter" ng-hide="!vm.canEdit">
+            <p>
+                <strong> Filter by Category: </strong>&nbsp;
+                <select ng-options="opt.Name for opt in vm.categories track by opt.Name" ng-model="c">
+                </select>
+            </p>
+        </div>
+    </div>
 </div>
 
 
 <div class=productsHeadRight ng-hide="vm.canEdit">
 </div>
 <div class="productFilterBase" ng-hide="vm.canEdit">
-  <p>
-    <strong> Filter by Category: </strong>&nbsp;
-    <select ng-options="opt.Name for opt in vm.categories track by opt.Name" ng-model="c">
-    </select>
-  </p>
+    <p>
+        <strong> Filter by Category: </strong>&nbsp;
+        <select ng-options="opt.Name for opt in vm.categories track by opt.Name" ng-model="c">
+        </select>
+    </p>
 </div>
 </div>
 </div>
@@ -35,40 +35,40 @@
 
 
 <table st-table="vm.displayedCollection" st-safe-src="vm.rowCollection" class="table table-striped productTable">
-  <thead>
-    <tr>
-      <th colspan="9">
-        <input st-search="" st-select-mode="multiple" class="form-control" placeholder="search ..." type="text" />
-      </th>
-    </tr>
-    <tr>
-      <th st-sort="product_name" st-sort-default="reverse">Ontology <i class="icon fa-fw"></i></th>
-      <th>Description</th>
-      <th st-sort="category_name">Category <i class="icon fa-fw"></i></th>
-      <th st-sort="product_updated" st-sort-default="reverse">Updated <i class="icon fa-fw"></i></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr st-select-row="row" st-select-mode="multiple" ng-repeat="row in vm.displayedCollection | filter:c.Name">
-      <td><a href="/ontologies/{{row.product_id}}">{{row.product_name}}</a></td>
-      <td>{{row.product_desc}}</td>
-      <td>{{row.category_name}}</td>
-      <td>{{vm.formatDateString(row.product_updated)}}</td>
-      <td>
-        <button ng-hide="!vm.canEdit" ng-click="vm.deleteProductModal(row.product_id)" class="deleteThreatButton">
-          <i class="icon glyphicon glyphicon-trash fa-fw"></i>
-        </button>
-        <td>
-    </tr>
-  </tbody>
-  <tfoot>
-    <tr>
-      <td colspan="9" class="text-center">
-        <!--		<div class="pages" st-pagination="" st-items-by-page="itemsByPage" st-displayed-pages="7"></div>-->
-      </td>
-    </tr>
-  </tfoot>
+    <thead>
+        <tr>
+            <th colspan="9">
+                <input st-search="" st-select-mode="multiple" class="form-control" placeholder="search ..." type="text" />
+            </th>
+        </tr>
+        <tr>
+            <th st-sort="product_name" st-sort-default="reverse">Ontology <i class="icon fa-fw"></i></th>
+            <th>Description</th>
+            <th st-sort="category_name">Category <i class="icon fa-fw"></i></th>
+            <th st-sort="product_updated" st-sort-default="reverse">Updated <i class="icon fa-fw"></i></th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr st-select-row="row" st-select-mode="multiple" ng-repeat="row in vm.displayedCollection | filter:c.Name">
+            <td><a href="/ontologies/{{row.product_id}}">{{row.product_name}}</a></td>
+            <td>{{row.product_desc}}</td>
+            <td>{{row.category_name}}</td>
+            <td>{{vm.formatDateString(row.product_updated)}}</td>
+            <td>
+                <button ng-hide="!vm.canEdit" ng-click="vm.deleteProductModal(row.product_id)" class="deleteThreatButton">
+                    <i class="icon glyphicon glyphicon-trash fa-fw"></i>
+                </button>
+            <td>
+        </tr>
+    </tbody>
+    <tfoot>
+        <tr>
+            <td colspan="9" class="text-center">
+                <!--		<div class="pages" st-pagination="" st-items-by-page="itemsByPage" st-displayed-pages="7"></div>-->
+            </td>
+        </tr>
+    </tfoot>
 </table>
 </div>

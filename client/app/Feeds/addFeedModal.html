@@ -1,25 +1,25 @@
 <div class="modal fade" ng-controller="AddFeedController as $ctrl">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" ng-click="close()" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <p class="labe"><strong>Feed Title: </strong>
-          <input class="modalInput" type="text" ng-model="$ctrl.feed_title" required />
-        </p>
-        <p class="labe"><strong>Feed Link: </strong>
-          <input class="modalInput" type="text" ng-model="$ctrl.feed_link" required />
-        </p>
-        <p class="labe">
-          <strong>Type:</strong>&nbsp;
-          <select name="category" class="cat" ng-options="opt.Name for opt in $ctrl.feedTypes track by opt.ID" ng-model="$ctrl.selectedType"></select>
-        </p>
-        <p class="labe"><strong>Feed Description: </strong>
-          <textarea rows="2" cols="50" class="desc" type="text" ng-model="$ctrl.feed_desc"></textarea>
-        </p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-block submit" ng-click="$ctrl.addFeed()">Submit</button>
-      </div>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" ng-click="close()" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <p class="labe"><strong>Feed Title: </strong>
+                    <input class="modalInput" type="text" ng-model="$ctrl.feed_title" required />
+                </p>
+                <p class="labe"><strong>Feed Link: </strong>
+                    <input class="modalInput" type="text" ng-model="$ctrl.feed_link" required />
+                </p>
+                <p class="labe">
+                    <strong>Type:</strong>&nbsp;
+                    <select name="category" class="cat" ng-options="opt.Name for opt in $ctrl.feedTypes track by opt.ID" ng-model="$ctrl.selectedType"></select>
+                </p>
+                <p class="labe"><strong>Feed Description: </strong>
+                    <textarea rows="2" cols="50" class="desc" type="text" ng-model="$ctrl.feed_desc"></textarea>
+                </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-block submit" ng-click="$ctrl.addFeed()">Submit</button>
+            </div>
+        </div>
     </div>
-  </div>
 </div>
