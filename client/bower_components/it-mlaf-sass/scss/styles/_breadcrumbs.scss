@@ -1,0 +1,18 @@
+//
+// Breadcrumbs overrides
+// --------------------------------------------------
+
+
+/* Adding the Intelicon right arrow pointer for breadcrumb seperator */
+.breadcrumb {
+  > li {
+    display: inline-block;
+
+    + li:before {
+      content: "\e949 ";
+      font-family: 'Intelicon';
+      font-style: normal;
+      font-weight: normal;
+    }    
+  }
+}

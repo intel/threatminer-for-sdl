@@ -1,0 +1,99 @@
+//
+// Alerts
+// --------------------------------------------------
+
+ @mixin alert-variant-custom($border, $color) {
+   border-color: $border;
+   border-top-width: 3px;
+
+   .alert-icon  {
+    color: $color;
+   }
+ }
+
+
+ // Base styles
+ //
+ // Base styles for alerts.
+
+.alert {
+  position: relative;
+  padding: $alert-padding;
+  margin-bottom: $line-height-computed;
+  border: 1px solid $light-gray;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  border-radius: $alert-border-radius;
+
+  // Headings for larger alerts
+  h4 {
+    margin-top: 0;
+    // Specified for the h4 to prevent conflicts of changing $headings-color
+    color: inherit;
+  }
+
+  .alert-icon  {
+  	position: absolute;
+    top: $alert-padding;
+    left: $alert-padding;
+  	font-size: 1.5em;
+  }
+
+  .alert-text {
+    padding-left: $alert-padding*2;
+  }
+  
+  // Provide class for links that match alerts
+  .alert-link {
+    font-weight: $alert-link-font-weight;
+  }
+
+  // Improve alignment and spacing of inner content
+  > p,
+  > ul {
+    margin-bottom: 0;
+  }
+  
+  > p + p {
+    margin-top: 5px;
+  }
+}
+
+
+// Dismissible alerts
+//
+// Expand the right padding and account for the close button's positioning.
+
+.alert-dismissable, // The misspelled .alert-dismissable was deprecated in 3.2.0.
+.alert-dismissible {
+  padding-right: ($alert-padding + 20);
+
+  // Adjust close link position
+  .close {
+    position: absolute;
+    top: $alert-padding;
+    right: $alert-padding;
+    color: inherit;
+    font-size: inherit; //override font-size of generic .close class
+  }
+}
+
+
+// Alternate styles
+//
+// Generate contextual modifier classes for colorizing the alert.
+
+.alert-success {
+  @include alert-variant-custom($alert-success-border, $brand-success);
+}
+
+.alert-info {
+  @include alert-variant-custom($alert-info-border, $brand-info);
+}
+
+.alert-warning {
+  @include alert-variant-custom($alert-warning-border, $brand-warning);
+}
+
+.alert-danger {
+  @include alert-variant-custom($alert-danger-border, $brand-danger);
+}

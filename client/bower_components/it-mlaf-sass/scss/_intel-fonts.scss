@@ -1,0 +1,42 @@
+/* --------------------------
+ * FONTS
+ * --------------------------
+*/
+
+/* Regular */
+@font-face {
+    font-family: 'Intel Clear';
+    src: url('#{$intel-font-path}IntelClear-Regular-webfont.eot');
+    src: url('#{$intel-font-path}IntelClear-Regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('#{$intel-font-path}IntelClear-Regular-webfont.woff') format('woff'),
+         url('#{$intel-font-path}IntelClear-Regular-webfont.ttf') format('truetype'),
+         url('#{$intel-font-path}IntelClear-Regular-webfont.svg?#IntelClearRegular') format('svg');
+    font-weight: normal;
+    font-weight: 400;
+    font-style: normal;
+}
+
+/* Light */
+@font-face {
+    font-family: 'Intel Clear';
+    src: url('#{$intel-font-path}IntelClear-Light-webfont.eot');
+    src: url('#{$intel-font-path}IntelClear-Light-webfont.eot?#iefix') format('embedded-opentype'),
+         url('#{$intel-font-path}IntelClear-Light-webfont.woff') format('woff'),
+         url('#{$intel-font-path}IntelClear-Light-webfont.ttf') format('truetype'),
+         url('#{$intel-font-path}IntelClear-Light-webfont.svg?#IntelClearLight') format('svg');
+    font-weight: 200;
+    font-style: normal;
+}
+
+/* Bold */
+@font-face {
+    font-family: 'Intel Clear';
+    src: url('#{$intel-font-path}IntelClear-Bold-webfont.eot');
+    src: url('#{$intel-font-path}IntelClear-Bold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('#{$intel-font-path}IntelClear-Bold-webfont.woff') format('woff'),
+         url('#{$intel-font-path}IntelClear-Bold-webfont.ttf') format('truetype'),
+         url('#{$intel-font-path}IntelClear-Bold-webfont.svg?#IntelClearBold') format('svg');
+    font-weight: bold;
+    font-weight: 700;
+    font-style: normal;
+}

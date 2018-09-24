@@ -1,0 +1,27 @@
+/* --------------------------
+ * NAVBAR OVERRIDES AND ADDITIONS
+ * --------------------------
+ */
+
+.navbar, .navbar-default, .navbar-inverse {
+	border: none;
+}
+
+.navbar-logo {
+	float: left;
+	height: $navbar-height;
+	padding: 10px $navbar-padding-horizontal;
+
+	@media (min-width: $grid-float-breakpoint) {
+	  .navbar > .container &,
+	  .navbar > .container-fluid & {
+	    margin-left: -$navbar-padding-horizontal;
+	  }
+	}
+}
+
+// text in navbar/headers should be pale blue, as defined in MLAF spec
+// https://wiki.ith.intel.com/display/itmaster/App+Headers
+.navbar-default .navbar-text {
+	color: $pale-blue;
+}

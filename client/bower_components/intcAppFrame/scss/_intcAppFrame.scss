@@ -1,0 +1,323 @@
+
+$navbar-height: 50px !default;
+$navbar-subnav-height: 50px !default;
+$footer-height: 50px !default;
+$side-nav-width: 250px;
+
+html, body {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-tap-highlight-color: transparent; /* For some Androids */
+}
+
+.intc-app-frame-header {
+  @include clearfix();
+
+  height: $navbar-height;
+  width: 100%;
+  position: fixed;
+  top: 0px;
+  z-index: 100;
+  @include transition(all ease .25s);
+
+  a {
+    cursor: pointer;
+  }
+
+  &.intc-app-frame-subnav {
+    height: $navbar-height + $navbar-subnav-height
+  }
+
+  .navbar-right-search {
+    margin-right: 50px;
+  }
+
+  .navbar-header .navbar-brand {
+    .name {
+      display:inline;
+    }
+
+    .short-name {
+      display:none;
+    }
+  }
+}
+
+.intc-app-frame-page-container {
+  position: fixed;
+  top: $navbar-height;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: white;
+  z-index: 1;
+  @include transition(all ease .25s);
+
+  &.intc-app-frame-subnav {
+    top: $navbar-height + $navbar-subnav-height;
+  }
+
+  &.with-intc-app-frame-footer {
+    bottom: $footer-height;
+  }
+
+  & > div {
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+.intc-app-frame-footer {
+  position: fixed;
+  height: $footer-height;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 10px 5px;
+  border-top: 1px solid $light-gray;
+
+  background:$lighter-gray1;
+
+  @include transition(all ease .25s);
+
+  small {
+    color: $black;
+  }
+}
+
+//wrapping this so that our hidden can be easily overwritten.
+.intc-app-frame-hidden {
+  @extend .hidden;
+}
+
+
+#intc-app-frame-search {
+  height: 50px;
+  position: absolute;
+  right:50px;
+  color:white;
+  border-left:solid 1px white;
+  background-color:$intelBlue;
+  @include transition(all ease .3s);
+  transform: translateX(100%);
+
+  form {
+    display: inline-block;
+    border:none;
+    padding:0px;
+    margin:0px;
+    position: relative;
+  }
+
+  input {
+    width:350px;
+    margin-right:5px;
+  }
+
+  button {
+    height: 100%;
+    margin:0px;
+    padding:4px 15px;
+    border:none;
+    min-width:0px;
+    border-radius: 0px;
+    background-color: transparent;
+
+    &:focus, &:hover {
+      color: $white;
+      background-color: $light-blue;
+      outline: 0;
+    }
+
+    &.search-expanded {
+      color: $white;
+      background-color: $dark-blue;
+    }
+
+    span {
+      font-size:1.5em;
+      margin:0px;
+      line-height: 1.1;
+    }
+  }
+
+  &.open {
+    transform: translateX(0);
+    right:0px;
+  }
+}
+
+.navbar-footer {
+    display: none;
+}
+
+.dropdown-submenu {
+  position: relative;
+}
+
+.dropdown-submenu .dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -1px;
+}
+
+.navbar-subnav {
+  padding-left: 5px;
+  background-color: $off-white;
+  color: $dark-gray;
+  border-bottom: solid 1px $lighter-gray;
+
+  .open {
+    .dropdown-toggle, &.open {
+      background-color: $lighter-gray !important;
+    }
+  }
+
+  .active {
+    background-color: $lighter-gray;
+  }
+
+  & .dropdown-menu {
+    li {
+      > a {
+        color: $blue;
+      }
+
+      &.active, &:hover {
+        > a {
+          background-color: $lighter-gray;
+          color: $blue;
+        }
+      }
+    }
+  }
+}
+
+.dropdown-submenu > a.text-right:after {
+  float: left;
+  border-width: 5px 5px 5px 5px;
+  border-right-color: #0071c5;
+  border-left-color: transparent;
+}
+
+.dropdown-menu.menu-right {
+  left: auto;
+  right: 100%;
+}
+
+@media screen and (max-width: $grid-float-breakpoint) {
+
+  #intc-app-frame-search {
+    display: none;
+  }
+
+  .navbar-subnav {
+    overflow-x: hidden;
+  }
+
+  .intc-app-frame-header {
+    &.intc-app-frame-subnav {
+      height: $navbar-height;
+    }
+  }
+
+  .intc-app-frame-page-container {
+    &.intc-app-frame-subnav {
+      top: $navbar-height;
+    }
+  }
+
+  .intc-app-frame-header {
+    .navbar {
+        border-bottom: 1px solid $light-gray;
+    }
+
+    .navbar-nav {
+        margin: 0em;
+    }
+
+    .navbar-header .navbar-brand {
+      .name {
+        display:none;
+
+        &.enabled {
+          display: inline;
+        }
+      }
+
+      .short-name {
+        display:inline;
+      }
+    }
+
+    .navbar-footer {
+        background-color: $lighter-gray;
+        display:block;
+        padding-bottom: 1em;
+
+        &.collapse {
+            padding-bottom:0;
+        }
+
+    }
+
+    .navbar-collapse {
+        height: auto;
+    }
+
+    // floats cause issues; try not to use in the menu; add additional rules here when found to prevent floating
+    .nav.navbar-nav {
+        li {
+            div[ng-if="item.dataTemplate"] {
+                float:none;
+            }
+        }
+    }
+
+    .navbar-default .navbar-nav > li.active > a {
+      color: $white;
+    }
+
+    .navbar-default .navbar-nav > li > a {
+        color:$blue;
+
+        &:hover {
+            color: $white;
+        }
+    }
+
+    .navbar-default .navbar-nav li.dropdown.open {
+        ul.dropdown-menu {
+            border-bottom: 1px solid $white;
+
+            li.active a {
+              color: $white;
+            }
+
+            li a {
+                color: $blue;
+
+                &:hover {
+                    color: $white;
+                }
+            }
+        }
+
+        a.dropdown-toggle {
+            color: $white;
+        }
+    }
+
+    .navbar-collapse {
+        background-color: $lighter-gray;
+        border-top: 1px solid $white;
+    }
+  }
+}

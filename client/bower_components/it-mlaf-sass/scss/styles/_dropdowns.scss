@@ -1,0 +1,127 @@
+//
+// Dropdown menus overrides
+// --------------------------------------------------
+
+
+// Dropdown arrow/caret
+.caret {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  margin-left: 2px;
+  vertical-align: middle;
+  border-top:   none;
+  border-right: none;
+  border-left:  none;
+
+	font-family: 'intelicon';
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 0;
+
+	/* Better Font Rendering =========== */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+
+  &:before {
+  	content: "\e947";
+  }
+}
+
+// Caret overrides
+.dropup,
+.navbar-fixed-bottom .dropdown {
+  .caret {
+	  // Reverse the caret
+  	transform: translateY(-1px) scaleY(-1);
+    border: 0; //remove the border Bootstrap adds
+    content: inherit;
+  }
+}
+
+// Hover/Focus state overrides
+.dropdown-menu > li > a {
+  &:hover {
+    text-decoration: none;
+    color: $dropdown-link-hover-color;
+    background-color: $dropdown-link-hover-bg;
+  }
+  &:focus, &:active {
+    text-decoration: none;
+    color: $dropdown-link-active-color;
+    background-color: $dropdown-link-active-bg;
+  }
+}
+
+/* Nested drop downs */
+
+/* goes 3 levels deep */
+
+.dropdown-submenu {
+    position: relative;
+
+    .dropdown-menu {
+      top: 0;
+      left: 100%;
+      margin-top: -6px;
+      margin-left: -1px;
+      -webkit-border-radius: $border-radius-base;
+      -moz-border-radius: $border-radius-base;
+      border-radius: $border-radius-base;
+    }
+
+    &:hover {
+      .dropdown-menu {
+        display: block;
+
+        .dropdown-menu {
+          display: none;
+        }       
+
+        .dropdown-submenu {
+          &:hover {
+          .dropdown-menu {
+              display: block;
+            }
+          }
+        }
+      }
+    }
+}
+
+.dropdown-submenu>a:after {
+    display: block;
+    content: " ";
+    float: right;
+    width: 0;
+    height: 0;
+    border-color: transparent;
+    border-style: solid;
+    border-width: 5px 0 5px 5px;
+    border-left-color: $blue;
+    margin-top: 7px;
+    margin-right: -10px;
+}
+
+.dropdown-submenu:hover>a:after {
+    border-left-color: $blue;
+}
+
+.dropdown-submenu:focus>a:after, .dropdown-submenu:active>a:after {
+  border-left-color: $white;
+}
+
+.dropdown-submenu.pull-left {
+    float: none;
+}
+
+.dropdown-submenu.pull-left>.dropdown-menu {
+    left: -100%;
+    margin-left: 10px;
+    -webkit-border-radius: $border-radius-base;
+    -moz-border-radius: $border-radius-base;
+    border-radius: $border-radius-base;
+}

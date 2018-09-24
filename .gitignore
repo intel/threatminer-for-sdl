@@ -9,9 +9,9 @@ client/.DS_Store
 client/coverage
 client/node_modules/*
 client/bower_components/*
-!client/bower_components/intc-enter/*
-!client/bower_components/intcAppFrame/*
-!client/bower_components/it-mlaf-sass/*
+!client/bower_components/intc-enter
+!client/bower_components/intcAppFrame
+!client/bower_components/it-mlaf-sass
 
 # All python binary files
 *.pyc
