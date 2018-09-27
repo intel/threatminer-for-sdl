@@ -8,6 +8,7 @@
     "appgen-v3"
   ],
   "dependencies": {
+    "angular-modal-service": "^0.14.1",
     "angular-moment": "^1.2.0",
     "lodash": "^3.10.0",
     "moment": "^2.22.2",

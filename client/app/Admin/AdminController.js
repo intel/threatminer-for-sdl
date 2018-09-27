@@ -152,7 +152,7 @@ angular.module('threat').controller('AdminController', function ($http, values, 
         todelete.storeID(id)
         ModalService.showModal({
             templateUrl: 'Admin/deleteUser.html',
-            controller: 'DeleteUserController'
+            controller: 'GenericDeleteModalController'
         }).then((modal) => {
             modal.element.modal()
             modal.close.then((result) => {
@@ -173,7 +173,7 @@ angular.module('threat').controller('AdminController', function ($http, values, 
         todelete.storeID(id)
         ModalService.showModal({
             templateUrl: 'Admin/deleteAdversaryType.html',
-            controller: 'DeleteAdvTypesController'
+            controller: 'GenericDeleteModalController'
         }).then((modal) => {
             modal.element.modal()
             modal.close.then((result) => {
@@ -187,7 +187,7 @@ angular.module('threat').controller('AdminController', function ($http, values, 
         todelete.storeID(id)
         ModalService.showModal({
             templateUrl: 'Admin/deleteAssetType.html',
-            controller: 'DeleteAssetTypeController'
+            controller: 'GenericDeleteModalController'
         }).then((modal) => {
             modal.element.modal()
             modal.close.then((result) => {
@@ -201,7 +201,7 @@ angular.module('threat').controller('AdminController', function ($http, values, 
         todelete.storeID(id)
         ModalService.showModal({
             templateUrl: 'Admin/deleteAttackType.html',
-            controller: 'DeleteAttackTypeController'
+            controller: 'GenericDeleteModalController'
         }).then((modal) => {
             modal.element.modal()
             modal.close.then((result) => {
@@ -215,7 +215,7 @@ angular.module('threat').controller('AdminController', function ($http, values, 
         todelete.storeID(id)
         ModalService.showModal({
             templateUrl: 'Admin/deleteAttackVectorType.html',
-            controller: 'DeleteAttackVectorTypeController'
+            controller: 'GenericDeleteModalController'
         }).then((modal) => {
             modal.element.modal()
             modal.close.then((result) => {
@@ -229,7 +229,7 @@ angular.module('threat').controller('AdminController', function ($http, values, 
         todelete.storeID(id)
         ModalService.showModal({
             templateUrl: 'Admin/deleteVulnerabilityType.html',
-            controller: 'DeleteVulnerabilityTypeController'
+            controller: 'GenericDeleteModalController'
         }).then((modal) => {
             modal.element.modal()
             modal.close.then((result) => {
@@ -243,7 +243,7 @@ angular.module('threat').controller('AdminController', function ($http, values, 
         todelete.storeID(id)
         ModalService.showModal({
             templateUrl: 'Admin/deleteProductCategory.html',
-            controller: 'DeleteProdCatController'
+            controller: 'GenericDeleteModalController'
         }).then((modal) => {
             modal.element.modal()
             modal.close.then((result) => {
@@ -256,7 +256,7 @@ angular.module('threat').controller('AdminController', function ($http, values, 
         todelete.storeID(id)
         ModalService.showModal({
             templateUrl: 'Admin/deleteFeedType.html',
-            controller: 'DeleteFeedTypeController'
+            controller: 'GenericDeleteModalController'
         }).then((modal) => {
             modal.element.modal()
             modal.close.then((result) => {
