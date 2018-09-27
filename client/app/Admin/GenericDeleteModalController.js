@@ -1,4 +1,4 @@
-// controller for deleting a feed type
+// controller for deleting items
 angular.module('threat').controller('GenericDeleteModalController', function ($http, $window, todelete, values, $element) {
     const vm = this
 

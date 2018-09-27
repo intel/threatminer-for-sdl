@@ -47,7 +47,7 @@ angular.module('threat').controller('AdminController', function ($http, values, 
     vm.addUserModal = function () {
         ModalService.showModal({
             templateUrl: 'Admin/addUser.html',
-            controller: 'AddUserController'
+            controller: 'GenericAddModalController'
         }).then((modal) => {
             modal.element.modal()
             modal.close.then((result) => {
@@ -60,7 +60,7 @@ angular.module('threat').controller('AdminController', function ($http, values, 
     vm.addAdversaryModal = function () {
         ModalService.showModal({
             templateUrl: 'Admin/addAdversary.html',
-            controller: 'AddAdvController'
+            controller: 'GenericAddModalController'
         }).then((modal) => {
             modal.element.modal()
             modal.close.then((result) => {
@@ -73,7 +73,7 @@ angular.module('threat').controller('AdminController', function ($http, values, 
     vm.addAssetModal = function () {
         ModalService.showModal({
             templateUrl: 'Admin/addAsset.html',
-            controller: 'AddAssetController'
+            controller: 'GenericAddModalController'
         }).then((modal) => {
             modal.element.modal()
             modal.close.then((result) => {
@@ -86,7 +86,7 @@ angular.module('threat').controller('AdminController', function ($http, values, 
     vm.addAttackTypeModal = function () {
         ModalService.showModal({
             templateUrl: 'Admin/addAttackType.html',
-            controller: 'AddAttackTypeController'
+            controller: 'GenericAddModalController'
         }).then((modal) => {
             modal.element.modal()
             modal.close.then((result) => {
@@ -99,7 +99,7 @@ angular.module('threat').controller('AdminController', function ($http, values, 
     vm.addAttackVectorModal = function () {
         ModalService.showModal({
             templateUrl: 'Admin/addAttackVector.html',
-            controller: 'AddAttackVectorController'
+            controller: 'GenericAddModalController'
         }).then((modal) => {
             modal.element.modal()
             modal.close.then((result) => {
@@ -112,7 +112,7 @@ angular.module('threat').controller('AdminController', function ($http, values, 
     vm.addVulnerabilityModal = function () {
         ModalService.showModal({
             templateUrl: 'Admin/addVulnerability.html',
-            controller: 'AddVulnerabilityController'
+            controller: 'GenericAddModalController'
         }).then((modal) => {
             modal.element.modal()
             modal.close.then((result) => {
@@ -125,7 +125,7 @@ angular.module('threat').controller('AdminController', function ($http, values, 
     vm.addProductCategoryModal = function () {
         ModalService.showModal({
             templateUrl: 'Admin/addProductCat.html',
-            controller: 'AddAdvController'
+            controller: 'GenericAddModalController'
         }).then((modal) => {
             modal.element.modal()
             modal.close.then((result) => {
@@ -138,7 +138,7 @@ angular.module('threat').controller('AdminController', function ($http, values, 
     vm.addFeedTypeModal = function () {
         ModalService.showModal({
             templateUrl: 'Admin/AddFeedType.html',
-            controller: 'AddFeedTypeController'
+            controller: 'GenericAddModalController'
         }).then((modal) => {
             modal.element.modal()
             modal.close.then((result) => {
