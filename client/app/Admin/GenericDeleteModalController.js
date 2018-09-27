@@ -3,9 +3,14 @@ angular.module('threat').controller('GenericDeleteModalController', function ($h
     const vm = this
 
     const id = todelete.getID()
+    const message = values.get('message')
+    const typeName = values.get('typeName')
 
-    vm.confirmDelete = function (type) {
-        switch (type) {
+    vm.message = message
+    vm.typeName = typeName
+
+    vm.confirmDelete = function () {
+        switch (vm.typeName) {
         case 'feedType':
             $http.delete(`${values.get('api')}/feedTypes/${id}`).then((response) => {
                 todelete.storeID(null)
