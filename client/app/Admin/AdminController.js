@@ -58,8 +58,9 @@ angular.module('threat').controller('AdminController', function ($http, values, 
 
     // opens the modal for adding an adversary type
     vm.addAdversaryModal = function () {
+        values.set('typeName', 'addAdversary')
         ModalService.showModal({
-            templateUrl: 'Admin/addAdversary.html',
+            templateUrl: 'Admin/genericAddModal.html',
             controller: 'GenericAddModalController'
         }).then((modal) => {
             modal.element.modal()
@@ -71,8 +72,9 @@ angular.module('threat').controller('AdminController', function ($http, values, 
 
     // opens the modal for adding an asset type
     vm.addAssetModal = function () {
+        values.set('typeName', 'addAsset')
         ModalService.showModal({
-            templateUrl: 'Admin/addAsset.html',
+            templateUrl: 'Admin/genericAddModal.html',
             controller: 'GenericAddModalController'
         }).then((modal) => {
             modal.element.modal()
@@ -84,8 +86,9 @@ angular.module('threat').controller('AdminController', function ($http, values, 
 
     // opens the modal for adding an attack type
     vm.addAttackTypeModal = function () {
+        values.set('typeName', 'addAttackType')
         ModalService.showModal({
-            templateUrl: 'Admin/addAttackType.html',
+            templateUrl: 'Admin/genericAddModal.html',
             controller: 'GenericAddModalController'
         }).then((modal) => {
             modal.element.modal()
@@ -97,8 +100,9 @@ angular.module('threat').controller('AdminController', function ($http, values, 
 
     // opens the modal for adding an attack vector
     vm.addAttackVectorModal = function () {
+        values.set('typeName', 'addAttackVector')
         ModalService.showModal({
-            templateUrl: 'Admin/addAttackVector.html',
+            templateUrl: 'Admin/genericAddModal.html',
             controller: 'GenericAddModalController'
         }).then((modal) => {
             modal.element.modal()
@@ -110,8 +114,9 @@ angular.module('threat').controller('AdminController', function ($http, values, 
 
     // opens the modal for adding a vulnerability type
     vm.addVulnerabilityModal = function () {
+        values.set('typeName', 'addVulnerability')
         ModalService.showModal({
-            templateUrl: 'Admin/addVulnerability.html',
+            templateUrl: 'Admin/genericAddModal.html',
             controller: 'GenericAddModalController'
         }).then((modal) => {
             modal.element.modal()
@@ -123,8 +128,9 @@ angular.module('threat').controller('AdminController', function ($http, values, 
 
     // opens the modal for adding a product category
     vm.addProductCategoryModal = function () {
+        values.set('typeName', 'addProductCategory')
         ModalService.showModal({
-            templateUrl: 'Admin/addProductCat.html',
+            templateUrl: 'Admin/genericAddModal.html',
             controller: 'GenericAddModalController'
         }).then((modal) => {
             modal.element.modal()
@@ -136,8 +142,9 @@ angular.module('threat').controller('AdminController', function ($http, values, 
 
     // opens the modal for adding a new feed type
     vm.addFeedTypeModal = function () {
+        values.set('typeName', 'addFeedType')
         ModalService.showModal({
-            templateUrl: 'Admin/AddFeedType.html',
+            templateUrl: 'Admin/genericAddModal.html',
             controller: 'GenericAddModalController'
         }).then((modal) => {
             modal.element.modal()
