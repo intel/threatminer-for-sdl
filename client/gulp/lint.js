@@ -1,5 +1,3 @@
-
-
 const gulp = require('gulp');
 const gulpIf = require('gulp-if');
 
@@ -14,7 +12,8 @@ function isFixed(file) {
 
 function lintHtml() {
 	var options = {
-		indentSize: 4
+		indentSize: 4,
+		end_with_newline: true
 	};
 	return gulp.src('app/*/*.html')
 		.pipe(htmlbeautify(options))
