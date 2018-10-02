@@ -1,14 +1,23 @@
-
-
 const gulp = require('gulp');
 const gulpIf = require('gulp-if');
 
 const eslint = require('gulp-eslint');
 
 const files = require('./config').files;
+const htmlbeautify = require('gulp-html-beautify');
 
 function isFixed(file) {
 	return file.eslint != null && file.eslint.fixed;
+}
+
+function lintHtml() {
+	var options = {
+		indentSize: 4,
+		end_with_newline: true
+	};
+	return gulp.src('app/*/*.html')
+		.pipe(htmlbeautify(options))
+		.pipe(gulp.dest('app'))
 }
 
 function lint() {
@@ -16,10 +25,10 @@ function lint() {
   return gulp.src([files.moduleScripts, files.scripts, `!${files.tests}`, `!${files.bowerComponents}`, `!${files.tmp}`])
     .pipe(eslint({
       configFile: ".eslintrc.js",
-      //fix: true,
+      fix: true,
     }))
     .pipe(eslint.format())
-    //.pipe(gulpIf(isFixed, gulp.dest('../test/fixtures')))
+    .pipe(gulpIf(isFixed, gulp.dest('app')))
     .pipe(eslint.failAfterError())
 }
 lint.description = 'Ensures scripts (.js files in app directory) follow the style standards set in the .eslintrc file';
@@ -37,4 +46,5 @@ cilint.description = 'Ensures scripts (.js files in app directory) follow the st
 module.exports = {
   lint,
   cilint,
+	lintHtml,
 };

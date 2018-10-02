@@ -1,24 +1,24 @@
 <div class="modal fade" ng-controller="EditElementController as $ctrl">
-        <div class="modal-dialog">
-          <div class="modal-content">
+    <div class="modal-dialog">
+        <div class="modal-content">
             <div class="modal-header">
-              <button type="button" class="close" ng-click="close()" data-dismiss="modal" aria-hidden="true">&times;</button>
-              <div ng-repeat="obj in $ctrl.objArray">
-                <p class="labe">
-                  <strong>{{obj.fieldTitle}}: </strong>
-                  <span ng-show="obj.inputType == 'text'">
-                    <input class="modalInput" type="text" ng-model="$ctrl[obj.fieldName]" required />
-                  </span>
-                  <span ng-show="obj.inputType == 'textarea'">
-                    <textarea rows="2" cols="50" class="desc" ng-model="$ctrl[obj.fieldName]"></textarea>
-                  </span>
-                </p>
-              </div>
+                <button type="button" class="close" ng-click="close()" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <div ng-repeat="obj in $ctrl.objArray">
+                    <p class="labe">
+                        <strong>{{obj.fieldTitle}}: </strong>
+                        <span ng-show="obj.inputType == 'text'">
+                            <input class="modalInput" type="text" ng-model="$ctrl[obj.fieldName]" required />
+                        </span>
+                        <span ng-show="obj.inputType == 'textarea'">
+                            <textarea rows="2" cols="50" class="desc" ng-model="$ctrl[obj.fieldName]"></textarea>
+                        </span>
+                    </p>
+                </div>
             </div>
 
             <div class="modal-footer">
-              <button type="button" class="btn btn-block submit" ng-click="$ctrl.updateElement()">Submit</button>
+                <button type="button" class="btn-primary btn-block submit" ng-click="$ctrl.updateElement()">Submit</button>
             </div>
+        </div>
     </div>
-  </div>
 </div>

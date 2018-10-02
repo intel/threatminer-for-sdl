@@ -46,6 +46,7 @@ const injectToDist = inject.injectToDist;
 
 
 const lint = require('./lint').lint;
+const lintHtml = require('./lint').lintHtml;
 
 
 const config = require('./config');
@@ -64,6 +65,7 @@ const buildDev = gulp.series(
   clean,
   gulp.parallel(
     lint,
+    lintHtml,
     injectDev,
     moveAndFlattenFonts,
   ),

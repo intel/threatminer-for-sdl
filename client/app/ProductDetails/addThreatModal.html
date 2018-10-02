@@ -1,39 +1,39 @@
 <div class="modal fade" ng-controller="AddThreatController as $ctrl">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" ng-click="close()" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <p class="labe"><strong>Title: </strong>
-          <input class="modalInput" type="text" name="product_name" ng-model="$ctrl.title" required />
-        </p>
-        <p class="labe"><strong>Link: </strong>
-          <input class="modalInput" type="text" name="product_name" ng-model="$ctrl.link" required />
-        </p>
-        <div class="optGroup1">
-          <p class="labe"><strong>Severity: </strong>&nbsp;
-            <select name="category" class="cat" ng-options="opt for opt in $ctrl.ratings track by opt" ng-model="$ctrl.SelectedRating">
-            </select>
-          </p>
-          <p class="labe"><strong>Status: </strong>&nbsp;
-            <select name="category" class="cat" ng-options="opt for opt in $ctrl.statuses track by opt" ng-model="$ctrl.selectedStatus">
-            </select>
-          </p>
-          <p class="labe"><strong>Owner: </strong>&nbsp;
-            <select name="category" class="cat" ng-options="opt.Name for opt in $ctrl.owners track by opt.ID" ng-model="$ctrl.selectedOwner">
-            </select>
-          </p>
-        </div>
-        <p class="labe"><strong>Threat Description: </strong>
-          <textarea rows="2" cols="50" class="desc" type="text" ng-model="$ctrl.desc"></textarea>
-        </p>
-        <p class="labe"><strong>Notes: </strong>
-          <textarea rows="2" cols="50" class="desc" type="text" ng-model="$ctrl.notes"></textarea>
-        </p>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" ng-click="close()" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <p class="labe"><strong>Title: </strong>
+                    <input class="modalInput" type="text" name="product_name" ng-model="$ctrl.title" required />
+                </p>
+                <p class="labe"><strong>Link: </strong>
+                    <input class="modalInput" type="text" name="product_name" ng-model="$ctrl.link" required />
+                </p>
+                <div class="optGroup1">
+                    <p class="labe"><strong>Severity: </strong>&nbsp;
+                        <select name="category" class="cat" ng-options="opt for opt in $ctrl.ratings track by opt" ng-model="$ctrl.SelectedRating">
+                        </select>
+                    </p>
+                    <p class="labe"><strong>Status: </strong>&nbsp;
+                        <select name="category" class="cat" ng-options="opt for opt in $ctrl.statuses track by opt" ng-model="$ctrl.selectedStatus">
+                        </select>
+                    </p>
+                    <p class="labe"><strong>Owner: </strong>&nbsp;
+                        <select name="category" class="cat" ng-options="opt.Name for opt in $ctrl.owners track by opt.ID" ng-model="$ctrl.selectedOwner">
+                        </select>
+                    </p>
+                </div>
+                <p class="labe"><strong>Threat Description: </strong>
+                    <textarea rows="2" cols="50" class="desc" type="text" ng-model="$ctrl.desc"></textarea>
+                </p>
+                <p class="labe"><strong>Notes: </strong>
+                    <textarea rows="2" cols="50" class="desc" type="text" ng-model="$ctrl.notes"></textarea>
+                </p>
 
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-block submit" ng-click="$ctrl.addThreat()">Submit</button>
-      </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn-primary btn-block submit" ng-click="$ctrl.addThreat()">Submit</button>
+            </div>
+        </div>
     </div>
-  </div>
 </div>

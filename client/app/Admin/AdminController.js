@@ -47,7 +47,7 @@ angular.module('threat').controller('AdminController', function ($http, values, 
     vm.addUserModal = function () {
         ModalService.showModal({
             templateUrl: 'Admin/addUser.html',
-            controller: 'AddUserController'
+            controller: 'GenericAddModalController'
         }).then((modal) => {
             modal.element.modal()
             modal.close.then((result) => {
@@ -58,9 +58,10 @@ angular.module('threat').controller('AdminController', function ($http, values, 
 
     // opens the modal for adding an adversary type
     vm.addAdversaryModal = function () {
+        values.set('typeName', 'addAdversary')
         ModalService.showModal({
-            templateUrl: 'Admin/addAdversary.html',
-            controller: 'AddAdvController'
+            templateUrl: 'Admin/genericAddModal.html',
+            controller: 'GenericAddModalController'
         }).then((modal) => {
             modal.element.modal()
             modal.close.then((result) => {
@@ -71,9 +72,10 @@ angular.module('threat').controller('AdminController', function ($http, values, 
 
     // opens the modal for adding an asset type
     vm.addAssetModal = function () {
+        values.set('typeName', 'addAsset')
         ModalService.showModal({
-            templateUrl: 'Admin/addAsset.html',
-            controller: 'AddAssetController'
+            templateUrl: 'Admin/genericAddModal.html',
+            controller: 'GenericAddModalController'
         }).then((modal) => {
             modal.element.modal()
             modal.close.then((result) => {
@@ -84,9 +86,10 @@ angular.module('threat').controller('AdminController', function ($http, values, 
 
     // opens the modal for adding an attack type
     vm.addAttackTypeModal = function () {
+        values.set('typeName', 'addAttackType')
         ModalService.showModal({
-            templateUrl: 'Admin/addAttackType.html',
-            controller: 'AddAttackTypeController'
+            templateUrl: 'Admin/genericAddModal.html',
+            controller: 'GenericAddModalController'
         }).then((modal) => {
             modal.element.modal()
             modal.close.then((result) => {
@@ -97,9 +100,10 @@ angular.module('threat').controller('AdminController', function ($http, values, 
 
     // opens the modal for adding an attack vector
     vm.addAttackVectorModal = function () {
+        values.set('typeName', 'addAttackVector')
         ModalService.showModal({
-            templateUrl: 'Admin/addAttackVector.html',
-            controller: 'AddAttackVectorController'
+            templateUrl: 'Admin/genericAddModal.html',
+            controller: 'GenericAddModalController'
         }).then((modal) => {
             modal.element.modal()
             modal.close.then((result) => {
@@ -110,9 +114,10 @@ angular.module('threat').controller('AdminController', function ($http, values, 
 
     // opens the modal for adding a vulnerability type
     vm.addVulnerabilityModal = function () {
+        values.set('typeName', 'addVulnerability')
         ModalService.showModal({
-            templateUrl: 'Admin/addVulnerability.html',
-            controller: 'AddVulnerabilityController'
+            templateUrl: 'Admin/genericAddModal.html',
+            controller: 'GenericAddModalController'
         }).then((modal) => {
             modal.element.modal()
             modal.close.then((result) => {
@@ -123,9 +128,10 @@ angular.module('threat').controller('AdminController', function ($http, values, 
 
     // opens the modal for adding a product category
     vm.addProductCategoryModal = function () {
+        values.set('typeName', 'addProductCategory')
         ModalService.showModal({
-            templateUrl: 'Admin/addProductCat.html',
-            controller: 'AddAdvController'
+            templateUrl: 'Admin/genericAddModal.html',
+            controller: 'GenericAddModalController'
         }).then((modal) => {
             modal.element.modal()
             modal.close.then((result) => {
@@ -136,9 +142,10 @@ angular.module('threat').controller('AdminController', function ($http, values, 
 
     // opens the modal for adding a new feed type
     vm.addFeedTypeModal = function () {
+        values.set('typeName', 'addFeedType')
         ModalService.showModal({
-            templateUrl: 'Admin/AddFeedType.html',
-            controller: 'AddFeedTypeController'
+            templateUrl: 'Admin/genericAddModal.html',
+            controller: 'GenericAddModalController'
         }).then((modal) => {
             modal.element.modal()
             modal.close.then((result) => {
@@ -149,10 +156,12 @@ angular.module('threat').controller('AdminController', function ($http, values, 
 
     // opens the modal for confirming the deletion of a user
     vm.deleteUser = function (id) {
+        values.set('typeName', 'user')
+        values.set('message', 'Are you sure you want to delete this user?')
         todelete.storeID(id)
         ModalService.showModal({
-            templateUrl: 'Admin/deleteUser.html',
-            controller: 'DeleteUserController'
+            templateUrl: 'Admin/genericDeleteModal.html',
+            controller: 'GenericDeleteModalController'
         }).then((modal) => {
             modal.element.modal()
             modal.close.then((result) => {
@@ -170,10 +179,12 @@ angular.module('threat').controller('AdminController', function ($http, values, 
 
     // opens a modal for the deletion of a threat adversary
     vm.deleteThreatAdversary = function (id) {
+        values.set('typeName', 'advType')
+        values.set('message', 'Are you sure you want to delete this adversary type?')
         todelete.storeID(id)
         ModalService.showModal({
-            templateUrl: 'Admin/deleteAdversaryType.html',
-            controller: 'DeleteAdvTypesController'
+            templateUrl: 'Admin/genericDeleteModal.html',
+            controller: 'GenericDeleteModalController'
         }).then((modal) => {
             modal.element.modal()
             modal.close.then((result) => {
@@ -184,10 +195,12 @@ angular.module('threat').controller('AdminController', function ($http, values, 
 
     // opens a modal for the deletion of a threat asset
     vm.deleteThreatAsset = function (id) {
+        values.set('typeName', 'assetType')
+        values.set('message', 'Are you sure you want to delete this asset type?')
         todelete.storeID(id)
         ModalService.showModal({
-            templateUrl: 'Admin/deleteAssetType.html',
-            controller: 'DeleteAssetTypeController'
+            templateUrl: 'Admin/genericDeleteModal.html',
+            controller: 'GenericDeleteModalController'
         }).then((modal) => {
             modal.element.modal()
             modal.close.then((result) => {
@@ -198,10 +211,12 @@ angular.module('threat').controller('AdminController', function ($http, values, 
 
     // opens a modal for the deletion of a threat attack type
     vm.deleteThreatAttackType = function (id) {
+        values.set('typeName', 'attackType')
+        values.set('message', 'Are you sure you want to delete this attack type?')
         todelete.storeID(id)
         ModalService.showModal({
-            templateUrl: 'Admin/deleteAttackType.html',
-            controller: 'DeleteAttackTypeController'
+            templateUrl: 'Admin/genericDeleteModal.html',
+            controller: 'GenericDeleteModalController'
         }).then((modal) => {
             modal.element.modal()
             modal.close.then((result) => {
@@ -212,10 +227,12 @@ angular.module('threat').controller('AdminController', function ($http, values, 
 
     // opens a modal for the deletion of a threat attack vector
     vm.deleteThreatAttackVector = function (id) {
+        values.set('typeName', 'attackVectorType')
+        values.set('message', 'Are you sure you want to delete this attack vector type?')
         todelete.storeID(id)
         ModalService.showModal({
-            templateUrl: 'Admin/deleteAttackVectorType.html',
-            controller: 'DeleteAttackVectorTypeController'
+            templateUrl: 'Admin/genericDeleteModal.html',
+            controller: 'GenericDeleteModalController'
         }).then((modal) => {
             modal.element.modal()
             modal.close.then((result) => {
@@ -226,10 +243,12 @@ angular.module('threat').controller('AdminController', function ($http, values, 
 
     // opens a modal for the deletion of a threat vulnerability
     vm.deleteThreatVulnerability = function (id) {
+        values.set('typeName', 'vulnerabilityType')
+        values.set('message', 'Are you sure you want to delete this vulnerability type?')
         todelete.storeID(id)
         ModalService.showModal({
-            templateUrl: 'Admin/deleteVulnerabilityType.html',
-            controller: 'DeleteVulnerabilityTypeController'
+            templateUrl: 'Admin/genericDeleteModal.html',
+            controller: 'GenericDeleteModalController'
         }).then((modal) => {
             modal.element.modal()
             modal.close.then((result) => {
@@ -240,10 +259,12 @@ angular.module('threat').controller('AdminController', function ($http, values, 
 
     // opens a modal for the deletetion of a product category
     vm.deleteProductCategory = function (id) {
+        values.set('typeName', 'productCat')
+        values.set('message', 'Are you sure you want to delete this ontology category?')
         todelete.storeID(id)
         ModalService.showModal({
-            templateUrl: 'Admin/deleteProductCategory.html',
-            controller: 'DeleteProdCatController'
+            templateUrl: 'Admin/genericDeleteModal.html',
+            controller: 'GenericDeleteModalController'
         }).then((modal) => {
             modal.element.modal()
             modal.close.then((result) => {
@@ -253,10 +274,12 @@ angular.module('threat').controller('AdminController', function ($http, values, 
     }
     // opens a modal for conifirming the deletion of a threat feed type
     vm.deleteThreatFeed = function (id) {
+        values.set('typeName', 'feedType')
+        values.set('message', 'Are you sure you want to delete this feed type?')
         todelete.storeID(id)
         ModalService.showModal({
-            templateUrl: 'Admin/deleteFeedType.html',
-            controller: 'DeleteFeedTypeController'
+            templateUrl: 'Admin/genericDeleteModal.html',
+            controller: 'GenericDeleteModalController'
         }).then((modal) => {
             modal.element.modal()
             modal.close.then((result) => {

@@ -1,27 +1,27 @@
 <div class="modal fade" ng-controller="EditSelectionController as $ctrl">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" ng-click="close()" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h5 class="modal-title text-center">Edit Selected Threats</h5>
-      </div>
-      <table>
-        <tr>
-          <td align="right" class="padding-top padding-right padding-left"><strong class="labe">Severity: </strong></td>
-          <td class="padding-top">
-            <select class="cat" ng-options="opt for opt in $ctrl.ratings" ng-model="$ctrl.selectedRating"></select>
-          </td>
-        </tr>
-        <tr>
-          <td align="right" class="padding-top padding-right padding-left"><strong class="labe">Status: </strong></td>
-          <td class="padding-top">
-            <select class="cat" ng-options="opt for opt in $ctrl.statuses" ng-model="$ctrl.selectedStatus"></select>
-          </td>
-        </tr>
-      </table>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-block submit" ng-click="$ctrl.updateThreats()">Update</button>
-      </div>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" ng-click="close()" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h5 class="modal-title text-center">Edit Selected Threats</h5>
+            </div>
+            <table>
+                <tr>
+                    <td align="right" class="padding-top padding-right padding-left"><strong class="labe">Severity: </strong></td>
+                    <td class="padding-top">
+                        <select class="cat" ng-options="opt for opt in $ctrl.ratings" ng-model="$ctrl.selectedRating"></select>
+                    </td>
+                </tr>
+                <tr>
+                    <td align="right" class="padding-top padding-right padding-left"><strong class="labe">Status: </strong></td>
+                    <td class="padding-top">
+                        <select class="cat" ng-options="opt for opt in $ctrl.statuses" ng-model="$ctrl.selectedStatus"></select>
+                    </td>
+                </tr>
+            </table>
+            <div class="modal-footer">
+                <button type="button" class="btn-primary btn-block submit" ng-click="$ctrl.updateThreats()">Update</button>
+            </div>
+        </div>
     </div>
-  </div>
 </div>

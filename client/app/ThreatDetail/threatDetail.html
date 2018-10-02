@@ -1,144 +1,144 @@
 <!--Template for the threat detail page -->
 <div class=threatDetailHead ng-hide="!vm.canEdit">
-  <div class=threatDetailLabels>
-    <h3 class="threatTitle">{{vm.title}}</h3>
-    <p class="threatLink"><strong>Link: </strong><a target="_blank" href={{vm.link}}>{{vm.link}}</a></p>
-    <p class="threatDesc"><strong>Description: </strong>{{vm.desc || "No Description"}}</p>
-    <p class="threatDesc"><strong>Affected Ontology: </strong>{{vm.productName}}</p>
-    <p class="threatDate"><strong>Date Added:</strong> {{vm.date}}</p>
-  </div>
-  <div class="ThreatDetailOptions">
-    <p class="ThreatDetailCategory"><strong>Owner: </strong>
-      <a href="#" class="threatOptionSelect" editable-select="vm.selectedOwner" e-ng-options="opt.Name for opt in vm.owners track by opt.ID" onaftersave="vm.updateOwner()" buttons="no">{{vm.selectedOwner.Name ||vm.owner}}
-      </a>
-    </p>
-    <p class="ThreatDetailCategory"><strong>Status: </strong>
-      <a href="#" class="threatOptionSelect" editable-select="vm.selectedStatus" e-ng-options="opt for opt in vm.statuses" onaftersave="vm.updateStatus()" buttons="no">{{vm.selectedStatus ||vm.status || "No Status"}}
-      </a>
-    </p>
-    <p class="ThreatDetailCategory"><strong>Severity: </strong>
-      <a href="#" class="threatOptionSelect" editable-select="vm.selectedRating" e-ng-options="opt for opt in vm.ratings" onaftersave="vm.updateRating()" buttons="no">{{vm.selectedRating ||vm.threat_rating || "No Rating"}}
-      </a>
-    </p>
-    <p><strong>Adversary types: </strong>
-      <span ng-show="vm.adversaryTypes.length == 0">None</span>
-      <span ng-repeat="adv in vm.adversaryTypes track by $index">
-        <a href="{{'search?classificationType=ADVERSARY&classificationId=' + adv.adv_id}}" target="search" ng-hide="adv == 'None'" ng-click="vm.advancedSearch('ADVERSARY', adv.adv_id)">{{adv.adv_name}}</a>{{$index == vm.adversaryTypes.length-1 ? '' : ', '}}
-      </span>
-    </p>
-    <p><strong>Assets: </strong>
-      <span ng-show="vm.assets.length == 0">None</span>
-      <span ng-repeat="asset in vm.assets track by $index">
-        <a href="{{'search?classificationType=ASSET&classificationId=' + asset.asset_id}}" target="search" ng-hide="asset == 'None'">{{asset.asset_name}}</a>{{$index == vm.assets.length-1 ? '' : ', '}}
-      </span>
-    </p>
-    <p><strong>Attack Types: </strong>
-      <span ng-show="vm.attackTypes.length == 0">None</span>
-      <span ng-repeat="atktyp in vm.attackTypes track by $index">
-        <a href="{{'search?classificationType=ATTACK_TYPE&classificationId=' + atktyp.atktyp_id}}" target="search" ng-hide="atktyp == 'None'" ng-click="vm.advancedSearch('ATTACK_TYPE', atktyp.atktyp_id)">{{atktyp.atktyp_name}}</a>{{$index == vm.attackTypes.length-1 ? '' : ', '}}
-      </span>
-    </p>
-    <p><strong>Attack Vectors: </strong>
-      <span ng-show="vm.attackVectors.length == 0">None</span>
-      <span ng-repeat="atkvtr in vm.attackVectors track by $index">
-        <a href="{{'search?classificationType=ATTACK_VECTOR&classificationId=' + atkvtr.atkvtr_id}}" target="search" ng-hide="atkvtr == 'None'" ng-click="vm.advancedSearch('ATTACK_VECTOR', atkvtr.atkvtr_id)">{{atkvtr.atkvtr_name}}</a>{{$index == vm.attackVectors.length-1 ? '' : ', '}}
-      </span>
-    </p>
-    <p><strong>Vulnerabilities: </strong>
-      <span ng-show="vm.vulnerabilities.length == 0">None</span>
-      <span ng-repeat="vuln in vm.vulnerabilities track by $index">
-        <a href="{{'search?classificationType=VULNERABILITY&classificationId=' + vuln.vuln_id}}" target="search" ng-hide="vuln == 'None'" ng-click="vm.advancedSearch('VULNERABILITY', vuln.vuln_id)">{{vuln.vuln_name}}</a>{{$index == vm.vulnerabilities.length-1 ? '' : ', '}}
-      </span>
-    </p>
-    <p><strong>Notes: </strong></p>
+    <div class=threatDetailLabels>
+        <h3 class="threatTitle">{{vm.title}}</h3>
+        <p class="threatLink"><strong>Link: </strong><a target="_blank" href={{vm.link}}>{{vm.link}}</a></p>
+        <p class="threatDesc"><strong>Description: </strong>{{vm.desc || "No Description"}}</p>
+        <p class="threatDesc"><strong>Affected Ontology: </strong>{{vm.productName}}</p>
+        <p class="threatDate"><strong>Date Added:</strong> {{vm.date}}</p>
+    </div>
+    <div class="ThreatDetailOptions">
+        <p class="ThreatDetailCategory"><strong>Owner: </strong>
+            <a href="#" class="threatOptionSelect" editable-select="vm.selectedOwner" e-ng-options="opt.Name for opt in vm.owners track by opt.ID" onaftersave="vm.updateOwner()" buttons="no">{{vm.selectedOwner.Name ||vm.owner}}
+            </a>
+        </p>
+        <p class="ThreatDetailCategory"><strong>Status: </strong>
+            <a href="#" class="threatOptionSelect" editable-select="vm.selectedStatus" e-ng-options="opt for opt in vm.statuses" onaftersave="vm.updateStatus()" buttons="no">{{vm.selectedStatus ||vm.status || "No Status"}}
+            </a>
+        </p>
+        <p class="ThreatDetailCategory"><strong>Severity: </strong>
+            <a href="#" class="threatOptionSelect" editable-select="vm.selectedRating" e-ng-options="opt for opt in vm.ratings" onaftersave="vm.updateRating()" buttons="no">{{vm.selectedRating ||vm.threat_rating || "No Rating"}}
+            </a>
+        </p>
+        <p><strong>Adversary types: </strong>
+            <span ng-show="vm.adversaryTypes.length == 0">None</span>
+            <span ng-repeat="adv in vm.adversaryTypes track by $index">
+                <a href="{{'search?classificationType=ADVERSARY&classificationId=' + adv.adv_id}}" target="search" ng-hide="adv == 'None'" ng-click="vm.advancedSearch('ADVERSARY', adv.adv_id)">{{adv.adv_name}}</a>{{$index == vm.adversaryTypes.length-1 ? '' : ', '}}
+            </span>
+        </p>
+        <p><strong>Assets: </strong>
+            <span ng-show="vm.assets.length == 0">None</span>
+            <span ng-repeat="asset in vm.assets track by $index">
+                <a href="{{'search?classificationType=ASSET&classificationId=' + asset.asset_id}}" target="search" ng-hide="asset == 'None'">{{asset.asset_name}}</a>{{$index == vm.assets.length-1 ? '' : ', '}}
+            </span>
+        </p>
+        <p><strong>Attack Types: </strong>
+            <span ng-show="vm.attackTypes.length == 0">None</span>
+            <span ng-repeat="atktyp in vm.attackTypes track by $index">
+                <a href="{{'search?classificationType=ATTACK_TYPE&classificationId=' + atktyp.atktyp_id}}" target="search" ng-hide="atktyp == 'None'" ng-click="vm.advancedSearch('ATTACK_TYPE', atktyp.atktyp_id)">{{atktyp.atktyp_name}}</a>{{$index == vm.attackTypes.length-1 ? '' : ', '}}
+            </span>
+        </p>
+        <p><strong>Attack Vectors: </strong>
+            <span ng-show="vm.attackVectors.length == 0">None</span>
+            <span ng-repeat="atkvtr in vm.attackVectors track by $index">
+                <a href="{{'search?classificationType=ATTACK_VECTOR&classificationId=' + atkvtr.atkvtr_id}}" target="search" ng-hide="atkvtr == 'None'" ng-click="vm.advancedSearch('ATTACK_VECTOR', atkvtr.atkvtr_id)">{{atkvtr.atkvtr_name}}</a>{{$index == vm.attackVectors.length-1 ? '' : ', '}}
+            </span>
+        </p>
+        <p><strong>Vulnerabilities: </strong>
+            <span ng-show="vm.vulnerabilities.length == 0">None</span>
+            <span ng-repeat="vuln in vm.vulnerabilities track by $index">
+                <a href="{{'search?classificationType=VULNERABILITY&classificationId=' + vuln.vuln_id}}" target="search" ng-hide="vuln == 'None'" ng-click="vm.advancedSearch('VULNERABILITY', vuln.vuln_id)">{{vuln.vuln_name}}</a>{{$index == vm.vulnerabilities.length-1 ? '' : ', '}}
+            </span>
+        </p>
+        <p><strong>Notes: </strong></p>
 
-    <a href="#" class="threatNotes" e-style="width:400px; height:100px;" onaftersave="vm.updateNote()" editable-textarea="vm.notes">{{vm.note || vm.notes || "No Notes"}}</a>
-    <p class="ThreatEditor"><strong style="color:black">Last Edited By:</strong> {{vm.editor || "None"}}</p>
+        <a href="#" class="threatNotes" e-style="width:400px; height:100px;" onaftersave="vm.updateNote()" editable-textarea="vm.notes">{{vm.note || vm.notes || "No Notes"}}</a>
+        <p class="ThreatEditor"><strong style="color:black">Last Edited By:</strong> {{vm.editor || "None"}}</p>
 
-    <button ng-hide="!vm.canEdit" class="ThreatWatchlistButton" ng-click="vm.deleteThreatModal()">
-      <strong>Delete Threat</strong> <i class="icon glyphicon glyphicon-trash fa-fw"></i>
-    </button>
-    <button ng-hide="!vm.canEdit" class="ThreatWatchlistButton" ng-click="vm.saveThreat()">
-      <strong>Add to Watchlist</strong> <i class="icon glyphicon glyphicon-eye-open fa-fw"></i>
-    </button>
-    <button ng-hide="!vm.canEdit" class="ThreatWatchlistButton" ng-click="vm.trainModal('O')">
-      <strong>Retrain Threat</strong> <i class="icon glyphicon glyphicon-edit fa-fw"></i>
-    </button>
-  </div>
+        <button ng-hide="!vm.canEdit" class="ThreatWatchlistButton" ng-click="vm.deleteThreatModal()">
+            <strong>Delete Threat</strong> <i class="icon glyphicon glyphicon-trash fa-fw"></i>
+        </button>
+        <button ng-hide="!vm.canEdit" class="ThreatWatchlistButton" ng-click="vm.saveThreat()">
+            <strong>Add to Watchlist</strong> <i class="icon glyphicon glyphicon-eye-open fa-fw"></i>
+        </button>
+        <button ng-hide="!vm.canEdit" class="ThreatWatchlistButton" ng-click="vm.trainModal('O')">
+            <strong>Retrain Threat</strong> <i class="icon glyphicon glyphicon-edit fa-fw"></i>
+        </button>
+    </div>
 </div>
 
 <!-- Base View -->
 <div class=threatDetailHead ng-hide="vm.canEdit">
-  <div class=threatDetailLabels>
-    <h3 class="threatTitle">{{vm.title}}</h3>
-    <p class="threatLink"><strong>Link: </strong><a target="_blank" href={{vm.link}}>{{vm.link}}</a></p>
-    <p class="threatDesc"><strong>Description: </strong>{{vm.desc || "No Description"}}</p>
-    <p class="threatDesc"><strong>Affected Ontology: </strong>{{vm.productName}}</p>
-    <p class="threatDate"><strong>Date Added:</strong> {{vm.date}}</p>
-  </div>
-  <div class="ThreatDetailOptions">
-    <p class="ThreatDetailCategory"><strong>Owner: </strong>{{vm.owner}}</p>
-    <p class="ThreatDetailCategory"><strong>Status: </strong>{{vm.status || "New"}}</p>
-    <p class="ThreatDetailCategory"><strong>Severity: </strong>{{vm.threat_rating || "No Rating"}}</p>
-    <p><strong>Adversary types: </strong>
-      <span ng-show="vm.adversaryTypes.length == 0">None</span>
-      <span ng-repeat="adv in vm.adversaryTypes track by $index">
-        <a href="{{'search?classificationType=ADVERSARY&classificationId=' + adv.adv_id}}" target="search" ng-hide="adv == 'None'" ng-click="vm.advancedSearch('ADVERSARY', adv.adv_id)">{{adv.adv_name}}</a>{{$index == vm.adversaryTypes.length-1 ? '' : ', '}}
-      </span>
-    </p>
-    <p><strong>Assets: </strong>
-      <span ng-show="vm.assets.length == 0">None</span>
-      <span ng-repeat="asset in vm.assets track by $index">
-        <a href="{{'search?classificationType=ASSET&classificationId=' + asset.asset_id}}" target="search" ng-hide="asset == 'None'">{{asset.asset_name}}</a>{{$index == vm.assets.length-1 ? '' : ', '}}
-      </span>
-    </p>
-    <p><strong>Attack Types: </strong>
-      <span ng-show="vm.attackTypes.length == 0">None</span>
-      <span ng-repeat="atktyp in vm.attackTypes track by $index">
-        <a href="{{'search?classificationType=ATTACK_TYPE&classificationId=' + atktyp.atktyp_id}}" target="search" ng-hide="atktyp == 'None'" ng-click="vm.advancedSearch('ATTACK_TYPE', atktyp.atktyp_id)">{{atktyp.atktyp_name}}</a>{{$index == vm.attackTypes.length-1 ? '' : ', '}}
-      </span>
-    </p>
-    <p><strong>Attack Vectors: </strong>
-      <span ng-show="vm.attackVectors.length == 0">None</span>
-      <span ng-repeat="atkvtr in vm.attackVectors track by $index">
-        <a href="{{'search?classificationType=ATTACK_VECTOR&classificationId=' + atkvtr.atkvtr_id}}" target="search" ng-hide="atkvtr == 'None'" ng-click="vm.advancedSearch('ATTACK_VECTOR', atkvtr.atkvtr_id)">{{atkvtr.atkvtr_name}}</a>{{$index == vm.attackVectors.length-1 ? '' : ', '}}
-      </span>
-    </p>
-    <p><strong>Vulnerabilities: </strong>
-      <span ng-show="vm.vulnerabilities.length == 0">None</span>
-      <span ng-repeat="vuln in vm.vulnerabilities track by $index">
-        <a href="{{'search?classificationType=VULNERABILITY&classificationId=' + vuln.vuln_id}}" target="search" ng-hide="vuln == 'None'" ng-click="vm.advancedSearch('VULNERABILITY', vuln.vuln_id)">{{vuln.vuln_name}}</a>{{$index == vm.vulnerabilities.length-1 ? '' : ', '}}
-      </span>
-    </p>
-    <p><strong>Notes: </strong>{{ vm.notes || "No Notes"}}</p>
-    <p class="ThreatEditorBase"><strong style="color:black">Last Edited By:</strong> {{vm.editor || "None"}}</p>
-  </div>
+    <div class=threatDetailLabels>
+        <h3 class="threatTitle">{{vm.title}}</h3>
+        <p class="threatLink"><strong>Link: </strong><a target="_blank" href={{vm.link}}>{{vm.link}}</a></p>
+        <p class="threatDesc"><strong>Description: </strong>{{vm.desc || "No Description"}}</p>
+        <p class="threatDesc"><strong>Affected Ontology: </strong>{{vm.productName}}</p>
+        <p class="threatDate"><strong>Date Added:</strong> {{vm.date}}</p>
+    </div>
+    <div class="ThreatDetailOptions">
+        <p class="ThreatDetailCategory"><strong>Owner: </strong>{{vm.owner}}</p>
+        <p class="ThreatDetailCategory"><strong>Status: </strong>{{vm.status || "New"}}</p>
+        <p class="ThreatDetailCategory"><strong>Severity: </strong>{{vm.threat_rating || "No Rating"}}</p>
+        <p><strong>Adversary types: </strong>
+            <span ng-show="vm.adversaryTypes.length == 0">None</span>
+            <span ng-repeat="adv in vm.adversaryTypes track by $index">
+                <a href="{{'search?classificationType=ADVERSARY&classificationId=' + adv.adv_id}}" target="search" ng-hide="adv == 'None'" ng-click="vm.advancedSearch('ADVERSARY', adv.adv_id)">{{adv.adv_name}}</a>{{$index == vm.adversaryTypes.length-1 ? '' : ', '}}
+            </span>
+        </p>
+        <p><strong>Assets: </strong>
+            <span ng-show="vm.assets.length == 0">None</span>
+            <span ng-repeat="asset in vm.assets track by $index">
+                <a href="{{'search?classificationType=ASSET&classificationId=' + asset.asset_id}}" target="search" ng-hide="asset == 'None'">{{asset.asset_name}}</a>{{$index == vm.assets.length-1 ? '' : ', '}}
+            </span>
+        </p>
+        <p><strong>Attack Types: </strong>
+            <span ng-show="vm.attackTypes.length == 0">None</span>
+            <span ng-repeat="atktyp in vm.attackTypes track by $index">
+                <a href="{{'search?classificationType=ATTACK_TYPE&classificationId=' + atktyp.atktyp_id}}" target="search" ng-hide="atktyp == 'None'" ng-click="vm.advancedSearch('ATTACK_TYPE', atktyp.atktyp_id)">{{atktyp.atktyp_name}}</a>{{$index == vm.attackTypes.length-1 ? '' : ', '}}
+            </span>
+        </p>
+        <p><strong>Attack Vectors: </strong>
+            <span ng-show="vm.attackVectors.length == 0">None</span>
+            <span ng-repeat="atkvtr in vm.attackVectors track by $index">
+                <a href="{{'search?classificationType=ATTACK_VECTOR&classificationId=' + atkvtr.atkvtr_id}}" target="search" ng-hide="atkvtr == 'None'" ng-click="vm.advancedSearch('ATTACK_VECTOR', atkvtr.atkvtr_id)">{{atkvtr.atkvtr_name}}</a>{{$index == vm.attackVectors.length-1 ? '' : ', '}}
+            </span>
+        </p>
+        <p><strong>Vulnerabilities: </strong>
+            <span ng-show="vm.vulnerabilities.length == 0">None</span>
+            <span ng-repeat="vuln in vm.vulnerabilities track by $index">
+                <a href="{{'search?classificationType=VULNERABILITY&classificationId=' + vuln.vuln_id}}" target="search" ng-hide="vuln == 'None'" ng-click="vm.advancedSearch('VULNERABILITY', vuln.vuln_id)">{{vuln.vuln_name}}</a>{{$index == vm.vulnerabilities.length-1 ? '' : ', '}}
+            </span>
+        </p>
+        <p><strong>Notes: </strong>{{ vm.notes || "No Notes"}}</p>
+        <p class="ThreatEditorBase"><strong style="color:black">Last Edited By:</strong> {{vm.editor || "None"}}</p>
+    </div>
 </div>
 
 <div class="tableTitle">
-  <h5 class=affectedProductsTitle><strong>Potentially Affected Ontologies</strong></h5>
-  <button ng-show="vm.user && !vm.canEdit" class="deleteDetailDelete" ng-click="vm.saveThreat()">
-    <strong>Add to Watchlist</strong> <i class="icon glyphicon glyphicon-eye-open fa-fw"></i>
-  </button>
+    <h5 class=affectedProductsTitle><strong>Potentially Affected Ontologies</strong></h5>
+    <button ng-show="vm.user && !vm.canEdit" class="deleteDetailDelete" ng-click="vm.saveThreat()">
+        <strong>Add to Watchlist</strong> <i class="icon glyphicon glyphicon-eye-open fa-fw"></i>
+    </button>
 </div>
 
 <table st-table="vm.displayedCollection" st-safe-src="vm.rowCollection" class="table table-striped main">
-  <thead>
-    <tr>
-      <th colspan="9">
-        <input st-search="" st-select-mode="multiple" class="form-control" placeholder="search ..." type="text" />
-      </th>
-    </tr>
-    <tr>
-      <th st-sort="Name">Ontology <i class="icon fa-fw"></i></th>
-      <th>Description</th>
-    </tr>
-  </thead>
+    <thead>
+        <tr>
+            <th colspan="9">
+                <input st-search="" st-select-mode="multiple" class="form-control" placeholder="search ..." type="text" />
+            </th>
+        </tr>
+        <tr>
+            <th st-sort="Name">Ontology <i class="icon fa-fw"></i></th>
+            <th>Description</th>
+        </tr>
+    </thead>
 
-  <tbody>
-    <tr ng-repeat="row in vm.displayedCollection">
-      <td><a ng-href="/ontologies/{{row.ID}}">{{row.Name}}</a></td>
-      <td>{{row.Desc}}</td>
-    </tr>
-  </tbody>
+    <tbody>
+        <tr ng-repeat="row in vm.displayedCollection">
+            <td><a ng-href="/ontologies/{{row.ID}}">{{row.Name}}</a></td>
+            <td>{{row.Desc}}</td>
+        </tr>
+    </tbody>
 </table>
